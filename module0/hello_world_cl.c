@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <unistd.h>
 #ifdef __APPLE__
 	#include <OpenCL/opencl.h>
 #else
@@ -111,6 +112,6 @@ int main(int argc, char** argv)
 	clReleaseKernel(kernel);
 	clReleaseCommandQueue(commands);
 	clReleaseContext(context);
-	sleep(1); // Leopard pty bug workaround.
+	usleep(1000000); // Leopard pty bug workaround.
 	return 0;
 }
