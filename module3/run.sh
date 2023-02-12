@@ -21,6 +21,14 @@ read -p "Press enter to continue:"
 clear
 echo "Running with 128 threads - block size of 32"
 ./assignment 128 32 0
+read -p "Press enter to continue:"
+clear
+echo "Running with 256 threads - block size of 16"
+./assignment 256 16 0
+read -p "Press enter to continue:"
+clear
+echo "Running with 256 threads - block size of 32"
+./assignment 256 32 0
 
 read -p "Press enter to continue:"
 clear
@@ -31,6 +39,14 @@ read -p "Press enter to continue:"
 clear
 echo "Running with 128 threads - block size of 32"
 ./assignment 128 32 1
+read -p "Press enter to continue:"
+clear
+echo "Running with 256 threads - block size of 16"
+./assignment 256 16 1
+read -p "Press enter to continue:"
+clear
+echo "Running with 256 threads - block size of 32"
+./assignment 256 32 1
 
 read -p "Press enter to continue:"
 clear
@@ -41,6 +57,14 @@ read -p "Press enter to continue:"
 clear
 echo "Running with 128 threads - block size of 32"
 ./assignment 128 32 2
+read -p "Press enter to continue:"
+clear
+echo "Running with 256 threads - block size of 16"
+./assignment 256 16 2
+read -p "Press enter to continue:"
+clear
+echo "Running with 256 threads - block size of 32"
+./assignment 256 32 2
 
 read -p "Press enter to continue:"
 clear
@@ -51,6 +75,14 @@ read -p "Press enter to continue:"
 clear
 echo "Running with 128 threads - block size of 32"
 ./assignment 128 32 3
+read -p "Press enter to continue:"
+clear
+echo "Running with 256 threads - block size of 16"
+./assignment 256 16 3
+read -p "Press enter to continue:"
+clear
+echo "Running with 256 threads - block size of 32"
+./assignment 256 32 3
 
 read -p "Press enter to continue:"
 clear

@@ -1,0 +1,41 @@
+Run conditional code to generate graph
+./assignment 128 128 4
+Time elapsed GPU conditional: 0.028000ms
+Time elapsed GPU non-conditional: 0.010000ms
+Time elapsed CPU conditional: 0.001000ms
+./assignment 256 128 4
+Time elapsed GPU conditional: 0.028000ms
+Time elapsed GPU non-conditional: 0.010000ms
+Time elapsed CPU conditional: 0.001000ms
+./assignment 512 128 4
+Time elapsed GPU conditional: 0.029000ms
+Time elapsed GPU non-conditional: 0.010000ms
+Time elapsed CPU conditional: 0.002000ms
+./assignment 1024 128 4
+Time elapsed GPU conditional: 0.025000ms
+Time elapsed GPU non-conditional: 0.009000ms
+Time elapsed CPU conditional: 0.003000ms
+./assignment 2048 128 4
+Time elapsed GPU conditional: 0.028000ms
+Time elapsed GPU non-conditional: 0.010000ms
+Time elapsed CPU conditional: 0.005000ms
+./assignment 4096 128 4
+Time elapsed GPU conditional: 0.030000ms
+Time elapsed GPU non-conditional: 0.012000ms
+Time elapsed CPU conditional: 0.013000ms
+./assignment 8192 128 4
+Time elapsed GPU conditional: 0.032000ms
+Time elapsed GPU non-conditional: 0.014000ms
+Time elapsed CPU conditional: 0.021000ms
+./assignment 16384 128 4
+Time elapsed GPU conditional: 0.036000ms
+Time elapsed GPU non-conditional: 0.020000ms
+Time elapsed CPU conditional: 0.044000ms
+./assignment 32768 128 4
+Time elapsed GPU conditional: 0.051000ms
+Time elapsed GPU non-conditional: 0.034000ms
+Time elapsed CPU conditional: 0.131000ms
+./assignment 65536 128 4
+Time elapsed GPU conditional: 0.083000ms
+Time elapsed GPU non-conditional: 0.051000ms
+Time elapsed CPU conditional: 0.177000ms
