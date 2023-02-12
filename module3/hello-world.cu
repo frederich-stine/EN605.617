@@ -4,14 +4,17 @@
 
 #include <stdio.h>
 
-#define N 16
-#define BLOCK_SIZE 16
+#define N 128
+#define BLOCK_SIZE 32
 #define NUM_BLOCKS N/BLOCK_SIZE
 
 #define ARRAY_SIZE N
 #define ARRAY_SIZE_IN_BYTES (sizeof(unsigned int) * (ARRAY_SIZE))
 
-/* Declare  statically four arrays of ARRAY_SIZE each */
+// This is not declaring four arrays - updated
+/* Declare statically array of ARRAY_SIZE */
+// Out of date
+/* Declare statically four arrays of ARRAY_SIZE each */
 unsigned int cpu_block[ARRAY_SIZE];
 
 __global__ 

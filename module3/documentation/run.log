@@ -1,0 +1,256 @@
+Frederich Stine - EN 605.617 - JHU EP
+----------------------------------------------------------------
+Example runner to show execution of Module 3 assignment
+----------------------------------------------------------------
+This runner demonstrates the add, sub, mult, and mod operations
+with varying block sizes and thread counts.
+This runner additionally demonstrates conditional branching both
+in a Cuda kernel and outside with a reference Cuda kernel that
+does not include conditional branching.
+
+
+Portion 1 - Cuda addition kernel
+Running with 128 threads - block size of 16
+Result: 
+B0  B1  B2  B3  B4  B5  B6  B7  
+0   16  33  48  66  82  96  112 
+1   17  33  51  65  83  100 113 
+2   18  35  53  68  85  100 115 
+4   19  35  51  67  83  102 116 
+7   20  37  54  71  85  103 116 
+6   21  39  56  69  88  101 118 
+7   25  39  54  71  86  103 119 
+8   26  40  55  73  87  103 119 
+8   26  43  59  73  88  107 123 
+9   25  42  58  76  91  108 122 
+13  27  43  60  76  90  109 124 
+11  29  43  62  78  93  109 126 
+13  28  46  61  79  92  111 125 
+14  29  45  63  77  96  111 128 
+16  30  48  65  80  94  111 127 
+17  31  50  65  82  97  112 128 
+Running with 128 threads - block size of 32
+Result: 
+B0  B1  B2  B3  
+2   35  67  97  
+2   36  67  97  
+2   37  69  100 
+5   38  68  100 
+4   37  71  100 
+7   38  72  104 
+8   38  71  102 
+8   39  74  104 
+10  43  73  105 
+11  43  75  105 
+11  43  74  108 
+12  44  76  110 
+14  47  78  108 
+14  45  80  112 
+17  49  79  112 
+16  47  82  114 
+16  49  83  115 
+18  52  84  114 
+18  52  85  115 
+21  51  85  115 
+23  55  85  118 
+24  54  86  117 
+25  56  89  119 
+25  56  88  121 
+26  56  88  121 
+27  60  90  121 
+27  60  93  122 
+28  61  92  125 
+30  61  93  127 
+30  61  96  126 
+32  65  95  129 
+32  63  96  128 
+Portion 2 - Cuda subtraction kernel
+Running with 128 threads - block size of 16
+Result: 
+B0  B1  B2  B3  B4  B5  B6  B7  
+0   13  31  47  61  79  93  112 
+1   16  30  49  62  80  94  113 
+2   15  34  50  65  82  97  111 
+1   16  34  51  66  83  99  113 
+4   17  34  49  67  82  97  115 
+3   19  35  52  69  85  101 116 
+5   21  35  54  68  84  100 116 
+6   23  38  53  69  87  101 116 
+5   21  40  54  70  86  102 117 
+7   24  39  55  71  87  104 119 
+7   25  42  58  71  90  104 121 
+9   25  42  59  75  90  106 123 
+12  26  43  57  74  91  106 122 
+10  28  45  58  77  90  106 123 
+14  27  45  59  77  93  110 125 
+15  29  46  63  76  95  108 126 
+Running with 128 threads - block size of 32
+Result: 
+B0  B1  B2  B3  
+0   29  64  95  
+-1  33  65  94  
+1   34  63  96  
+3   34  65  98  
+2   35  68  98  
+4   37  66  99  
+3   38  67  101 
+5   38  68  103 
+8   37  71  103 
+6   39  70  103 
+8   42  73  103 
+9   42  72  107 
+10  43  73  105 
+10  42  76  109 
+11  46  77  110 
+13  45  79  108 
+16  47  80  111 
+16  46  80  113 
+15  50  82  111 
+17  51  80  114 
+17  49  84  113 
+18  50  82  115 
+19  51  83  116 
+20  52  87  119 
+24  56  88  118 
+25  56  89  119 
+24  57  90  119 
+26  59  88  121 
+28  58  92  121 
+28  61  93  122 
+27  62  94  124 
+31  62  95  127 
+Portion 3 - Cuda multiplication kernel
+Running with 128 threads - block size of 16
+Result: 
+B0  B1  B2  B3  B4  B5  B6  B7  
+0   0   96  48  0   0   96  112 
+2   17  0   147 0   81  291 0   
+2   54  0   0   198 0   196 342 
+0   38  35  0   134 249 99  115 
+8   60  36  156 0   0   200 348 
+5   63  0   159 207 255 202 234 
+18  66  0   162 210 258 102 236 
+14  69  39  165 213 0   0   0   
+0   0   120 0   72  0   104 240 
+27  0   82  57  219 0   210 242 
+20  52  0   58  74  0   318 366 
+22  27  43  0   225 273 0   246 
+24  0   44  120 228 0   324 372 
+39  29  135 0   77  0   0   375 
+42  90  0   0   78  0   0   252 
+30  0   94  63  0   0   333 0   
+Running with 128 threads - block size of 32
+Result: 
+B0  B1  B2  B3  
+0   96  0   96  
+2   0   0   291 
+2   0   198 196 
+0   35  134 99  
+8   36  0   200 
+5   0   207 202 
+18  0   210 102 
+14  39  213 0   
+0   120 72  104 
+27  82  219 210 
+20  0   74  318 
+22  43  225 0   
+24  44  228 324 
+39  135 77  0   
+42  0   78  0   
+30  94  0   333 
+0   48  0   112 
+17  147 81  0   
+54  0   0   342 
+38  0   249 115 
+60  156 0   348 
+63  159 255 234 
+66  162 258 236 
+69  165 0   0   
+0   0   0   240 
+0   57  0   242 
+52  58  0   366 
+27  0   273 246 
+0   120 0   372 
+29  0   0   375 
+90  0   0   252 
+0   63  0   0   
+Portion 4 - Cuda modulo kernel
+Running with 128 threads - block size of 16
+Result: 
+B0  B1  B2  B3  B4  B5  B6  B7  
+-1  0   0   0   0   0   0   0   
+1   2   1   0   2   0   1   2   
+-1  0   0   0   0   0   -1  0   
+0   0   -1  0   1   0   1   1   
+0   0   -1  1   2   -1  0   0   
+1   1   1   2   1   1   0   -1  
+0   0   0   0   0   2   -1  1   
+-1  2   1   1   1   -1  -1  1   
+0   0   1   -1  0   0   0   0   
+0   -1  -1  0   0   1   1   0   
+1   0   -1  1   0   0   0   2   
+0   -1  1   0   1   -1  1   1   
+-1  0   2   0   -1  2   0   0   
+1   2   0   -1  -1  -1  0   -1  
+2   0   1   0   0   0   0   0   
+0   0   0   0   1   0   -1  -1  
+Running with 128 threads - block size of 32
+Result: 
+B0  B1  B2  B3  
+0   0   0   -1  
+0   1   -1  0   
+0   0   0   2   
+1   -1  0   0   
+0   -1  0   1   
+1   0   1   0   
+0   0   0   0   
+1   0   -1  1   
+-1  1   0   2   
+1   0   0   1   
+0   0   0   1   
+1   0   -1  1   
+0   0   1   0   
+-1  1   2   1   
+2   0   -1  2   
+0   -1  -1  1   
+0   0   -1  1   
+2   0   0   1   
+0   2   1   -1  
+1   1   1   1   
+0   0   0   0   
+-1  -1  1   0   
+0   -1  -1  -1  
+0   1   1   0   
+0   0   -1  0   
+1   0   1   1   
+0   0   0   -1  
+0   0   1   0   
+0   0   -1  -1  
+-1  1   -1  1   
+0   0   0   0   
+-1  0   0   -1  
+Portion 5 - Cuda conditional branch timing test
+Running with 1024 threads - block size of 64
+Time elapsed GPU conditional: 0.028000ms
+Time elapsed GPU non-conditional: 0.010000ms
+Time elapsed CPU conditional: 0.004000ms
+Running with 2048 threads - block size of 64
+Time elapsed GPU conditional: 0.029000ms
+Time elapsed GPU non-conditional: 0.011000ms
+Time elapsed CPU conditional: 0.006000ms
+Running with 4096 threads - block size of 64
+Time elapsed GPU conditional: 0.029000ms
+Time elapsed GPU non-conditional: 0.012000ms
+Time elapsed CPU conditional: 0.012000ms
+Running with 1024 threads - block size of 128
+Time elapsed GPU conditional: 0.026000ms
+Time elapsed GPU non-conditional: 0.010000ms
+Time elapsed CPU conditional: 0.003000ms
+Running with 2048 threads - block size of 128
+Time elapsed GPU conditional: 0.027000ms
+Time elapsed GPU non-conditional: 0.010000ms
+Time elapsed CPU conditional: 0.005000ms
+Running with 4096 threads - block size of 128
+Time elapsed GPU conditional: 0.028000ms
+Time elapsed GPU non-conditional: 0.012000ms
+Time elapsed CPU conditional: 0.011000ms
