@@ -42,7 +42,10 @@ I have though of a couple of possiblities as to why this is.
 Even though I did not see as large of a change as I anticipated, the GPU was still slower executing the conditional kernel than the non conditional kernel.
 The CPU was faster for small amounts of kernels, but when I made this number very large the GPU was still able to finish the calculations faster.
 
-[PUT GRAPH HERE]
+![Graph of performance](documentation/branch_timing_chart.png)
+
+Here we can see that the difference between the conditional branching kernel is longer than the non-branching kernel, but not by an exponential amount.
+This is why my thoughts above were necessary on this example. If this is not the intended outcome I would love some example code to better replicate the behavior.
 
 ## Stretch Problem 
 
