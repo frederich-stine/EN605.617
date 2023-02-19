@@ -10,14 +10,183 @@ This runner additionally demonstrates how to run the caesar
 cipher kernel with file I/O.
 
 
-[H[2J[3JPaged memory - 1048576 threads - block size 256
+Press enter to continue:
+Paged memory - 1048576 threads - block size 256
+==63614== NVPROF is profiling process 63614, command: ./assignment 1048576 256 0
+==63614== Profiling application: ./assignment 1048576 256 0
+==63614== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   53.83%  1.0437ms         2  521.83us  509.89us  533.76us  [CUDA memcpy HtoD]
+                   43.07%  834.95us         1  834.95us  834.95us  834.95us  [CUDA memcpy DtoH]
+                    3.10%  60.193us         1  60.193us  60.193us  60.193us  gpu_all_arith(int*, int*, int*)
+      API calls:   96.86%  106.71ms         3  35.568ms  45.255us  106.61ms  cudaMalloc
+                    2.47%  2.7185ms         3  906.17us  585.17us  1.5124ms  cudaMemcpy
+                    0.32%  347.89us         3  115.96us  81.203us  133.51us  cudaFree
+                    0.16%  173.95us       114  1.5250us     230ns  70.784us  cuDeviceGetAttribute
+                    0.14%  150.87us         1  150.87us  150.87us  150.87us  cuLibraryLoadData
+                    0.03%  28.834us         1  28.834us  28.834us  28.834us  cudaLaunchKernel
+                    0.02%  26.971us         1  26.971us  26.971us  26.971us  cuDeviceGetName
+                    0.01%  7.7250us         1  7.7250us  7.7250us  7.7250us  cuDeviceGetPCIBusId
+                    0.00%  2.0740us         3     691ns     320ns  1.1020us  cuDeviceGetCount
+                    0.00%     742ns         2     371ns     231ns     511ns  cuDeviceGet
+                    0.00%     471ns         1     471ns     471ns     471ns  cuDeviceTotalMem
+                    0.00%     451ns         1     451ns     451ns     451ns  cuModuleGetLoadingMode
+                    0.00%     350ns         1     350ns     350ns     350ns  cuDeviceGetUuid
 Pinned memory - 1048576 threads - block size 256
-[H[2J[3JPaged memory - 1048576 threads - block size 128
+==63627== NVPROF is profiling process 63627, command: ./assignment 1048576 256 1
+==63627== Profiling application: ./assignment 1048576 256 1
+==63627== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   63.19%  642.05us         2  321.03us  320.48us  321.57us  [CUDA memcpy HtoD]
+                   30.54%  310.34us         1  310.34us  310.34us  310.34us  [CUDA memcpy DtoH]
+                    6.27%  63.681us         1  63.681us  63.681us  63.681us  gpu_all_arith(int*, int*, int*)
+      API calls:   96.21%  85.040ms         3  28.347ms  1.1494ms  82.731ms  cudaMallocHost
+                    1.53%  1.3524ms         3  450.80us  396.65us  545.78us  cudaFreeHost
+                    1.26%  1.1112ms         3  370.41us  329.97us  424.46us  cudaMemcpy
+                    0.39%  342.80us         3  114.27us  72.727us  135.56us  cudaFree
+                    0.20%  180.32us         3  60.106us  47.499us  81.815us  cudaMalloc
+                    0.18%  162.94us       114  1.4290us     240ns  66.195us  cuDeviceGetAttribute
+                    0.15%  136.56us         1  136.56us  136.56us  136.56us  cuLibraryLoadData
+                    0.03%  26.941us         1  26.941us  26.941us  26.941us  cuDeviceGetName
+                    0.03%  22.743us         1  22.743us  22.743us  22.743us  cudaLaunchKernel
+                    0.01%  5.3600us         1  5.3600us  5.3600us  5.3600us  cuDeviceGetPCIBusId
+                    0.00%  2.0930us         3     697ns     360ns  1.1420us  cuDeviceGetCount
+                    0.00%     802ns         2     401ns     271ns     531ns  cuDeviceGet
+                    0.00%     631ns         1     631ns     631ns     631ns  cuModuleGetLoadingMode
+                    0.00%     441ns         1     441ns     441ns     441ns  cuDeviceTotalMem
+                    0.00%     331ns         1     331ns     331ns     331ns  cuDeviceGetUuid
+Press enter to continue:Paged memory - 1048576 threads - block size 128
+==63641== NVPROF is profiling process 63641, command: ./assignment 1048576 128 0
+==63641== Profiling application: ./assignment 1048576 128 0
+==63641== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   52.21%  999.59us         2  499.80us  490.76us  508.84us  [CUDA memcpy HtoD]
+                   44.38%  849.77us         1  849.77us  849.77us  849.77us  [CUDA memcpy DtoH]
+                    3.41%  65.376us         1  65.376us  65.376us  65.376us  gpu_all_arith(int*, int*, int*)
+      API calls:   96.17%  87.030ms         3  29.010ms  45.716us  86.938ms  cudaMalloc
+                    2.99%  2.7014ms         3  900.46us  559.00us  1.5412ms  cudaMemcpy
+                    0.38%  343.52us         3  114.51us  77.797us  133.26us  cudaFree
+                    0.20%  180.72us       114  1.5850us     270ns  71.635us  cuDeviceGetAttribute
+                    0.18%  165.56us         1  165.56us  165.56us  165.56us  cuLibraryLoadData
+                    0.03%  29.546us         1  29.546us  29.546us  29.546us  cuDeviceGetName
+                    0.03%  28.875us         1  28.875us  28.875us  28.875us  cudaLaunchKernel
+                    0.01%  7.5250us         1  7.5250us  7.5250us  7.5250us  cuDeviceGetPCIBusId
+                    0.00%  2.4950us         3     831ns     370ns  1.3830us  cuDeviceGetCount
+                    0.00%     922ns         2     461ns     281ns     641ns  cuDeviceGet
+                    0.00%     551ns         1     551ns     551ns     551ns  cuDeviceTotalMem
+                    0.00%     501ns         1     501ns     501ns     501ns  cuModuleGetLoadingMode
+                    0.00%     371ns         1     371ns     371ns     371ns  cuDeviceGetUuid
 Pinned memory - 1048576 threads - block size 128
-[H[2J[3JPaged memory - 16777216 threads - block size 256
+==63654== NVPROF is profiling process 63654, command: ./assignment 1048576 128 1
+==63654== Profiling application: ./assignment 1048576 128 1
+==63654== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   63.16%  642.95us         2  321.48us  321.12us  321.83us  [CUDA memcpy HtoD]
+                   30.50%  310.47us         1  310.47us  310.47us  310.47us  [CUDA memcpy DtoH]
+                    6.35%  64.609us         1  64.609us  64.609us  64.609us  gpu_all_arith(int*, int*, int*)
+      API calls:   96.42%  89.762ms         3  29.921ms  1.1739ms  87.408ms  cudaMallocHost
+                    1.49%  1.3830ms         3  461.00us  410.06us  560.38us  cudaFreeHost
+                    1.15%  1.0663ms         3  355.42us  330.31us  382.99us  cudaMemcpy
+                    0.36%  339.61us         3  113.20us  70.353us  135.00us  cudaFree
+                    0.18%  165.19us         3  55.063us  45.956us  73.018us  cudaMalloc
+                    0.17%  160.96us       114  1.4110us     230ns  65.263us  cuDeviceGetAttribute
+                    0.16%  150.59us         1  150.59us  150.59us  150.59us  cuLibraryLoadData
+                    0.03%  28.013us         1  28.013us  28.013us  28.013us  cuDeviceGetName
+                    0.03%  24.275us         1  24.275us  24.275us  24.275us  cudaLaunchKernel
+                    0.01%  8.3160us         1  8.3160us  8.3160us  8.3160us  cuDeviceGetPCIBusId
+                    0.00%  2.2640us         3     754ns     531ns  1.1820us  cuDeviceGetCount
+                    0.00%     762ns         2     381ns     231ns     531ns  cuDeviceGet
+                    0.00%     451ns         1     451ns     451ns     451ns  cuDeviceTotalMem
+                    0.00%     401ns         1     401ns     401ns     401ns  cuModuleGetLoadingMode
+                    0.00%     320ns         1     320ns     320ns     320ns  cuDeviceGetUuid
+Press enter to continue:Paged memory - 16777216 threads - block size 256
+==63668== NVPROF is profiling process 63668, command: ./assignment 16777216 256 0
+==63668== Profiling application: ./assignment 16777216 256 0
+==63668== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   55.88%  19.334ms         1  19.334ms  19.334ms  19.334ms  [CUDA memcpy DtoH]
+                   41.34%  14.303ms         2  7.1513ms  7.0007ms  7.3019ms  [CUDA memcpy HtoD]
+                    2.79%  963.82us         1  963.82us  963.82us  963.82us  gpu_all_arith(int*, int*, int*)
+      API calls:   67.62%  82.441ms         3  27.480ms  82.114us  82.274ms  cudaMalloc
+                   28.99%  35.349ms         3  11.783ms  7.0889ms  20.900ms  cudaMemcpy
+                    3.10%  3.7780ms         3  1.2593ms  171.86us  1.8115ms  cudaFree
+                    0.12%  144.28us       114  1.2650us     200ns  58.169us  cuDeviceGetAttribute
+                    0.11%  128.04us         1  128.04us  128.04us  128.04us  cuLibraryLoadData
+                    0.04%  47.870us         1  47.870us  47.870us  47.870us  cudaLaunchKernel
+                    0.02%  23.634us         1  23.634us  23.634us  23.634us  cuDeviceGetName
+                    0.00%  3.7370us         1  3.7370us  3.7370us  3.7370us  cuDeviceGetPCIBusId
+                    0.00%  1.6920us         3     564ns     270ns     951ns  cuDeviceGetCount
+                    0.00%     681ns         2     340ns     210ns     471ns  cuDeviceGet
+                    0.00%     631ns         1     631ns     631ns     631ns  cuModuleGetLoadingMode
+                    0.00%     371ns         1     371ns     371ns     371ns  cuDeviceTotalMem
+                    0.00%     281ns         1     281ns     281ns     281ns  cuDeviceGetUuid
 Pinned memory - 16777216 threads - block size 256
-[H[2J[3JPaged memory - 16777216 threads - block size 128
+==63681== NVPROF is profiling process 63681, command: ./assignment 16777216 256 1
+==63681== Profiling application: ./assignment 16777216 256 1
+==63681== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   63.56%  10.257ms         2  5.1284ms  5.1279ms  5.1290ms  [CUDA memcpy HtoD]
+                   30.72%  4.9570ms         1  4.9570ms  4.9570ms  4.9570ms  [CUDA memcpy DtoH]
+                    5.73%  924.17us         1  924.17us  924.17us  924.17us  gpu_all_arith(int*, int*, int*)
+      API calls:   78.30%  147.92ms         3  49.305ms  17.641ms  112.50ms  cudaMallocHost
+                   10.70%  20.209ms         3  6.7364ms  5.9861ms  8.1104ms  cudaFreeHost
+                    8.59%  16.234ms         3  5.4112ms  5.1387ms  5.9298ms  cudaMemcpy
+                    1.98%  3.7332ms         3  1.2444ms  115.07us  1.8159ms  cudaFree
+                    0.21%  393.04us         3  131.01us  81.764us  222.74us  cudaMalloc
+                    0.09%  179.13us       114  1.5710us     270ns  72.016us  cuDeviceGetAttribute
+                    0.09%  165.71us         1  165.71us  165.71us  165.71us  cuLibraryLoadData
+                    0.02%  28.634us         1  28.634us  28.634us  28.634us  cuDeviceGetName
+                    0.01%  27.963us         1  27.963us  27.963us  27.963us  cudaLaunchKernel
+                    0.00%  7.3630us         1  7.3630us  7.3630us  7.3630us  cuDeviceGetPCIBusId
+                    0.00%  2.3350us         3     778ns     401ns  1.2520us  cuDeviceGetCount
+                    0.00%     911ns         2     455ns     260ns     651ns  cuDeviceGet
+                    0.00%     671ns         1     671ns     671ns     671ns  cuModuleGetLoadingMode
+                    0.00%     531ns         1     531ns     531ns     531ns  cuDeviceTotalMem
+                    0.00%     380ns         1     380ns     380ns     380ns  cuDeviceGetUuid
+Press enter to continue:Paged memory - 16777216 threads - block size 128
+==63695== NVPROF is profiling process 63695, command: ./assignment 16777216 128 0
+==63695== Profiling application: ./assignment 16777216 128 0
+==63695== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   55.77%  19.317ms         1  19.317ms  19.317ms  19.317ms  [CUDA memcpy DtoH]
+                   41.36%  14.326ms         2  7.1629ms  6.9649ms  7.3608ms  [CUDA memcpy HtoD]
+                    2.87%  993.16us         1  993.16us  993.16us  993.16us  gpu_all_arith(int*, int*, int*)
+      API calls:   63.51%  68.532ms         3  22.844ms  84.729us  68.350ms  cudaMalloc
+                   32.75%  35.340ms         3  11.780ms  7.0551ms  20.870ms  cudaMemcpy
+                    3.50%  3.7717ms         3  1.2572ms  165.34us  1.8117ms  cudaFree
+                    0.10%  104.90us       114     920ns     110ns  45.996us  cuDeviceGetAttribute
+                    0.08%  86.964us         1  86.964us  86.964us  86.964us  cuLibraryLoadData
+                    0.04%  42.410us         1  42.410us  42.410us  42.410us  cudaLaunchKernel
+                    0.02%  16.211us         1  16.211us  16.211us  16.211us  cuDeviceGetName
+                    0.00%  3.6570us         1  3.6570us  3.6570us  3.6570us  cuDeviceGetPCIBusId
+                    0.00%  1.2530us         3     417ns     170ns     812ns  cuDeviceGetCount
+                    0.00%     521ns         1     521ns     521ns     521ns  cuModuleGetLoadingMode
+                    0.00%     411ns         2     205ns     130ns     281ns  cuDeviceGet
+                    0.00%     290ns         1     290ns     290ns     290ns  cuDeviceTotalMem
+                    0.00%     160ns         1     160ns     160ns     160ns  cuDeviceGetUuid
 Pinned memory - 16777216 threads - block size 128
-[H[2J[3JCaesar Cipher example
+==63708== NVPROF is profiling process 63708, command: ./assignment 16777216 128 1
+==63708== Profiling application: ./assignment 16777216 128 1
+==63708== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   63.25%  10.263ms         2  5.1314ms  5.1277ms  5.1351ms  [CUDA memcpy HtoD]
+                   30.55%  4.9571ms         1  4.9571ms  4.9571ms  4.9571ms  [CUDA memcpy DtoH]
+                    6.20%  1.0056ms         1  1.0056ms  1.0056ms  1.0056ms  gpu_all_arith(int*, int*, int*)
+      API calls:   78.55%  147.41ms         3  49.136ms  17.185ms  112.91ms  cudaMallocHost
+                   10.34%  19.401ms         3  6.4670ms  5.5898ms  7.8955ms  cudaFreeHost
+                    8.69%  16.315ms         3  5.4383ms  5.1444ms  6.0077ms  cudaMemcpy
+                    1.99%  3.7332ms         3  1.2444ms  116.52us  1.8138ms  cudaFree
+                    0.23%  424.25us         3  141.42us  82.445us  251.22us  cudaMalloc
+                    0.09%  163.38us       114  1.4330us     230ns  67.838us  cuDeviceGetAttribute
+                    0.08%  143.65us         1  143.65us  143.65us  143.65us  cuLibraryLoadData
+                    0.01%  26.750us         1  26.750us  26.750us  26.750us  cudaLaunchKernel
+                    0.01%  25.097us         1  25.097us  25.097us  25.097us  cuDeviceGetName
+                    0.00%  7.8650us         1  7.8650us  7.8650us  7.8650us  cuDeviceGetPCIBusId
+                    0.00%  1.9930us         3     664ns     330ns  1.1220us  cuDeviceGetCount
+                    0.00%     972ns         2     486ns     281ns     691ns  cuDeviceGet
+                    0.00%     561ns         1     561ns     561ns     561ns  cuModuleGetLoadingMode
+                    0.00%     471ns         1     471ns     471ns     471ns  cuDeviceTotalMem
+                    0.00%     321ns         1     321ns     321ns     321ns  cuDeviceGetUuid
+Press enter to continue:Caesar Cipher example
 Input romeo_and_juliet.txt - block size - 256
 output - romeo_and_juliet_encrypted.txt - rot = 13
