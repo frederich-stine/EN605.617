@@ -241,14 +241,14 @@ Modified Code:
 
 	 encrypt<<<num_blocks, num_threads>>>(gpu_text, gpu_key, gpu_result);
      
-     start_time = get_time();
+         start_time = get_time();
 
 	 /* Copy the changed GPU memory back to the CPU */ 
 	 cudaMemcpy( cpu_result, gpu_result, array_size_in_bytes, cudaMemcpyDeviceToHost);
      
-     end_time = get_time();
-     cudaEventSynchronize(end_time);
-     cudaEventElapsedTime(&duration, start_time, end_time);
+         end_time = get_time();
+         cudaEventSynchronize(end_time);
+         cudaEventElapsedTime(&duration, start_time, end_time);
 
 	 printf("Pageable Transfer- Duration: %fmsn\n", duration); 
 	 print_encryption_results(cpu_text, cpu_key, cpu_result, array_size);
