@@ -1,0 +1,23 @@
+Frederich Stine - EN 605.617 - JHU EP
+----------------------------------------------------------------
+Example runner to show execution of Module 4 assignment
+----------------------------------------------------------------
+This runner demonstrates the timing different between paged and
+pinned memory with varying block size and amount of kernels.
+The timing is done by nvprof as I found this to be much more
+reliable and accurate than my timing method for module 3.
+This runner additionally demonstrates how to run the caesar
+cipher kernel with file I/O.
+
+
+[H[2J[3JPaged memory - 1048576 threads - block size 256
+Pinned memory - 1048576 threads - block size 256
+[H[2J[3JPaged memory - 1048576 threads - block size 128
+Pinned memory - 1048576 threads - block size 128
+[H[2J[3JPaged memory - 16777216 threads - block size 256
+Pinned memory - 16777216 threads - block size 256
+[H[2J[3JPaged memory - 16777216 threads - block size 128
+Pinned memory - 16777216 threads - block size 128
+[H[2J[3JCaesar Cipher example
+Input romeo_and_juliet.txt - block size - 256
+output - romeo_and_juliet_encrypted.txt - rot = 13
