@@ -229,8 +229,9 @@ void execute_gpu_functions()
  * Host function that prepares data array and passes it to the CUDA kernel.
  */
 int main(void) {
-	execute_host_functions();
-	execute_gpu_functions();
+	gpu_kernel();
+	//execute_host_functions();
+	//execute_gpu_functions();
 
 	return 0;
 }
