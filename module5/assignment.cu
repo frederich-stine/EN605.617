@@ -16,8 +16,10 @@ void gpu_all_arith_only_const (int32_t* resultBlock);
 
 /******************* Core Function Prototypes ********************/
 void run_gpu_all_arith_shared (int op);
-void run_gpu_all_arith_const (int op);
+void run_gpu_arith_const_copy (void);
+void run_gpu_arith_const_only (void);
 
+/******************* Helper Function Prototypes ********************/
 void print_blocks (int32_t* resultArr);
 
 /******************* Global Variables ********************/
@@ -63,8 +65,10 @@ int main(int argc, char** argv) {
 		run_gpu_all_arith_shared(operation);
 		break;
 	case 2:
+		run_gpu_arith_const_copy();
+		break;
 	case 3:
-		run_gpu_all_arith_const(operation-2);
+		run_gpu_arith_const_only();
 		break;
 	default:
 		printf("Incorrect operation specified: %d", operation);
@@ -116,7 +120,7 @@ void run_gpu_all_arith_shared (int op) {
 	cudaFreeHost(result);
 }
 
-void run_gpu_all_arith_const (int op) {
+void run_gpu_arith_const_copy () {
 	int32_t *result, *one;
 	int32_t *d_result;
 
@@ -126,7 +130,6 @@ void run_gpu_all_arith_const (int op) {
 
 	// Initialize memory - general initialization
 	for(int i=0; i<1024; i++) {
-		result[i] = 0;
 		one[i] = i;
 	}
 	
@@ -134,18 +137,10 @@ void run_gpu_all_arith_const (int op) {
 	cudaMalloc((void**)&d_result, arrSizeBytes);
 
 	// Copy memory from host to GPU - pinned memory
-	cudaMemcpy(d_result, result, arrSizeBytes, cudaMemcpyHostToDevice);
 	cudaMemcpyToSymbol(const_arr, one, arrSizeBytes);
 
 	// Run kernel
-	switch (op) {
-		case 0:
-			gpu_all_arith_const<<<numBlocks, blockSize>>>(d_result);
-			break;
-		case 1:
-			gpu_all_arith_only_const<<<numBlocks, blockSize>>>(d_result);
-			break;
-	}
+	gpu_all_arith_const<<<numBlocks, blockSize>>>(d_result);
 
 	// Copy memory back from GPU to host
 	cudaMemcpy(result, d_result, arrSizeBytes, cudaMemcpyDeviceToHost);
@@ -157,6 +152,33 @@ void run_gpu_all_arith_const (int op) {
 
 	// Free pinned memory on host
 	free(one);
+	cudaFreeHost(result);
+}
+
+
+void run_gpu_arith_const_only (void) {
+	int32_t *result;
+	int32_t *d_result;
+
+	// Allocated page locked  memory using standard c malloc function
+	cudaMallocHost((void**)&result, arrSizeBytes);
+	
+	// Allocate memory on the GPU for computation
+	cudaMalloc((void**)&d_result, arrSizeBytes);
+
+	// Run kernel
+	gpu_all_arith_only_const<<<numBlocks, blockSize>>>(d_result);
+
+	// Copy memory back from GPU to host
+	cudaMemcpy(result, d_result, arrSizeBytes, cudaMemcpyDeviceToHost);
+
+	// Print out result
+	print_blocks(result);
+
+	// Free memory on GPU
+	cudaFree(d_result);
+
+	// Free pinned memory on host
 	cudaFreeHost(result);
 }
 
@@ -202,6 +224,7 @@ __global__
 void gpu_all_arith_const (int32_t* resultBlock) {
 	const unsigned int thread_idx = (blockIdx.x * blockDim.x) + threadIdx.x;
 
+	resultBlock[thread_idx] = 0;
 	resultBlock[thread_idx] += const_arr[thread_idx];
 	resultBlock[thread_idx] *= const_arr[thread_idx];
 	resultBlock[thread_idx] -= const_arr[thread_idx];
@@ -211,7 +234,8 @@ void gpu_all_arith_const (int32_t* resultBlock) {
 __global__
 void gpu_all_arith_only_const (int32_t* resultBlock) {
 	const unsigned int thread_idx = (blockIdx.x * blockDim.x) + threadIdx.x;
-
+	
+	resultBlock[thread_idx] = 0;
 	resultBlock[thread_idx] += value1;
 	resultBlock[thread_idx] *= value2;
 	resultBlock[thread_idx] -= value3;
