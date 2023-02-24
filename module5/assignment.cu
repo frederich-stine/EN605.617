@@ -18,10 +18,12 @@ void gpu_all_arith_only_const (int32_t* resultBlock);
 void run_gpu_all_arith_shared (int op);
 void run_gpu_all_arith_const (int op);
 
+void print_blocks (int32_t* resultArr);
+
 /******************* Global Variables ********************/
 
 // Global variables used throughout file
-uint32_t threadCount = 0;
+uint32_t threadCount = 1024;
 uint32_t blockSize = 0;
 uint32_t numBlocks = 0;
 uint32_t arrSizeBytes = 0;
@@ -38,8 +40,8 @@ __constant__ int32_t value4 = 0x13579BDF;
 // correct core functions
 int main(int argc, char** argv) {
 	// Prints out a help menu if not enough params are passed
-	if (argc != 4) {
-		printf("Call ./assignment {numThreads} {blockSize} {operation}\n");
+	if (argc != 3) {
+		printf("Call ./assignment {blockSize} {operation}\n");
 		printf("Operations: \n");
 		printf("    0: Copy to shared Memory\n");
 		printf("    1: Shared memory for local\n");
@@ -49,11 +51,10 @@ int main(int argc, char** argv) {
 	}
 
 	// Load the parameters from the command line
-	threadCount = atoi(argv[1]);
-	blockSize = atoi(argv[2]);
+	blockSize = atoi(argv[1]);
 	numBlocks = (threadCount+(blockSize-1))/blockSize;
 	arrSizeBytes = threadCount*sizeof(int32_t);
-	int operation = atoi(argv[3]);
+	int operation = atoi(argv[2]);
 
 	// Switch statement to call correct core function
 	switch (operation) {
@@ -76,8 +77,8 @@ void run_gpu_all_arith_shared (int op) {
 	int32_t *d_one, *d_result;
 
 	// Allocated page locked  memory using standard c malloc function
-	cudaMallocHost((void**)&one, 1024*4);
-	cudaMallocHost((void**)&result, 1024*4);
+	cudaMallocHost((void**)&one, arrSizeBytes);
+	cudaMallocHost((void**)&result, arrSizeBytes);
 
 	// Initialize memory - general initialization
 	for(int i=0; i<1024; i++) {
@@ -85,11 +86,11 @@ void run_gpu_all_arith_shared (int op) {
 	}
 	
 	// Allocate memroy on the GPU for computation
-	cudaMalloc((void**)&d_one, 1024*4);
-	cudaMalloc((void**)&d_result, 1024*4);
+	cudaMalloc((void**)&d_one, arrSizeBytes);
+	cudaMalloc((void**)&d_result, arrSizeBytes);
 
 	// Copy memory from host to GPU - pinned memory
-	cudaMemcpy(d_one, one, 1024*4, cudaMemcpyHostToDevice);
+	cudaMemcpy(d_one, one, arrSizeBytes, cudaMemcpyHostToDevice);
 
 	// Run kernel
 	switch (op) {
@@ -102,7 +103,9 @@ void run_gpu_all_arith_shared (int op) {
 	}
 
 	// Copy memory back from GPU to host
-	cudaMemcpy(result, d_result, 1024*4, cudaMemcpyDeviceToHost);
+	cudaMemcpy(result, d_result, arrSizeBytes, cudaMemcpyDeviceToHost);
+	
+	print_blocks(result);
 
 	// Free memory on GPU
 	cudaFree(d_one);
@@ -118,8 +121,8 @@ void run_gpu_all_arith_const (int op) {
 	int32_t *d_result;
 
 	// Allocated page locked  memory using standard c malloc function
-	one = (int32_t*)malloc(1024*4);
-	cudaMallocHost((void**)&result, 1024*4);
+	one = (int32_t*)malloc(arrSizeBytes);
+	cudaMallocHost((void**)&result, arrSizeBytes);
 
 	// Initialize memory - general initialization
 	for(int i=0; i<1024; i++) {
@@ -128,24 +131,26 @@ void run_gpu_all_arith_const (int op) {
 	}
 	
 	// Allocate memory on the GPU for computation
-	cudaMalloc((void**)&d_result, 1024*4);
+	cudaMalloc((void**)&d_result, arrSizeBytes);
 
 	// Copy memory from host to GPU - pinned memory
-	cudaMemcpy(d_result, result, 1024*4, cudaMemcpyHostToDevice);
-	cudaMemcpyToSymbol(const_arr, one, 1024*4);
+	cudaMemcpy(d_result, result, arrSizeBytes, cudaMemcpyHostToDevice);
+	cudaMemcpyToSymbol(const_arr, one, arrSizeBytes);
 
 	// Run kernel
 	switch (op) {
 		case 0:
-			gpu_all_arith_const<<<4, 256>>>(d_result);
+			gpu_all_arith_const<<<numBlocks, blockSize>>>(d_result);
 			break;
 		case 1:
-			gpu_all_arith_only_const<<<4, 256>>>(d_result);
+			gpu_all_arith_only_const<<<numBlocks, blockSize>>>(d_result);
 			break;
 	}
 
 	// Copy memory back from GPU to host
-	cudaMemcpy(result, d_result, 1024*4, cudaMemcpyDeviceToHost);
+	cudaMemcpy(result, d_result, arrSizeBytes, cudaMemcpyDeviceToHost);
+
+	print_blocks(result);
 
 	// Free memory on GPU
 	cudaFree(d_result);
@@ -164,7 +169,7 @@ void gpu_all_arith_shared (int32_t* blockOne, int32_t* resultBlock) {
 	s[threadIdx.x] += blockOne[thread_idx];
 	s[threadIdx.x] *= blockOne[thread_idx];
 	s[threadIdx.x] -= blockOne[thread_idx];
-	s[threadIdx.x] %= blockOne[thread_idx];
+	s[threadIdx.x] /= blockOne[thread_idx];
 	
 	resultBlock[thread_idx] = s[threadIdx.x];
 }
@@ -178,12 +183,16 @@ void gpu_all_arith_shared_copy (int32_t* blockOne, int32_t* resultBlock) {
 	// Copy to shared memory
 	s[threadIdx.x] = blockOne[thread_idx];
 
+	__syncthreads();
+
 	// Execute
 	s[threadIdx.x+blockDim.x] = 0;
-	s[threadIdx.x+blockDim.x] += blockOne[threadIdx.x];
-	s[threadIdx.x+blockDim.x] *= blockOne[threadIdx.x];
-	s[threadIdx.x+blockDim.x] -= blockOne[threadIdx.x];
-	s[threadIdx.x+blockDim.x] %= blockOne[threadIdx.x];
+	s[threadIdx.x+blockDim.x] += s[threadIdx.x];
+	s[threadIdx.x+blockDim.x] *= s[threadIdx.x];
+	s[threadIdx.x+blockDim.x] -= s[threadIdx.x];
+	s[threadIdx.x+blockDim.x] /= s[threadIdx.x];
+	
+	__syncthreads();
 	
 	// Copy back to global
 	resultBlock[thread_idx] = s[threadIdx.x+blockDim.x];
@@ -195,8 +204,8 @@ void gpu_all_arith_const (int32_t* resultBlock) {
 
 	resultBlock[thread_idx] += const_arr[thread_idx];
 	resultBlock[thread_idx] *= const_arr[thread_idx];
-	resultBlock[thread_idx] /= const_arr[thread_idx];
 	resultBlock[thread_idx] -= const_arr[thread_idx];
+	resultBlock[thread_idx] /= const_arr[thread_idx];
 }
 
 __global__
@@ -205,6 +214,22 @@ void gpu_all_arith_only_const (int32_t* resultBlock) {
 
 	resultBlock[thread_idx] += value1;
 	resultBlock[thread_idx] *= value2;
-	resultBlock[thread_idx] /= value3;
-	resultBlock[thread_idx] -= value4;
+	resultBlock[thread_idx] -= value3;
+	resultBlock[thread_idx] /= value4;
+}
+
+// Print helper function
+// Prints all of the data in the array ordered in blocks
+void print_blocks (int32_t* resultArr) {
+	for (int i=0; i<numBlocks; i++) {
+		printf("B%-2d ", i);
+	}
+	printf("\n");
+
+	for (int i=0; i<blockSize; i++) {
+		for (int x=0; x<numBlocks; x++) {
+			printf("%-3d ", resultArr[i + (x*blockSize)]);
+		}
+		printf("\n");
+	}
 }

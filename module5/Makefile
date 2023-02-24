@@ -17,9 +17,6 @@ shared_memory2: shared_memory2.cu
 assignment: assignment.cu
 	nvcc $^ -o $@
 
-const_test: const_test.cu
-	nvcc $^ -o $@
-
 clean:
 	rm -f assignment const_test constant_memory \
 		constant_memory2 shared_memory \
