@@ -173,5 +173,83 @@ This can be run on any arbitrary input - I also tested encrypting my own Makefil
 
 ## Stretch Problem
 
-Discuss here
+I will briefly discuss the good parts and parts for improvement in this code:
 
+- Good parts:
+  - Program takes in command line arguments for NUM_THREADS and BLOCK_SIZE correctly
+  - Program properly allocates paged and pinned memory
+  - Program properly calls timing functions and uses synchronization for asynchronous dispatch
+  - Program frees all heap allocated and gpu allocated memory
+- Improvements:
+  - There is one main improvement for this program: The timing is done around the kernel execution. Since we are trying to view the change in speed of the `cudaMemcpy` function, we should be timing around this function. There should be no change in kernel execution across the two different memory types.
+  - A second improvement or general comment is that we implemented the Caesar cipher slightly differently. I do not think that either way is incorrect - if anything this implementation is more secure.
+
+How to fix the timing issue:
+Original code:
+```c
+	 cudaMalloc((void **)&gpu_text, array_size_in_bytes); 
+	 cudaMalloc((void **)&gpu_key, array_size_in_bytes); 
+	 cudaMalloc((void **)&gpu_result, array_size_in_bytes);
+
+	 /* Copy the CPU memory to the GPU memory */ 
+	 cudaMemcpy( gpu_text, cpu_text, array_size_in_bytes, cudaMemcpyHostToDevice); 
+	 cudaMemcpy( gpu_key, cpu_key, array_size_in_bytes, cudaMemcpyHostToDevice);
+
+	 /* Designate the number of blocks and threads */ 
+	 const unsigned int num_blocks = array_size/threads_per_block; 
+	 const unsigned int num_threads = array_size/num_blocks;
+
+	 /* Execute the encryption kernel and keep track of start and end time for duration */ 
+	 float duration = 0; 
+	 cudaEvent_t start_time = get_time();
+
+	 encrypt<<<num_blocks, num_threads>>>(gpu_text, gpu_key, gpu_result);
+
+	 cudaEvent_t end_time = get_time(); 
+	 cudaEventSynchronize(end_time); 
+	 cudaEventElapsedTime(&duration, start_time, end_time);
+
+	 /* Copy the changed GPU memory back to the CPU */ 
+	 cudaMemcpy( cpu_result, gpu_result, array_size_in_bytes, cudaMemcpyDeviceToHost);
+
+	 printf("Pageable Transfer- Duration: %fmsn\n", duration); 
+	 print_encryption_results(cpu_text, cpu_key, cpu_result, array_size);
+```
+
+Modified Code:
+```c
+	 cudaMalloc((void **)&gpu_text, array_size_in_bytes); 
+	 cudaMalloc((void **)&gpu_key, array_size_in_bytes); 
+	 cudaMalloc((void **)&gpu_result, array_size_in_bytes);
+
+	 float duration = 0; 
+	 cudaEvent_t start_time = get_time();
+
+	 /* Copy the CPU memory to the GPU memory */ 
+	 cudaMemcpy( gpu_text, cpu_text, array_size_in_bytes, cudaMemcpyHostToDevice); 
+	 cudaMemcpy( gpu_key, cpu_key, array_size_in_bytes, cudaMemcpyHostToDevice);
+
+	 cudaEvent_t end_time = get_time(); 
+	 cudaEventSynchronize(end_time); 
+	 cudaEventElapsedTime(&duration, start_time, end_time);
+
+	 printf("Pageable Transfer- Duration: %fmsn\n", duration); 
+
+	 /* Designate the number of blocks and threads */ 
+	 const unsigned int num_blocks = array_size/threads_per_block; 
+	 const unsigned int num_threads = array_size/num_blocks;
+
+	 encrypt<<<num_blocks, num_threads>>>(gpu_text, gpu_key, gpu_result);
+     
+         start_time = get_time();
+
+	 /* Copy the changed GPU memory back to the CPU */ 
+	 cudaMemcpy( cpu_result, gpu_result, array_size_in_bytes, cudaMemcpyDeviceToHost);
+     
+         end_time = get_time();
+         cudaEventSynchronize(end_time);
+         cudaEventElapsedTime(&duration, start_time, end_time);
+
+	 printf("Pageable Transfer- Duration: %fmsn\n", duration); 
+	 print_encryption_results(cpu_text, cpu_key, cpu_result, array_size);
+```
