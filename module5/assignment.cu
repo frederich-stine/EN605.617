@@ -99,10 +99,10 @@ void run_gpu_all_arith_shared (int op) {
 	// Run kernel
 	switch (op) {
 		case 0:
-			gpu_all_arith_shared<<<numBlocks, blockSize, blockSize*4>>>(d_one, d_result);
+			gpu_all_arith_shared_copy<<<numBlocks, blockSize, blockSize*8>>>(d_one, d_result);
 			break;
 		case 1:
-			gpu_all_arith_shared_copy<<<numBlocks, blockSize, blockSize*8>>>(d_one, d_result);
+			gpu_all_arith_shared<<<numBlocks, blockSize, blockSize*4>>>(d_one, d_result);
 			break;
 	}
 

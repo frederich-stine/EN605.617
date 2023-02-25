@@ -15,7 +15,7 @@ at 1024. There are two varying block sizes in this runner.
 
 Press enter to continue:Portion 1 - Copy to shared memory
 Running with block size of 128 -
-==9647== NVPROF is profiling process 9647, command: ./assignment 128 0
+==10124== NVPROF is profiling process 10124, command: ./assignment 128 0
 B0  B1  B2  B3  B4  B5  B6  B7  
 -1  127 255 383 511 639 767 895 
 0   128 256 384 512 640 768 896 
@@ -145,30 +145,30 @@ B0  B1  B2  B3  B4  B5  B6  B7
 124 252 380 508 636 764 892 1020 
 125 253 381 509 637 765 893 1021 
 126 254 382 510 638 766 894 1022 
-==9647== Profiling application: ./assignment 128 0
-==9647== Profiling result:
+==10124== Profiling application: ./assignment 128 0
+==10124== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
- GPU activities:   45.18%  2.4010us         1  2.4010us  2.4010us  2.4010us  gpu_all_arith_shared(int*, int*)
-                   31.92%  1.6960us         1  1.6960us  1.6960us  1.6960us  [CUDA memcpy HtoD]
-                   22.90%  1.2170us         1  1.2170us  1.2170us  1.2170us  [CUDA memcpy DtoH]
-      API calls:   99.10%  91.007ms         2  45.503ms  3.0060us  91.004ms  cudaMallocHost
-                    0.33%  306.27us         2  153.13us  3.3660us  302.90us  cudaFreeHost
-                    0.18%  162.93us         1  162.93us  162.93us  162.93us  cuLibraryLoadData
-                    0.16%  146.68us       114  1.2860us     180ns  60.905us  cuDeviceGetAttribute
-                    0.08%  72.867us         2  36.433us  4.9090us  67.958us  cudaFree
-                    0.06%  52.449us         2  26.224us  1.9440us  50.505us  cudaMalloc
-                    0.04%  33.944us         2  16.972us  14.057us  19.887us  cudaMemcpy
-                    0.03%  23.505us         1  23.505us  23.505us  23.505us  cuDeviceGetName
-                    0.02%  20.589us         1  20.589us  20.589us  20.589us  cudaLaunchKernel
-                    0.01%  7.4740us         1  7.4740us  7.4740us  7.4740us  cuDeviceGetPCIBusId
-                    0.00%  1.6420us         3     547ns     260ns     902ns  cuDeviceGetCount
-                    0.00%     631ns         2     315ns     190ns     441ns  cuDeviceGet
-                    0.00%     420ns         1     420ns     420ns     420ns  cuDeviceTotalMem
-                    0.00%     371ns         1     371ns     371ns     371ns  cuModuleGetLoadingMode
-                    0.00%     281ns         1     281ns     281ns     281ns  cuDeviceGetUuid
+ GPU activities:   47.99%  2.6880us         1  2.6880us  2.6880us  2.6880us  gpu_all_arith_shared_copy(int*, int*)
+                   29.73%  1.6650us         1  1.6650us  1.6650us  1.6650us  [CUDA memcpy HtoD]
+                   22.28%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
+      API calls:   97.67%  130.37ms         2  65.186ms  4.7290us  130.37ms  cudaMallocHost
+                    0.87%  1.1627ms         1  1.1627ms  1.1627ms  1.1627ms  cuLibraryLoadData
+                    0.50%  669.69us         1  669.69us  669.69us  669.69us  cuDeviceGetName
+                    0.24%  326.73us         2  163.36us  4.9090us  321.82us  cudaFreeHost
+                    0.24%  326.46us         2  163.23us  15.679us  310.79us  cudaMemcpy
+                    0.23%  308.94us         1  308.94us  308.94us  308.94us  cuDeviceGetPCIBusId
+                    0.09%  119.33us       114  1.0460us     110ns  50.345us  cuDeviceGetAttribute
+                    0.07%  89.318us         2  44.659us  7.1230us  82.195us  cudaFree
+                    0.06%  73.599us         2  36.799us  2.8550us  70.744us  cudaMalloc
+                    0.02%  24.817us         1  24.817us  24.817us  24.817us  cudaLaunchKernel
+                    0.00%  1.7040us         3     568ns     200ns  1.1830us  cuDeviceGetCount
+                    0.00%     672ns         2     336ns     151ns     521ns  cuDeviceGet
+                    0.00%     301ns         1     301ns     301ns     301ns  cuModuleGetLoadingMode
+                    0.00%     301ns         1     301ns     301ns     301ns  cuDeviceTotalMem
+                    0.00%     161ns         1     161ns     161ns     161ns  cuDeviceGetUuid
 Press enter to continue:Portion 2 - Shared memory for local
 Running with block size of 128 -
-==9661== NVPROF is profiling process 9661, command: ./assignment 128 1
+==10139== NVPROF is profiling process 10139, command: ./assignment 128 1
 B0  B1  B2  B3  B4  B5  B6  B7  
 -1  127 255 383 511 639 767 895 
 0   128 256 384 512 640 768 896 
@@ -298,30 +298,30 @@ B0  B1  B2  B3  B4  B5  B6  B7
 124 252 380 508 636 764 892 1020 
 125 253 381 509 637 765 893 1021 
 126 254 382 510 638 766 894 1022 
-==9661== Profiling application: ./assignment 128 1
-==9661== Profiling result:
+==10139== Profiling application: ./assignment 128 1
+==10139== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
- GPU activities:   47.98%  2.6870us         1  2.6870us  2.6870us  2.6870us  gpu_all_arith_shared_copy(int*, int*)
-                   29.71%  1.6640us         1  1.6640us  1.6640us  1.6640us  [CUDA memcpy HtoD]
-                   22.30%  1.2490us         1  1.2490us  1.2490us  1.2490us  [CUDA memcpy DtoH]
-      API calls:   99.06%  97.983ms         2  48.992ms  2.7560us  97.980ms  cudaMallocHost
-                    0.30%  300.33us         2  150.16us  3.4370us  296.89us  cudaFreeHost
-                    0.23%  224.66us         1  224.66us  224.66us  224.66us  cuLibraryLoadData
-                    0.18%  180.22us       114  1.5800us     270ns  71.244us  cuDeviceGetAttribute
-                    0.07%  72.176us         2  36.088us  4.9790us  67.197us  cudaFree
-                    0.06%  55.765us         2  27.882us  2.0440us  53.721us  cudaMalloc
-                    0.03%  33.973us         2  16.986us  13.916us  20.057us  cudaMemcpy
-                    0.03%  28.824us         1  28.824us  28.824us  28.824us  cuDeviceGetName
-                    0.02%  21.341us         1  21.341us  21.341us  21.341us  cudaLaunchKernel
-                    0.01%  7.2840us         1  7.2840us  7.2840us  7.2840us  cuDeviceGetPCIBusId
-                    0.00%  2.2540us         3     751ns     381ns  1.1420us  cuDeviceGetCount
-                    0.00%     931ns         2     465ns     290ns     641ns  cuDeviceGet
-                    0.00%     511ns         1     511ns     511ns     511ns  cuModuleGetLoadingMode
-                    0.00%     481ns         1     481ns     481ns     481ns  cuDeviceTotalMem
-                    0.00%     431ns         1     431ns     431ns     431ns  cuDeviceGetUuid
+ GPU activities:   46.78%  2.5600us         1  2.5600us  2.5600us  2.5600us  gpu_all_arith_shared(int*, int*)
+                   30.41%  1.6640us         1  1.6640us  1.6640us  1.6640us  [CUDA memcpy HtoD]
+                   22.81%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
+      API calls:   99.02%  76.503ms         2  38.252ms  2.8350us  76.501ms  cudaMallocHost
+                    0.39%  300.83us         2  150.41us  3.5670us  297.26us  cudaFreeHost
+                    0.15%  115.12us         1  115.12us  115.12us  115.12us  cuLibraryLoadData
+                    0.14%  107.13us       114     939ns     120ns  46.287us  cuDeviceGetAttribute
+                    0.10%  76.755us         2  38.377us  5.4700us  71.285us  cudaFree
+                    0.07%  54.932us         2  27.466us  1.9630us  52.969us  cudaMalloc
+                    0.05%  35.848us         1  35.848us  35.848us  35.848us  cuDeviceGetName
+                    0.04%  34.075us         2  17.037us  14.748us  19.327us  cudaMemcpy
+                    0.03%  20.729us         1  20.729us  20.729us  20.729us  cudaLaunchKernel
+                    0.01%  5.2200us         1  5.2200us  5.2200us  5.2200us  cuDeviceGetPCIBusId
+                    0.00%  1.4130us         3     471ns     190ns     962ns  cuDeviceGetCount
+                    0.00%     620ns         2     310ns     150ns     470ns  cuDeviceGet
+                    0.00%     311ns         1     311ns     311ns     311ns  cuModuleGetLoadingMode
+                    0.00%     270ns         1     270ns     270ns     270ns  cuDeviceTotalMem
+                    0.00%     190ns         1     190ns     190ns     190ns  cuDeviceGetUuid
 Press enter to continue:Portion 3 - Copy to constant memory
 Running with block size of 128 -
-==9675== NVPROF is profiling process 9675, command: ./assignment 128 2
+==10153== NVPROF is profiling process 10153, command: ./assignment 128 2
 B0  B1  B2  B3  B4  B5  B6  B7  
 -1  127 255 383 511 639 767 895 
 0   128 256 384 512 640 768 896 
@@ -451,31 +451,31 @@ B0  B1  B2  B3  B4  B5  B6  B7
 124 252 380 508 636 764 892 1020 
 125 253 381 509 637 765 893 1021 
 126 254 382 510 638 766 894 1022 
-==9675== Profiling application: ./assignment 128 2
-==9675== Profiling result:
+==10153== Profiling application: ./assignment 128 2
+==10153== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
- GPU activities:   47.46%  2.6880us         1  2.6880us  2.6880us  2.6880us  gpu_all_arith_const(int*)
-                   30.51%  1.7280us         1  1.7280us  1.7280us  1.7280us  [CUDA memcpy HtoD]
-                   22.03%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
-      API calls:   99.06%  90.285ms         1  90.285ms  90.285ms  90.285ms  cudaMallocHost
-                    0.33%  300.42us         1  300.42us  300.42us  300.42us  cudaFreeHost
-                    0.21%  193.72us         1  193.72us  193.72us  193.72us  cuLibraryLoadData
-                    0.18%  161.00us       114  1.4120us     230ns  65.203us  cuDeviceGetAttribute
-                    0.08%  68.499us         1  68.499us  68.499us  68.499us  cudaFree
-                    0.06%  50.836us         1  50.836us  50.836us  50.836us  cudaMalloc
-                    0.03%  25.368us         1  25.368us  25.368us  25.368us  cuDeviceGetName
-                    0.02%  21.159us         1  21.159us  21.159us  21.159us  cudaLaunchKernel
-                    0.02%  14.267us         1  14.267us  14.267us  14.267us  cudaMemcpy
-                    0.01%  12.934us         1  12.934us  12.934us  12.934us  cudaMemcpyToSymbol
-                    0.01%  7.5940us         1  7.5940us  7.5940us  7.5940us  cuDeviceGetPCIBusId
-                    0.00%  2.0930us         3     697ns     300ns  1.1620us  cuDeviceGetCount
-                    0.00%     881ns         2     440ns     250ns     631ns  cuDeviceGet
-                    0.00%     411ns         1     411ns     411ns     411ns  cuDeviceTotalMem
-                    0.00%     391ns         1     391ns     391ns     391ns  cuModuleGetLoadingMode
-                    0.00%     330ns         1     330ns     330ns     330ns  cuDeviceGetUuid
+ GPU activities:   47.43%  2.6560us         1  2.6560us  2.6560us  2.6560us  gpu_all_arith_const(int*)
+                   30.29%  1.6960us         1  1.6960us  1.6960us  1.6960us  [CUDA memcpy HtoD]
+                   22.29%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
+      API calls:   99.05%  75.764ms         1  75.764ms  75.764ms  75.764ms  cudaMallocHost
+                    0.39%  296.43us         1  296.43us  296.43us  296.43us  cudaFreeHost
+                    0.16%  120.19us         1  120.19us  120.19us  120.19us  cuLibraryLoadData
+                    0.14%  104.46us       114     916ns     110ns  45.516us  cuDeviceGetAttribute
+                    0.09%  72.367us         1  72.367us  72.367us  72.367us  cudaFree
+                    0.07%  53.931us         1  53.931us  53.931us  53.931us  cudaMalloc
+                    0.03%  20.518us         1  20.518us  20.518us  20.518us  cudaLaunchKernel
+                    0.03%  19.296us         1  19.296us  19.296us  19.296us  cuDeviceGetName
+                    0.02%  14.477us         1  14.477us  14.477us  14.477us  cudaMemcpy
+                    0.02%  13.615us         1  13.615us  13.615us  13.615us  cudaMemcpyToSymbol
+                    0.01%  9.0770us         1  9.0770us  9.0770us  9.0770us  cuDeviceGetPCIBusId
+                    0.00%  1.1830us         3     394ns     171ns     752ns  cuDeviceGetCount
+                    0.00%     661ns         2     330ns     130ns     531ns  cuDeviceGet
+                    0.00%     311ns         1     311ns     311ns     311ns  cuDeviceTotalMem
+                    0.00%     220ns         1     220ns     220ns     220ns  cuModuleGetLoadingMode
+                    0.00%     170ns         1     170ns     170ns     170ns  cuDeviceGetUuid
 Press enter to continue:Portion 4 - Constant memory only
 Running with block size of 128 -
-==9689== NVPROF is profiling process 9689, command: ./assignment 128 3
+==10167== NVPROF is profiling process 10167, command: ./assignment 128 3
 B0  B1  B2  B3  B4  B5  B6  B7  
 -2  -2  -2  -2  -2  -2  -2  -2  
 -2  -2  -2  -2  -2  -2  -2  -2  
@@ -605,29 +605,29 @@ B0  B1  B2  B3  B4  B5  B6  B7
 -2  -2  -2  -2  -2  -2  -2  -2  
 -2  -2  -2  -2  -2  -2  -2  -2  
 -2  -2  -2  -2  -2  -2  -2  -2  
-==9689== Profiling application: ./assignment 128 3
-==9689== Profiling result:
+==10167== Profiling application: ./assignment 128 3
+==10167== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
  GPU activities:   67.21%  2.6240us         1  2.6240us  2.6240us  2.6240us  gpu_all_arith_only_const(int*)
                    32.79%  1.2800us         1  1.2800us  1.2800us  1.2800us  [CUDA memcpy DtoH]
-      API calls:   99.04%  89.512ms         1  89.512ms  89.512ms  89.512ms  cudaMallocHost
-                    0.34%  311.38us         1  311.38us  311.38us  311.38us  cudaFreeHost
-                    0.21%  193.61us         1  193.61us  193.61us  193.61us  cuLibraryLoadData
-                    0.18%  161.20us       114  1.4140us     230ns  65.002us  cuDeviceGetAttribute
-                    0.08%  71.114us         1  71.114us  71.114us  71.114us  cudaFree
-                    0.06%  50.836us         1  50.836us  50.836us  50.836us  cudaMalloc
-                    0.03%  25.498us         1  25.498us  25.498us  25.498us  cuDeviceGetName
-                    0.03%  23.063us         1  23.063us  23.063us  23.063us  cudaLaunchKernel
-                    0.02%  18.144us         1  18.144us  18.144us  18.144us  cudaMemcpy
-                    0.01%  7.3740us         1  7.3740us  7.3740us  7.3740us  cuDeviceGetPCIBusId
-                    0.00%  2.1930us         3     731ns     320ns  1.2320us  cuDeviceGetCount
-                    0.00%     792ns         2     396ns     231ns     561ns  cuDeviceGet
-                    0.00%     451ns         1     451ns     451ns     451ns  cuDeviceTotalMem
-                    0.00%     381ns         1     381ns     381ns     381ns  cuModuleGetLoadingMode
-                    0.00%     340ns         1     340ns     340ns     340ns  cuDeviceGetUuid
+      API calls:   99.04%  75.770ms         1  75.770ms  75.770ms  75.770ms  cudaMallocHost
+                    0.42%  318.09us         1  318.09us  318.09us  318.09us  cudaFreeHost
+                    0.16%  118.99us         1  118.99us  118.99us  118.99us  cuLibraryLoadData
+                    0.14%  104.71us       114     918ns     110ns  45.135us  cuDeviceGetAttribute
+                    0.10%  73.769us         1  73.769us  73.769us  73.769us  cudaFree
+                    0.07%  51.918us         1  51.918us  51.918us  51.918us  cudaMalloc
+                    0.03%  24.035us         1  24.035us  24.035us  24.035us  cudaLaunchKernel
+                    0.03%  20.508us         1  20.508us  20.508us  20.508us  cuDeviceGetName
+                    0.02%  18.334us         1  18.334us  18.334us  18.334us  cudaMemcpy
+                    0.01%  4.8990us         1  4.8990us  4.8990us  4.8990us  cuDeviceGetPCIBusId
+                    0.00%  1.5120us         3     504ns     170ns  1.1020us  cuDeviceGetCount
+                    0.00%     571ns         2     285ns     130ns     441ns  cuDeviceGet
+                    0.00%     400ns         1     400ns     400ns     400ns  cuDeviceTotalMem
+                    0.00%     270ns         1     270ns     270ns     270ns  cuModuleGetLoadingMode
+                    0.00%     161ns         1     161ns     161ns     161ns  cuDeviceGetUuid
 Press enter to continue:Portion 5 - Copy to shared memory
 Running with block size of 256 -
-==9703== NVPROF is profiling process 9703, command: ./assignment 256 0
+==10181== NVPROF is profiling process 10181, command: ./assignment 256 0
 B0  B1  B2  B3  
 -1  255 511 767 
 0   256 512 768 
@@ -885,30 +885,30 @@ B0  B1  B2  B3
 252 508 764 1020 
 253 509 765 1021 
 254 510 766 1022 
-==9703== Profiling application: ./assignment 256 0
-==9703== Profiling result:
+==10181== Profiling application: ./assignment 256 0
+==10181== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
- GPU activities:   45.23%  2.4320us         1  2.4320us  2.4320us  2.4320us  gpu_all_arith_shared(int*, int*)
-                   31.56%  1.6970us         1  1.6970us  1.6970us  1.6970us  [CUDA memcpy HtoD]
-                   23.21%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
-      API calls:   98.96%  89.168ms         2  44.584ms  2.7950us  89.166ms  cudaMallocHost
-                    0.38%  340.52us         2  170.26us  3.6160us  336.90us  cudaFreeHost
-                    0.24%  216.80us         1  216.80us  216.80us  216.80us  cuLibraryLoadData
-                    0.18%  160.61us       114  1.4080us     230ns  64.812us  cuDeviceGetAttribute
-                    0.08%  72.405us         2  36.202us  4.6180us  67.787us  cudaFree
-                    0.06%  51.127us         2  25.563us  1.7940us  49.333us  cudaMalloc
-                    0.04%  32.782us         2  16.391us  13.716us  19.066us  cudaMemcpy
-                    0.03%  26.099us         1  26.099us  26.099us  26.099us  cuDeviceGetName
-                    0.02%  21.320us         1  21.320us  21.320us  21.320us  cudaLaunchKernel
-                    0.01%  7.4040us         1  7.4040us  7.4040us  7.4040us  cuDeviceGetPCIBusId
-                    0.00%  2.1430us         3     714ns     340ns  1.1220us  cuDeviceGetCount
-                    0.00%     792ns         2     396ns     231ns     561ns  cuDeviceGet
-                    0.00%     441ns         1     441ns     441ns     441ns  cuModuleGetLoadingMode
-                    0.00%     431ns         1     431ns     431ns     431ns  cuDeviceTotalMem
-                    0.00%     320ns         1     320ns     320ns     320ns  cuDeviceGetUuid
+ GPU activities:   48.30%  2.7200us         1  2.7200us  2.7200us  2.7200us  gpu_all_arith_shared_copy(int*, int*)
+                   29.55%  1.6640us         1  1.6640us  1.6640us  1.6640us  [CUDA memcpy HtoD]
+                   22.16%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
+      API calls:   98.89%  79.777ms         2  39.889ms  3.2860us  79.774ms  cudaMallocHost
+                    0.38%  306.39us         2  153.19us  3.8080us  302.58us  cudaFreeHost
+                    0.25%  204.38us         1  204.38us  204.38us  204.38us  cuLibraryLoadData
+                    0.21%  168.64us       114  1.4790us     250ns  67.638us  cuDeviceGetAttribute
+                    0.09%  72.806us         2  36.403us  5.1890us  67.617us  cudaFree
+                    0.07%  54.272us         2  27.136us  1.7930us  52.479us  cudaMalloc
+                    0.04%  34.546us         2  17.273us  14.788us  19.758us  cudaMemcpy
+                    0.03%  25.999us         1  25.999us  25.999us  25.999us  cuDeviceGetName
+                    0.03%  21.260us         1  21.260us  21.260us  21.260us  cudaLaunchKernel
+                    0.01%  5.7910us         1  5.7910us  5.7910us  5.7910us  cuDeviceGetPCIBusId
+                    0.00%  2.4540us         3     818ns     511ns  1.3520us  cuDeviceGetCount
+                    0.00%     982ns         2     491ns     271ns     711ns  cuDeviceGet
+                    0.00%     501ns         1     501ns     501ns     501ns  cuDeviceTotalMem
+                    0.00%     471ns         1     471ns     471ns     471ns  cuModuleGetLoadingMode
+                    0.00%     350ns         1     350ns     350ns     350ns  cuDeviceGetUuid
 Press enter to continue:Portion 6 - Shared memory for local
 Running with block size of 256 -
-==9717== NVPROF is profiling process 9717, command: ./assignment 256 1
+==10195== NVPROF is profiling process 10195, command: ./assignment 256 1
 B0  B1  B2  B3  
 -1  255 511 767 
 0   256 512 768 
@@ -1166,30 +1166,30 @@ B0  B1  B2  B3
 252 508 764 1020 
 253 509 765 1021 
 254 510 766 1022 
-==9717== Profiling application: ./assignment 256 1
-==9717== Profiling result:
+==10195== Profiling application: ./assignment 256 1
+==10195== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
- GPU activities:   47.73%  2.6880us         1  2.6880us  2.6880us  2.6880us  gpu_all_arith_shared_copy(int*, int*)
-                   30.11%  1.6960us         1  1.6960us  1.6960us  1.6960us  [CUDA memcpy HtoD]
-                   22.16%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
-      API calls:   98.92%  93.830ms         2  46.915ms  3.0260us  93.827ms  cudaMallocHost
-                    0.33%  313.76us         2  156.88us  3.5270us  310.23us  cudaFreeHost
-                    0.28%  263.15us       114  2.3080us     270ns  153.33us  cuDeviceGetAttribute
-                    0.24%  225.32us         1  225.32us  225.32us  225.32us  cuLibraryLoadData
-                    0.08%  71.906us         2  35.953us  4.6490us  67.257us  cudaFree
-                    0.05%  51.307us         2  25.653us  1.8640us  49.443us  cudaMalloc
-                    0.04%  33.624us         2  16.812us  13.966us  19.658us  cudaMemcpy
-                    0.03%  28.283us         1  28.283us  28.283us  28.283us  cuDeviceGetName
-                    0.02%  20.528us         1  20.528us  20.528us  20.528us  cudaLaunchKernel
-                    0.01%  7.4640us         1  7.4640us  7.4640us  7.4640us  cuDeviceGetPCIBusId
-                    0.00%  2.2740us         3     758ns     370ns  1.1530us  cuDeviceGetCount
-                    0.00%     962ns         2     481ns     261ns     701ns  cuDeviceGet
-                    0.00%     511ns         1     511ns     511ns     511ns  cuModuleGetLoadingMode
-                    0.00%     461ns         1     461ns     461ns     461ns  cuDeviceTotalMem
-                    0.00%     421ns         1     421ns     421ns     421ns  cuDeviceGetUuid
+ GPU activities:   44.97%  2.4320us         1  2.4320us  2.4320us  2.4320us  gpu_all_arith_shared(int*, int*)
+                   31.36%  1.6960us         1  1.6960us  1.6960us  1.6960us  [CUDA memcpy HtoD]
+                   23.67%  1.2800us         1  1.2800us  1.2800us  1.2800us  [CUDA memcpy DtoH]
+      API calls:   99.05%  79.305ms         2  39.652ms  3.0060us  79.302ms  cudaMallocHost
+                    0.40%  321.24us         2  160.62us  3.4360us  317.81us  cudaFreeHost
+                    0.14%  112.96us         1  112.96us  112.96us  112.96us  cuLibraryLoadData
+                    0.14%  108.53us       114     952ns     110ns  48.441us  cuDeviceGetAttribute
+                    0.09%  74.739us         2  37.369us  4.6980us  70.041us  cudaFree
+                    0.07%  55.214us         2  27.607us  1.8330us  53.381us  cudaMalloc
+                    0.04%  33.452us         2  16.726us  13.986us  19.466us  cudaMemcpy
+                    0.03%  24.757us         1  24.757us  24.757us  24.757us  cuDeviceGetName
+                    0.03%  20.980us         1  20.980us  20.980us  20.980us  cudaLaunchKernel
+                    0.01%  7.5040us         1  7.5040us  7.5040us  7.5040us  cuDeviceGetPCIBusId
+                    0.00%  1.6330us         3     544ns     191ns  1.2120us  cuDeviceGetCount
+                    0.00%     461ns         2     230ns     191ns     270ns  cuDeviceGet
+                    0.00%     371ns         1     371ns     371ns     371ns  cuModuleGetLoadingMode
+                    0.00%     291ns         1     291ns     291ns     291ns  cuDeviceTotalMem
+                    0.00%     161ns         1     161ns     161ns     161ns  cuDeviceGetUuid
 Press enter to continue:Portion 7 - Copy to constant memory
 Running with block size of 256 -
-==9731== NVPROF is profiling process 9731, command: ./assignment 256 2
+==10209== NVPROF is profiling process 10209, command: ./assignment 256 2
 B0  B1  B2  B3  
 -1  255 511 767 
 0   256 512 768 
@@ -1447,31 +1447,31 @@ B0  B1  B2  B3
 252 508 764 1020 
 253 509 765 1021 
 254 510 766 1022 
-==9731== Profiling application: ./assignment 256 2
-==9731== Profiling result:
+==10209== Profiling application: ./assignment 256 2
+==10209== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
- GPU activities:   48.02%  2.7200us         1  2.7200us  2.7200us  2.7200us  gpu_all_arith_const(int*)
-                   29.94%  1.6960us         1  1.6960us  1.6960us  1.6960us  [CUDA memcpy HtoD]
-                   22.03%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
-      API calls:   99.03%  82.535ms         1  82.535ms  82.535ms  82.535ms  cudaMallocHost
-                    0.38%  315.05us         1  315.05us  315.05us  315.05us  cudaFreeHost
-                    0.19%  159.11us         1  159.11us  159.11us  159.11us  cuLibraryLoadData
-                    0.16%  135.53us       114  1.1880us     180ns  56.036us  cuDeviceGetAttribute
-                    0.08%  67.838us         1  67.838us  67.838us  67.838us  cudaFree
-                    0.06%  50.445us         1  50.445us  50.445us  50.445us  cudaMalloc
-                    0.03%  21.600us         1  21.600us  21.600us  21.600us  cuDeviceGetName
-                    0.03%  20.859us         1  20.859us  20.859us  20.859us  cudaLaunchKernel
-                    0.02%  14.828us         1  14.828us  14.828us  14.828us  cudaMemcpy
-                    0.02%  13.114us         1  13.114us  13.114us  13.114us  cudaMemcpyToSymbol
-                    0.01%  7.7640us         1  7.7640us  7.7640us  7.7640us  cuDeviceGetPCIBusId
-                    0.00%  2.0740us         3     691ns     511ns     992ns  cuDeviceGetCount
-                    0.00%     781ns         2     390ns     190ns     591ns  cuDeviceGet
-                    0.00%     390ns         1     390ns     390ns     390ns  cuDeviceTotalMem
-                    0.00%     310ns         1     310ns     310ns     310ns  cuModuleGetLoadingMode
-                    0.00%     260ns         1     260ns     260ns     260ns  cuDeviceGetUuid
+ GPU activities:   48.32%  2.7520us         1  2.7520us  2.7520us  2.7520us  gpu_all_arith_const(int*)
+                   29.78%  1.6960us         1  1.6960us  1.6960us  1.6960us  [CUDA memcpy HtoD]
+                   21.90%  1.2470us         1  1.2470us  1.2470us  1.2470us  [CUDA memcpy DtoH]
+      API calls:   98.82%  77.080ms         1  77.080ms  77.080ms  77.080ms  cudaMallocHost
+                    0.40%  315.50us         1  315.50us  315.50us  315.50us  cudaFreeHost
+                    0.26%  205.11us         1  205.11us  205.11us  205.11us  cuLibraryLoadData
+                    0.22%  170.57us       114  1.4960us     240ns  68.479us  cuDeviceGetAttribute
+                    0.09%  73.278us         1  73.278us  73.278us  73.278us  cudaFree
+                    0.07%  53.841us         1  53.841us  53.841us  53.841us  cudaMalloc
+                    0.05%  40.536us         1  40.536us  40.536us  40.536us  cuDeviceGetName
+                    0.03%  21.460us         1  21.460us  21.460us  21.460us  cudaLaunchKernel
+                    0.02%  14.518us         1  14.518us  14.518us  14.518us  cudaMemcpy
+                    0.02%  13.315us         1  13.315us  13.315us  13.315us  cudaMemcpyToSymbol
+                    0.01%  8.4350us         1  8.4350us  8.4350us  8.4350us  cuDeviceGetPCIBusId
+                    0.00%  2.5540us         3     851ns     370ns  1.6330us  cuDeviceGetCount
+                    0.00%     952ns         2     476ns     251ns     701ns  cuDeviceGet
+                    0.00%     471ns         1     471ns     471ns     471ns  cuDeviceTotalMem
+                    0.00%     441ns         1     441ns     441ns     441ns  cuModuleGetLoadingMode
+                    0.00%     370ns         1     370ns     370ns     370ns  cuDeviceGetUuid
 Press enter to continue:Portion 8 - Constant memory only
 Running with block size of 256 -
-==9745== NVPROF is profiling process 9745, command: ./assignment 256 3
+==10223== NVPROF is profiling process 10223, command: ./assignment 256 3
 B0  B1  B2  B3  
 -2  -2  -2  -2  
 -2  -2  -2  -2  
@@ -1729,23 +1729,23 @@ B0  B1  B2  B3
 -2  -2  -2  -2  
 -2  -2  -2  -2  
 -2  -2  -2  -2  
-==9745== Profiling application: ./assignment 256 3
-==9745== Profiling result:
+==10223== Profiling application: ./assignment 256 3
+==10223== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
- GPU activities:   66.68%  2.6240us         1  2.6240us  2.6240us  2.6240us  gpu_all_arith_only_const(int*)
-                   33.32%  1.3110us         1  1.3110us  1.3110us  1.3110us  [CUDA memcpy DtoH]
-      API calls:   99.05%  75.338ms         1  75.338ms  75.338ms  75.338ms  cudaMallocHost
-                    0.41%  314.02us         1  314.02us  314.02us  314.02us  cudaFreeHost
-                    0.16%  120.67us         1  120.67us  120.67us  120.67us  cuLibraryLoadData
-                    0.14%  103.47us       114     907ns     110ns  44.664us  cuDeviceGetAttribute
-                    0.09%  67.166us         1  67.166us  67.166us  67.166us  cudaFree
-                    0.07%  49.584us         1  49.584us  49.584us  49.584us  cudaMalloc
-                    0.03%  22.923us         1  22.923us  22.923us  22.923us  cudaLaunchKernel
-                    0.02%  18.565us         1  18.565us  18.565us  18.565us  cudaMemcpy
-                    0.02%  16.982us         1  16.982us  16.982us  16.982us  cuDeviceGetName
-                    0.01%  6.3320us         1  6.3320us  6.3320us  6.3320us  cuDeviceGetPCIBusId
-                    0.00%  1.0520us         3     350ns     150ns     591ns  cuDeviceGetCount
-                    0.00%     411ns         2     205ns     110ns     301ns  cuDeviceGet
-                    0.00%     310ns         1     310ns     310ns     310ns  cuDeviceTotalMem
-                    0.00%     191ns         1     191ns     191ns     191ns  cuModuleGetLoadingMode
-                    0.00%     150ns         1     150ns     150ns     150ns  cuDeviceGetUuid
+ GPU activities:   67.48%  2.6560us         1  2.6560us  2.6560us  2.6560us  gpu_all_arith_only_const(int*)
+                   32.52%  1.2800us         1  1.2800us  1.2800us  1.2800us  [CUDA memcpy DtoH]
+      API calls:   98.91%  84.296ms         1  84.296ms  84.296ms  84.296ms  cudaMallocHost
+                    0.37%  312.49us         1  312.49us  312.49us  312.49us  cudaFreeHost
+                    0.26%  225.82us         1  225.82us  225.82us  225.82us  cuLibraryLoadData
+                    0.21%  181.52us       114  1.5920us     270ns  72.456us  cuDeviceGetAttribute
+                    0.08%  70.603us         1  70.603us  70.603us  70.603us  cudaFree
+                    0.06%  54.903us         1  54.903us  54.903us  54.903us  cudaMalloc
+                    0.04%  29.836us         1  29.836us  29.836us  29.836us  cuDeviceGetName
+                    0.03%  24.045us         1  24.045us  24.045us  24.045us  cudaLaunchKernel
+                    0.02%  19.546us         1  19.546us  19.546us  19.546us  cudaMemcpy
+                    0.01%  8.1450us         1  8.1450us  8.1450us  8.1450us  cuDeviceGetPCIBusId
+                    0.00%  2.3250us         3     775ns     431ns  1.2920us  cuDeviceGetCount
+                    0.00%  1.2620us         2     631ns     290ns     972ns  cuDeviceGet
+                    0.00%     501ns         1     501ns     501ns     501ns  cuDeviceTotalMem
+                    0.00%     471ns         1     471ns     471ns     471ns  cuModuleGetLoadingMode
+                    0.00%     381ns         1     381ns     381ns     381ns  cuDeviceGetUuid
