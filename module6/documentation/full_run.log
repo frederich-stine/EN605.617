@@ -1,0 +1,228 @@
+Frederich Stine - EN 605.617 - JHU EP
+----------------------------------------------------------------
+Example runner to show execution of Module 5 assignment
+----------------------------------------------------------------
+This is a provided example runner of how to properly use
+my module 5 assignment.
+This assignment runs through 4 different kernels:
+    0: Arith with full copy to shared memory
+    1: Arith with shared memory for local variables
+    2: Arith with copy to constant memory
+    3: Arith with constant memory only
+
+Press enter to continue:[H[2J[3JPortion 1 - Copy to registers
+Running 1024 threads with block size of 128 -
+==27932== NVPROF is profiling process 27932, command: ./assignment 1024 128 0
+==27932== Profiling application: ./assignment 1024 128 0
+==27932== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   97.53%  115.14us         1  115.14us  115.14us  115.14us  gpu_register_copy_arith(int*, int*)
+                    1.41%  1.6640us         1  1.6640us  1.6640us  1.6640us  [CUDA memcpy HtoD]
+                    1.06%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
+      API calls:   99.03%  108.68ms         2  54.341ms  2.9250us  108.68ms  cudaMallocHost
+                    0.28%  305.34us         2  152.67us  3.4860us  301.85us  cudaFreeHost
+                    0.21%  231.63us         1  231.63us  231.63us  231.63us  cuLibraryLoadData
+                    0.16%  180.02us       114  1.5790us     240ns  72.697us  cuDeviceGetAttribute
+                    0.14%  149.83us         2  74.916us  20.639us  129.19us  cudaMemcpy
+                    0.07%  72.897us         2  36.448us  4.4280us  68.469us  cudaFree
+                    0.05%  58.660us         2  29.330us  2.1440us  56.516us  cudaMalloc
+                    0.03%  30.026us         1  30.026us  30.026us  30.026us  cuDeviceGetName
+                    0.02%  22.643us         1  22.643us  22.643us  22.643us  cudaLaunchKernel
+                    0.01%  8.2650us         1  8.2650us  8.2650us  8.2650us  cuDeviceGetPCIBusId
+                    0.00%  2.3250us         3     775ns     351ns  1.2930us  cuDeviceGetCount
+                    0.00%  1.2230us         2     611ns     261ns     962ns  cuDeviceGet
+                    0.00%     481ns         1     481ns     481ns     481ns  cuDeviceTotalMem
+                    0.00%     450ns         1     450ns     450ns     450ns  cuModuleGetLoadingMode
+                    0.00%     341ns         1     341ns     341ns     341ns  cuDeviceGetUuid
+Press enter to continue:[H[2J[3JPortion 2 - Register and global
+Running 1024 threads with block size of 128 -
+==27946== NVPROF is profiling process 27946, command: ./assignment 1024 128 1
+==27946== Profiling application: ./assignment 1024 128 1
+==27946== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   99.55%  656.58us         1  656.58us  656.58us  656.58us  gpu_register_arith(int*, int*)
+                    0.26%  1.6960us         1  1.6960us  1.6960us  1.6960us  [CUDA memcpy HtoD]
+                    0.19%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
+      API calls:   98.38%  98.806ms         2  49.403ms  2.7960us  98.803ms  cudaMallocHost
+                    0.69%  689.57us         2  344.79us  19.467us  670.10us  cudaMemcpy
+                    0.32%  323.83us         2  161.92us  3.5460us  320.28us  cudaFreeHost
+                    0.24%  238.60us         1  238.60us  238.60us  238.60us  cuLibraryLoadData
+                    0.17%  170.71us       114  1.4970us     240ns  68.749us  cuDeviceGetAttribute
+                    0.07%  72.527us         2  36.263us  4.6990us  67.828us  cudaFree
+                    0.05%  54.533us         2  27.266us  1.9140us  52.619us  cudaMalloc
+                    0.05%  45.205us         1  45.205us  45.205us  45.205us  cuDeviceGetName
+                    0.02%  21.270us         1  21.270us  21.270us  21.270us  cudaLaunchKernel
+                    0.01%  5.8110us         1  5.8110us  5.8110us  5.8110us  cuDeviceGetPCIBusId
+                    0.00%  2.7050us         3     901ns     371ns  1.7530us  cuDeviceGetCount
+                    0.00%     932ns         2     466ns     270ns     662ns  cuDeviceGet
+                    0.00%     471ns         1     471ns     471ns     471ns  cuDeviceTotalMem
+                    0.00%     461ns         1     461ns     461ns     461ns  cuModuleGetLoadingMode
+                    0.00%     340ns         1     340ns     340ns     340ns  cuDeviceGetUuid
+Press enter to continue:[H[2J[3JPortion 3 - Global memory only
+Running 1024 threads with block size of 128 -
+==27960== NVPROF is profiling process 27960, command: ./assignment 1024 128 2
+==27960== Profiling application: ./assignment 1024 128 2
+==27960== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   99.96%  6.6652ms         1  6.6652ms  6.6652ms  6.6652ms  gpu_global_arith(int*, int*)
+                    0.03%  1.6970us         1  1.6970us  1.6970us  1.6970us  [CUDA memcpy HtoD]
+                    0.02%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
+      API calls:   92.03%  87.455ms         2  43.727ms  2.9350us  87.452ms  cudaMallocHost
+                    7.08%  6.7320ms         2  3.3660ms  55.465us  6.6765ms  cudaMemcpy
+                    0.33%  310.30us         2  155.15us  3.5870us  306.71us  cudaFreeHost
+                    0.19%  181.14us         1  181.14us  181.14us  181.14us  cuLibraryLoadData
+                    0.15%  140.36us       114  1.2310us     180ns  58.019us  cuDeviceGetAttribute
+                    0.08%  75.253us         2  37.626us  5.3810us  69.872us  cudaFree
+                    0.06%  55.495us         2  27.747us  2.4750us  53.020us  cudaMalloc
+                    0.05%  43.582us         1  43.582us  43.582us  43.582us  cuDeviceGetName
+                    0.02%  21.440us         1  21.440us  21.440us  21.440us  cudaLaunchKernel
+                    0.01%  8.3860us         1  8.3860us  8.3860us  8.3860us  cuDeviceGetPCIBusId
+                    0.00%  2.5460us         3     848ns     311ns  1.8340us  cuDeviceGetCount
+                    0.00%     851ns         2     425ns     220ns     631ns  cuDeviceGet
+                    0.00%     601ns         1     601ns     601ns     601ns  cuModuleGetLoadingMode
+                    0.00%     400ns         1     400ns     400ns     400ns  cuDeviceTotalMem
+                    0.00%     280ns         1     280ns     280ns     280ns  cuDeviceGetUuid
+Press enter to continue:[H[2J[3JPortion 1 - Copy to registers
+Running 1024 threads with block size of 256 -
+==27974== NVPROF is profiling process 27974, command: ./assignment 1024 256 0
+==27974== Profiling application: ./assignment 1024 256 0
+==27974== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   97.25%  115.30us         1  115.30us  115.30us  115.30us  gpu_register_copy_arith(int*, int*)
+                    1.40%  1.6640us         1  1.6640us  1.6640us  1.6640us  [CUDA memcpy HtoD]
+                    1.35%  1.6000us         1  1.6000us  1.6000us  1.6000us  [CUDA memcpy DtoH]
+      API calls:   98.92%  95.477ms         2  47.738ms  3.3060us  95.473ms  cudaMallocHost
+                    0.32%  307.04us         2  153.52us  3.9270us  303.11us  cudaFreeHost
+                    0.23%  218.24us         1  218.24us  218.24us  218.24us  cuLibraryLoadData
+                    0.17%  163.81us       114  1.4360us     230ns  66.505us  cuDeviceGetAttribute
+                    0.15%  148.85us         2  74.425us  19.417us  129.43us  cudaMemcpy
+                    0.07%  72.247us         2  36.123us  4.6390us  67.608us  cudaFree
+                    0.06%  55.375us         2  27.687us  1.9440us  53.431us  cudaMalloc
+                    0.04%  40.216us         1  40.216us  40.216us  40.216us  cuDeviceGetName
+                    0.02%  21.310us         1  21.310us  21.310us  21.310us  cudaLaunchKernel
+                    0.01%  8.3060us         1  8.3060us  8.3060us  8.3060us  cuDeviceGetPCIBusId
+                    0.00%  2.4840us         3     828ns     340ns  1.6230us  cuDeviceGetCount
+                    0.00%     932ns         2     466ns     241ns     691ns  cuDeviceGet
+                    0.00%     481ns         1     481ns     481ns     481ns  cuModuleGetLoadingMode
+                    0.00%     431ns         1     431ns     431ns     431ns  cuDeviceTotalMem
+                    0.00%     330ns         1     330ns     330ns     330ns  cuDeviceGetUuid
+Press enter to continue:[H[2J[3JPortion 2 - Register and global
+Running 1024 threads with block size of 256 -
+==27988== NVPROF is profiling process 27988, command: ./assignment 1024 256 1
+==27988== Profiling application: ./assignment 1024 256 1
+==27988== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   99.57%  688.01us         1  688.01us  688.01us  688.01us  gpu_register_arith(int*, int*)
+                    0.25%  1.6960us         1  1.6960us  1.6960us  1.6960us  [CUDA memcpy HtoD]
+                    0.18%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
+      API calls:   98.41%  103.98ms         2  51.992ms  3.1860us  103.98ms  cudaMallocHost
+                    0.68%  720.63us         2  360.31us  18.565us  702.06us  cudaMemcpy
+                    0.29%  310.81us         2  155.40us  3.5170us  307.29us  cudaFreeHost
+                    0.24%  255.34us         1  255.34us  255.34us  255.34us  cuLibraryLoadData
+                    0.17%  183.71us       114  1.6110us     260ns  72.907us  cuDeviceGetAttribute
+                    0.07%  69.602us         2  34.801us  4.5490us  65.053us  cudaFree
+                    0.05%  54.953us         2  27.476us  2.3640us  52.589us  cudaMalloc
+                    0.04%  46.418us         1  46.418us  46.418us  46.418us  cuDeviceGetName
+                    0.02%  21.630us         1  21.630us  21.630us  21.630us  cudaLaunchKernel
+                    0.01%  7.9050us         1  7.9050us  7.9050us  7.9050us  cuDeviceGetPCIBusId
+                    0.00%  4.1580us         3  1.3860us     511ns  1.9540us  cuDeviceGetCount
+                    0.00%  1.1220us         2     561ns     501ns     621ns  cuDeviceGet
+                    0.00%     671ns         1     671ns     671ns     671ns  cuDeviceTotalMem
+                    0.00%     621ns         1     621ns     621ns     621ns  cuModuleGetLoadingMode
+                    0.00%     400ns         1     400ns     400ns     400ns  cuDeviceGetUuid
+Press enter to continue:[H[2J[3JPortion 3 - Global memory only
+Running 1024 threads with block size of 256 -
+==28002== NVPROF is profiling process 28002, command: ./assignment 1024 256 2
+==28002== Profiling application: ./assignment 1024 256 2
+==28002== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   99.96%  6.6766ms         1  6.6766ms  6.6766ms  6.6766ms  gpu_global_arith(int*, int*)
+                    0.02%  1.6640us         1  1.6640us  1.6640us  1.6640us  [CUDA memcpy HtoD]
+                    0.02%  1.2480us         1  1.2480us  1.2480us  1.2480us  [CUDA memcpy DtoH]
+      API calls:   92.54%  95.210ms         2  47.605ms  3.6170us  95.206ms  cudaMallocHost
+                    6.52%  6.7113ms         2  3.3556ms  20.318us  6.6910ms  cudaMemcpy
+                    0.30%  313.75us         2  156.88us  3.6970us  310.06us  cudaFreeHost
+                    0.25%  254.68us         1  254.68us  254.68us  254.68us  cuLibraryLoadData
+                    0.18%  184.77us       114  1.6200us     270ns  73.859us  cuDeviceGetAttribute
+                    0.07%  72.517us         2  36.258us  4.3780us  68.139us  cudaFree
+                    0.06%  57.118us         2  28.559us  2.0240us  55.094us  cudaMalloc
+                    0.05%  50.365us         1  50.365us  50.365us  50.365us  cuDeviceGetName
+                    0.02%  22.352us         1  22.352us  22.352us  22.352us  cudaLaunchKernel
+                    0.01%  7.8050us         1  7.8050us  7.8050us  7.8050us  cuDeviceGetPCIBusId
+                    0.00%  2.9860us         3     995ns     411ns  2.0440us  cuDeviceGetCount
+                    0.00%  1.0120us         2     506ns     280ns     732ns  cuDeviceGet
+                    0.00%     601ns         1     601ns     601ns     601ns  cuDeviceTotalMem
+                    0.00%     471ns         1     471ns     471ns     471ns  cuModuleGetLoadingMode
+                    0.00%     371ns         1     371ns     371ns     371ns  cuDeviceGetUuid
+Press enter to continue:[H[2J[3JPortion 1 - Copy to registers
+Running 1000000 threads with block size of 256 -
+==28016== NVPROF is profiling process 28016, command: ./assignment 1000000 256 0
+==28016== Profiling application: ./assignment 1000000 256 0
+==28016== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   93.95%  9.4075ms         1  9.4075ms  9.4075ms  9.4075ms  gpu_register_copy_arith(int*, int*)
+                    3.10%  309.96us         1  309.96us  309.96us  309.96us  [CUDA memcpy HtoD]
+                    2.96%  295.91us         1  295.91us  295.91us  295.91us  [CUDA memcpy DtoH]
+      API calls:   89.75%  105.12ms         2  52.558ms  1.4251ms  103.69ms  cudaMallocHost
+                    8.58%  10.052ms         2  5.0260ms  335.88us  9.7161ms  cudaMemcpy
+                    0.96%  1.1236ms         2  561.80us  524.20us  599.41us  cudaFreeHost
+                    0.22%  257.08us         1  257.08us  257.08us  257.08us  cuLibraryLoadData
+                    0.18%  213.26us         2  106.63us  77.216us  136.05us  cudaFree
+                    0.16%  183.28us       114  1.6070us     270ns  73.569us  cuDeviceGetAttribute
+                    0.09%  107.83us         2  53.916us  46.097us  61.736us  cudaMalloc
+                    0.03%  31.089us         1  31.089us  31.089us  31.089us  cuDeviceGetName
+                    0.02%  28.784us         1  28.784us  28.784us  28.784us  cudaLaunchKernel
+                    0.01%  9.2380us         1  9.2380us  9.2380us  9.2380us  cuDeviceGetPCIBusId
+                    0.00%  2.2150us         3     738ns     431ns  1.1530us  cuDeviceGetCount
+                    0.00%  1.2130us         2     606ns     291ns     922ns  cuDeviceGet
+                    0.00%     561ns         1     561ns     561ns     561ns  cuDeviceTotalMem
+                    0.00%     451ns         1     451ns     451ns     451ns  cuModuleGetLoadingMode
+                    0.00%     371ns         1     371ns     371ns     371ns  cuDeviceGetUuid
+Press enter to continue:[H[2J[3JPortion 2 - Register and global
+Running 1000000 threads with block size of 256 -
+==28032== NVPROF is profiling process 28032, command: ./assignment 1000000 256 1
+==28032== Profiling application: ./assignment 1000000 256 1
+==28032== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   99.00%  59.422ms         1  59.422ms  59.422ms  59.422ms  gpu_register_arith(int*, int*)
+                    0.51%  306.79us         1  306.79us  306.79us  306.79us  [CUDA memcpy HtoD]
+                    0.49%  296.04us         1  296.04us  296.04us  296.04us  [CUDA memcpy DtoH]
+      API calls:   61.33%  98.456ms         2  49.228ms  1.4386ms  97.018ms  cudaMallocHost
+                   37.42%  60.065ms         2  30.032ms  331.14us  59.734ms  cudaMemcpy
+                    0.72%  1.1583ms         2  579.13us  545.28us  612.98us  cudaFreeHost
+                    0.16%  255.41us         1  255.41us  255.41us  255.41us  cuLibraryLoadData
+                    0.13%  214.19us         2  107.10us  79.570us  134.62us  cudaFree
+                    0.12%  185.25us       114  1.6250us     280ns  74.370us  cuDeviceGetAttribute
+                    0.07%  107.54us         2  53.772us  45.947us  61.597us  cudaMalloc
+                    0.03%  50.746us         1  50.746us  50.746us  50.746us  cuDeviceGetName
+                    0.01%  23.404us         1  23.404us  23.404us  23.404us  cudaLaunchKernel
+                    0.01%  8.2860us         1  8.2860us  8.2860us  8.2860us  cuDeviceGetPCIBusId
+                    0.00%  2.7860us         3     928ns     391ns  1.8540us  cuDeviceGetCount
+                    0.00%  1.0820us         2     541ns     280ns     802ns  cuDeviceGet
+                    0.00%     511ns         1     511ns     511ns     511ns  cuModuleGetLoadingMode
+                    0.00%     511ns         1     511ns     511ns     511ns  cuDeviceTotalMem
+                    0.00%     381ns         1     381ns     381ns     381ns  cuDeviceGetUuid
+Press enter to continue:[H[2J[3JPortion 3 - Global memory only
+Running 1000000 threads with block size of 256 -
+==28046== NVPROF is profiling process 28046, command: ./assignment 1000000 256 2
+==28046== Profiling application: ./assignment 1000000 256 2
+==28046== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   99.75%  239.24ms         1  239.24ms  239.24ms  239.24ms  gpu_global_arith(int*, int*)
+                    0.13%  306.79us         1  306.79us  306.79us  306.79us  [CUDA memcpy HtoD]
+                    0.12%  295.84us         1  295.84us  295.84us  295.84us  [CUDA memcpy DtoH]
+      API calls:   74.71%  239.88ms         2  119.94ms  333.91us  239.54ms  cudaMemcpy
+                   24.72%  79.381ms         2  39.691ms  1.4562ms  77.925ms  cudaMallocHost
+                    0.38%  1.2077ms         2  603.83us  565.95us  641.72us  cudaFreeHost
+                    0.06%  205.13us         2  102.56us  80.161us  124.97us  cudaFree
+                    0.04%  134.36us         1  134.36us  134.36us  134.36us  cuLibraryLoadData
+                    0.04%  112.75us         2  56.376us  50.124us  62.628us  cudaMalloc
+                    0.03%  104.67us       114     918ns     110ns  45.466us  cuDeviceGetAttribute
+                    0.01%  23.895us         1  23.895us  23.895us  23.895us  cudaLaunchKernel
+                    0.01%  19.357us         1  19.357us  19.357us  19.357us  cuDeviceGetName
+                    0.00%  8.2950us         1  8.2950us  8.2950us  8.2950us  cuDeviceGetPCIBusId
+                    0.00%  1.0420us         3     347ns     160ns     611ns  cuDeviceGetCount
+                    0.00%     801ns         2     400ns     120ns     681ns  cuDeviceGet
+                    0.00%     290ns         1     290ns     290ns     290ns  cuDeviceTotalMem
+                    0.00%     260ns         1     260ns     260ns     260ns  cuModuleGetLoadingMode
+                    0.00%     150ns         1     150ns     150ns     150ns  cuDeviceGetUuid
