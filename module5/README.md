@@ -34,7 +34,7 @@ nvprof allows over simple timing of single or grouped functions.
 
 I additionally created a *run.sh* script which runs all four kernels with two different block sizes. The output 
 of half of this with nvprof is shown below. For sake of brevity I have removed the textural output from the program 
-and only left the timing statistics.
+and only left the timing statistics. The full log is available in [documentation/full_run.log](documentation/full_run.log).
 
 ```
 Frederich Stine - EN 605.617 - JHU EP
@@ -167,3 +167,8 @@ but when programming in Cuda naturally the use for shared and global variables w
 
 ## Stretch Problem
 
+For this stretch problem I have identified some things that my code does that this code does not.
+
+- This code uses the function speedTest to execute the kernels for both shared and constant memory testing. In this function the kernel appears to be called the same way every time. When calling a kernel with non-fixed size shared memory allocation, a third parameter for the quantity of shared memory per block needs to be passed. This could be missing from this program, but it is also possible that the shared memory is declared with a fixed size.
+- The testing code here does not seem to re-intialize the arrays after use. This could be fine if the value of the result is not dependent on the initialization of the result array. I am once again unable to tell with the code given whether this is the case.
+- This program does not seem to test using shared memory / constants without copying directly to them. I did this in my program by using shared local variables and pre-initialized constant values. This may also be included, but I am unable to tell. 
