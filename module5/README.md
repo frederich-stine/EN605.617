@@ -34,7 +34,7 @@ nvprof allows over simple timing of single or grouped functions.
 
 I additionally created a *run.sh* script which runs all four kernels with two different block sizes. The output 
 of half of this with nvprof is shown below. For sake of brevity I have removed the textural output from the program 
-and only left the timing statistics.
+and only left the timing statistics. The full log is available in [documentation/full_run.log](documentation/full_run.log).
 
 ```
 Frederich Stine - EN 605.617 - JHU EP
