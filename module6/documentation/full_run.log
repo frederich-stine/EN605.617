@@ -1,16 +1,15 @@
 Frederich Stine - EN 605.617 - JHU EP
 ----------------------------------------------------------------
-Example runner to show execution of Module 5 assignment
+Example runner to show execution of Module 6 assignment
 ----------------------------------------------------------------
 This is a provided example runner of how to properly use
-my module 5 assignment.
-This assignment runs through 4 different kernels:
-    0: Arith with full copy to shared memory
-    1: Arith with shared memory for local variables
-    2: Arith with copy to constant memory
-    3: Arith with constant memory only
+my module 6 assignment.
+This assignment runs through 3 different kernels:
+    0: Copy to registers
+    1: Registers for local variables
+    2: Global memory only
 
-Press enter to continue:[H[2J[3JPortion 1 - Copy to registers
+Press enter to continue:Portion 1 - Copy to registers
 Running 1024 threads with block size of 128 -
 ==27932== NVPROF is profiling process 27932, command: ./assignment 1024 128 0
 ==27932== Profiling application: ./assignment 1024 128 0
@@ -34,7 +33,7 @@ Running 1024 threads with block size of 128 -
                     0.00%     481ns         1     481ns     481ns     481ns  cuDeviceTotalMem
                     0.00%     450ns         1     450ns     450ns     450ns  cuModuleGetLoadingMode
                     0.00%     341ns         1     341ns     341ns     341ns  cuDeviceGetUuid
-Press enter to continue:[H[2J[3JPortion 2 - Register and global
+Press enter to continue:Portion 2 - Register and global
 Running 1024 threads with block size of 128 -
 ==27946== NVPROF is profiling process 27946, command: ./assignment 1024 128 1
 ==27946== Profiling application: ./assignment 1024 128 1
@@ -58,7 +57,7 @@ Running 1024 threads with block size of 128 -
                     0.00%     471ns         1     471ns     471ns     471ns  cuDeviceTotalMem
                     0.00%     461ns         1     461ns     461ns     461ns  cuModuleGetLoadingMode
                     0.00%     340ns         1     340ns     340ns     340ns  cuDeviceGetUuid
-Press enter to continue:[H[2J[3JPortion 3 - Global memory only
+Press enter to continue:Portion 3 - Global memory only
 Running 1024 threads with block size of 128 -
 ==27960== NVPROF is profiling process 27960, command: ./assignment 1024 128 2
 ==27960== Profiling application: ./assignment 1024 128 2
@@ -82,7 +81,7 @@ Running 1024 threads with block size of 128 -
                     0.00%     601ns         1     601ns     601ns     601ns  cuModuleGetLoadingMode
                     0.00%     400ns         1     400ns     400ns     400ns  cuDeviceTotalMem
                     0.00%     280ns         1     280ns     280ns     280ns  cuDeviceGetUuid
-Press enter to continue:[H[2J[3JPortion 1 - Copy to registers
+Press enter to continue:Portion 1 - Copy to registers
 Running 1024 threads with block size of 256 -
 ==27974== NVPROF is profiling process 27974, command: ./assignment 1024 256 0
 ==27974== Profiling application: ./assignment 1024 256 0
@@ -106,7 +105,7 @@ Running 1024 threads with block size of 256 -
                     0.00%     481ns         1     481ns     481ns     481ns  cuModuleGetLoadingMode
                     0.00%     431ns         1     431ns     431ns     431ns  cuDeviceTotalMem
                     0.00%     330ns         1     330ns     330ns     330ns  cuDeviceGetUuid
-Press enter to continue:[H[2J[3JPortion 2 - Register and global
+Press enter to continue:Portion 2 - Register and global
 Running 1024 threads with block size of 256 -
 ==27988== NVPROF is profiling process 27988, command: ./assignment 1024 256 1
 ==27988== Profiling application: ./assignment 1024 256 1
@@ -130,7 +129,7 @@ Running 1024 threads with block size of 256 -
                     0.00%     671ns         1     671ns     671ns     671ns  cuDeviceTotalMem
                     0.00%     621ns         1     621ns     621ns     621ns  cuModuleGetLoadingMode
                     0.00%     400ns         1     400ns     400ns     400ns  cuDeviceGetUuid
-Press enter to continue:[H[2J[3JPortion 3 - Global memory only
+Press enter to continue:Portion 3 - Global memory only
 Running 1024 threads with block size of 256 -
 ==28002== NVPROF is profiling process 28002, command: ./assignment 1024 256 2
 ==28002== Profiling application: ./assignment 1024 256 2
@@ -154,7 +153,7 @@ Running 1024 threads with block size of 256 -
                     0.00%     601ns         1     601ns     601ns     601ns  cuDeviceTotalMem
                     0.00%     471ns         1     471ns     471ns     471ns  cuModuleGetLoadingMode
                     0.00%     371ns         1     371ns     371ns     371ns  cuDeviceGetUuid
-Press enter to continue:[H[2J[3JPortion 1 - Copy to registers
+Press enter to continue:Portion 1 - Copy to registers
 Running 1000000 threads with block size of 256 -
 ==28016== NVPROF is profiling process 28016, command: ./assignment 1000000 256 0
 ==28016== Profiling application: ./assignment 1000000 256 0
@@ -178,7 +177,7 @@ Running 1000000 threads with block size of 256 -
                     0.00%     561ns         1     561ns     561ns     561ns  cuDeviceTotalMem
                     0.00%     451ns         1     451ns     451ns     451ns  cuModuleGetLoadingMode
                     0.00%     371ns         1     371ns     371ns     371ns  cuDeviceGetUuid
-Press enter to continue:[H[2J[3JPortion 2 - Register and global
+Press enter to continue:Portion 2 - Register and global
 Running 1000000 threads with block size of 256 -
 ==28032== NVPROF is profiling process 28032, command: ./assignment 1000000 256 1
 ==28032== Profiling application: ./assignment 1000000 256 1
@@ -202,7 +201,7 @@ Running 1000000 threads with block size of 256 -
                     0.00%     511ns         1     511ns     511ns     511ns  cuModuleGetLoadingMode
                     0.00%     511ns         1     511ns     511ns     511ns  cuDeviceTotalMem
                     0.00%     381ns         1     381ns     381ns     381ns  cuDeviceGetUuid
-Press enter to continue:[H[2J[3JPortion 3 - Global memory only
+Press enter to continue:Portion 3 - Global memory only
 Running 1000000 threads with block size of 256 -
 ==28046== NVPROF is profiling process 28046, command: ./assignment 1000000 256 2
 ==28046== Profiling application: ./assignment 1000000 256 2

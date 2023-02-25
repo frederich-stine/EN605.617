@@ -28,7 +28,7 @@ uint32_t arrSizeBytes = 0;
 int main(int argc, char** argv) {
 	// Prints out a help menu if not enough params are passed
 	if (argc != 4) {
-		printf("Call ./assignment {blockSize} {operation}\n");
+		printf("Call ./assignment {threadCount} {blockSize} {operation}\n");
 		printf("Operations: \n");
 		printf("    0: Copy to register\n");
 		printf("    1: Register local variables\n");
