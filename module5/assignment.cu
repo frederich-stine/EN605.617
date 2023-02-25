@@ -5,21 +5,27 @@
 #include <stdint.h>
 
 /******************* CUDA Kernel Prototypes ********************/
+// Kernel for using shared memory as local variable
 __global__
 void gpu_all_arith_shared (int32_t* blockOne, int32_t* resultBlock);
+// Kernel for copying to shared before calculating with shared
 __global__
 void gpu_all_arith_shared_copy (int32_t* blockOne, int32_t* resultBlock);
+// Kernel for copy to and using constant memory
 __global__
 void gpu_all_arith_const (int32_t* resultBlock);
+// Kernel for using statically defined constants
 __global__
 void gpu_all_arith_only_const (int32_t* resultBlock);
 
 /******************* Core Function Prototypes ********************/
+// Three core functions used to call the four different tests
 void run_gpu_all_arith_shared (int op);
 void run_gpu_arith_const_copy (void);
 void run_gpu_arith_const_only (void);
 
 /******************* Helper Function Prototypes ********************/
+// Helper function to print out the resulting blocks
 void print_blocks (int32_t* resultArr);
 
 /******************* Global Variables ********************/
@@ -30,6 +36,7 @@ uint32_t blockSize = 0;
 uint32_t numBlocks = 0;
 uint32_t arrSizeBytes = 0;
 
+// Device constants used in constant kernels
 __constant__ int32_t const_arr[1024];
 __constant__ int32_t value1 = 0x01234567;
 __constant__ int32_t value2 = 0x89ABCDEF;
@@ -76,6 +83,7 @@ int main(int argc, char** argv) {
 	}
 }
 
+// Core function for calling both shared kernels
 void run_gpu_all_arith_shared (int op) {
 	int32_t *one, *result;
 	int32_t *d_one, *d_result;
@@ -99,9 +107,11 @@ void run_gpu_all_arith_shared (int op) {
 	// Run kernel
 	switch (op) {
 		case 0:
+			// Call kernel for copying to shared memory
 			gpu_all_arith_shared_copy<<<numBlocks, blockSize, blockSize*8>>>(d_one, d_result);
 			break;
 		case 1:
+			// Call kernel for shared local memory
 			gpu_all_arith_shared<<<numBlocks, blockSize, blockSize*4>>>(d_one, d_result);
 			break;
 	}
@@ -109,6 +119,7 @@ void run_gpu_all_arith_shared (int op) {
 	// Copy memory back from GPU to host
 	cudaMemcpy(result, d_result, arrSizeBytes, cudaMemcpyDeviceToHost);
 	
+	// Print results
 	print_blocks(result);
 
 	// Free memory on GPU
@@ -120,12 +131,14 @@ void run_gpu_all_arith_shared (int op) {
 	cudaFreeHost(result);
 }
 
+//Function to run copy to constant arithmetic 
 void run_gpu_arith_const_copy () {
 	int32_t *result, *one;
 	int32_t *d_result;
 
-	// Allocated page locked  memory using standard c malloc function
+	// Allocated paged memory using standard c malloc function
 	one = (int32_t*)malloc(arrSizeBytes);
+	// Allocate page locked memory
 	cudaMallocHost((void**)&result, arrSizeBytes);
 
 	// Initialize memory - general initialization
@@ -136,7 +149,7 @@ void run_gpu_arith_const_copy () {
 	// Allocate memory on the GPU for computation
 	cudaMalloc((void**)&d_result, arrSizeBytes);
 
-	// Copy memory from host to GPU - pinned memory
+	// Copy memory to constant array
 	cudaMemcpyToSymbol(const_arr, one, arrSizeBytes);
 
 	// Run kernel
@@ -145,6 +158,7 @@ void run_gpu_arith_const_copy () {
 	// Copy memory back from GPU to host
 	cudaMemcpy(result, d_result, arrSizeBytes, cudaMemcpyDeviceToHost);
 
+	// Print the results
 	print_blocks(result);
 
 	// Free memory on GPU
@@ -155,7 +169,7 @@ void run_gpu_arith_const_copy () {
 	cudaFreeHost(result);
 }
 
-
+// Function for running kernel that only uses constant functions
 void run_gpu_arith_const_only (void) {
 	int32_t *result;
 	int32_t *d_result;
@@ -182,48 +196,58 @@ void run_gpu_arith_const_only (void) {
 	cudaFreeHost(result);
 }
 
+// CUDA kernel for shared memory local variables
 __global__
 void gpu_all_arith_shared (int32_t* blockOne, int32_t* resultBlock) {
 	const unsigned int thread_idx = (blockIdx.x * blockDim.x) + threadIdx.x;
+	// Shared variable variable sized
 	extern __shared__ int32_t s[];
 
+	// Perform operations in shared memory
 	s[threadIdx.x] = 0;
 	s[threadIdx.x] += blockOne[thread_idx];
 	s[threadIdx.x] *= blockOne[thread_idx];
 	s[threadIdx.x] -= blockOne[thread_idx];
 	s[threadIdx.x] /= blockOne[thread_idx];
 	
+	// Put result back in global
 	resultBlock[thread_idx] = s[threadIdx.x];
 }
 
+// CUDA kernel for shared memory copy
 __global__
 void gpu_all_arith_shared_copy (int32_t* blockOne, int32_t* resultBlock) {
 	const unsigned int thread_idx = (blockIdx.x * blockDim.x) + threadIdx.x;
-
+	// Shared variable variable sized
 	extern __shared__ int32_t s[];
 
 	// Copy to shared memory
 	s[threadIdx.x] = blockOne[thread_idx];
 
+	// Synchronize threads
 	__syncthreads();
 
-	// Execute
+	// Execute using all shared mem
 	s[threadIdx.x+blockDim.x] = 0;
 	s[threadIdx.x+blockDim.x] += s[threadIdx.x];
 	s[threadIdx.x+blockDim.x] *= s[threadIdx.x];
 	s[threadIdx.x+blockDim.x] -= s[threadIdx.x];
 	s[threadIdx.x+blockDim.x] /= s[threadIdx.x];
 	
+	// Syncrhonize threads again - not really 
+	// needed either time but good practice
 	__syncthreads();
 	
 	// Copy back to global
 	resultBlock[thread_idx] = s[threadIdx.x+blockDim.x];
 }
 
+// CUDA kernel for constant memory array
 __global__
 void gpu_all_arith_const (int32_t* resultBlock) {
 	const unsigned int thread_idx = (blockIdx.x * blockDim.x) + threadIdx.x;
 
+	// Use global memory with constant array
 	resultBlock[thread_idx] = 0;
 	resultBlock[thread_idx] += const_arr[thread_idx];
 	resultBlock[thread_idx] *= const_arr[thread_idx];
@@ -231,10 +255,12 @@ void gpu_all_arith_const (int32_t* resultBlock) {
 	resultBlock[thread_idx] /= const_arr[thread_idx];
 }
 
+// CUDA kernel for constant memory only
 __global__
 void gpu_all_arith_only_const (int32_t* resultBlock) {
 	const unsigned int thread_idx = (blockIdx.x * blockDim.x) + threadIdx.x;
 	
+	// Use global memory with pre-defined constant valueskj
 	resultBlock[thread_idx] = 0;
 	resultBlock[thread_idx] += value1;
 	resultBlock[thread_idx] *= value2;
