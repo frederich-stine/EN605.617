@@ -126,3 +126,20 @@ After completing this assignment I understand the importance of registers on the
 It is crazy how much high speed memory is available on the GPU vs a traditional CPU environment.
 
 ## Stretch Problem
+
+For this stretch problem I am performing a code review of the code provided.
+
+There are lots of good elements of this code:
+- The timing is done properly and includes copy memory to and front the device
+- I like that this is doing a more complex mathematical operation (matrix multiplication). This is something that I may start incorporation into my assignments in the future.
+- This compares two different types of memory (shared vs regs)
+
+There are also some areas for improvement in this code:
+- The largest improvement I can think of here is how the registers are used in both the tests and the matrix multiplication function. These registers seem to be used in place of constant memory. The register values are initialized and then are never used\changed. Most all of the computation here is still done in global memory for both examples. A more efficent use of registers would have been to use them to hold the input values for multiplication 
+ And copy the values over at the end. The constant values could be held in constant memory with very little slowdown (possibly 0 as the values would not need to be initialized on every kernel). 
+ Due to this use of global memory I doubt that this program would show much of a speedup between the two calls.
+ - This program utilizes fixed sizes for the matrix multiplication. It would be interesting to see this done with variable sized matrices. 
+
+Overall this program does a decent job at comparing register and shared memory, but the use cases could be improved 
+to more naturally show this and see larger performance gains.
+
