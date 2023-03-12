@@ -160,6 +160,10 @@ void run_stream_arith (void) {
 		cudaStreamDestroy(stream[i]);
 	}
 
+	// Destroy events
+	cudaEventDestroy(start);
+	cudaEventDestroy(stop);
+
 	// Free memory on GPU
 	cudaFree(d_one);
 	cudaFree(d_result);
@@ -209,6 +213,10 @@ void run_synchronous_arith (void) {
 	cudaEventElapsedTime(&elapsedTime, start, stop); 
 
 	printf("Time taken: %3.4f ms\r\n", elapsedTime);
+	
+	// Destroy events
+	cudaEventDestroy(start);
+	cudaEventDestroy(stop);
 	
 	// Free memory on GPU
 	cudaFree(d_one);
