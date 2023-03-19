@@ -161,4 +161,13 @@ portion of your programs runtime, this optimization may not create a large impro
 
 ## Stretch Problem
 
+For the stretch problem I added in the solutions in the areas that needed finishing. I additionally added some more code to the function that 
+printed out the device information as this was failing initially on my computer. 
 
+Instead of keeping the `cudaStreamSynchronize(stream)` that was in the code I removed it for cudaDeviceSynchronize(). This example was synchronizing 
+on a stream that was not being used. I am unsure of if this could cause issues, but seems like it was not intended. I also changed the timing to not 
+include the host functionality to get a more accurate result.
+
+This can be found at [stretch_problem.cu](stretch_problem.cu).
+
+This can be compiled with the normal makefile and run.
