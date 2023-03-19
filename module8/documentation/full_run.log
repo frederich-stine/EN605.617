@@ -1,0 +1,2769 @@
+Frederich Stine - EN 605.617 - JHU EP
+----------------------------------------------------------------
+Example runner to show execution of Module 8 assignment
+----------------------------------------------------------------
+This is a provided example runner of how to properly use
+my module 8 assignment.
+This assignment demonstrates the curand and cufft libraries
+The cufft example is directly applicable to my proposed project
+where I will be filter audio filter with FIR filters and running
+FFTs on the resulting spectrum
+
+Press enter to continue:
+Curand example
+Generating 500 uniform random numbers
+==15774== NVPROF is profiling process 15774, command: ./assignment_1 500
+Random 0: 0.070891
+Random 1: 0.099631
+Random 2: 0.618459
+Random 3: 0.488424
+Random 4: 0.471553
+Random 5: 0.879565
+Random 6: 0.504235
+Random 7: 0.587636
+Random 8: 0.516652
+Random 9: 0.786108
+Random 10: 0.540168
+Random 11: 0.577078
+Random 12: 0.112323
+Random 13: 0.464469
+Random 14: 0.436275
+Random 15: 0.234838
+Random 16: 0.030193
+Random 17: 0.273892
+Random 18: 0.102215
+Random 19: 0.122537
+Random 20: 0.732543
+Random 21: 0.030840
+Random 22: 0.575058
+Random 23: 0.193950
+Random 24: 0.618050
+Random 25: 0.257002
+Random 26: 0.680097
+Random 27: 0.284372
+Random 28: 0.130919
+Random 29: 0.337297
+Random 30: 0.146057
+Random 31: 0.123417
+Random 32: 0.261466
+Random 33: 0.224629
+Random 34: 0.036583
+Random 35: 0.032164
+Random 36: 0.303682
+Random 37: 0.354597
+Random 38: 0.486371
+Random 39: 0.306409
+Random 40: 0.758154
+Random 41: 0.008612
+Random 42: 0.270780
+Random 43: 0.363911
+Random 44: 0.134559
+Random 45: 0.417153
+Random 46: 0.946204
+Random 47: 0.554342
+Random 48: 0.203376
+Random 49: 0.365011
+Random 50: 0.008247
+Random 51: 0.486348
+Random 52: 0.567449
+Random 53: 0.841875
+Random 54: 0.313684
+Random 55: 0.362659
+Random 56: 0.174752
+Random 57: 0.571183
+Random 58: 0.872376
+Random 59: 0.430116
+Random 60: 0.580044
+Random 61: 0.225414
+Random 62: 0.875834
+Random 63: 0.826954
+Random 64: 0.086914
+Random 65: 0.235363
+Random 66: 0.242923
+Random 67: 0.098203
+Random 68: 0.114198
+Random 69: 0.471039
+Random 70: 0.173418
+Random 71: 0.548374
+Random 72: 0.580896
+Random 73: 0.452631
+Random 74: 0.133924
+Random 75: 0.475163
+Random 76: 0.420551
+Random 77: 0.685399
+Random 78: 0.555372
+Random 79: 0.790686
+Random 80: 0.994692
+Random 81: 0.025599
+Random 82: 0.861439
+Random 83: 0.341519
+Random 84: 0.719521
+Random 85: 0.053594
+Random 86: 0.861795
+Random 87: 0.741496
+Random 88: 0.871013
+Random 89: 0.452821
+Random 90: 0.160099
+Random 91: 0.026179
+Random 92: 0.418850
+Random 93: 0.742963
+Random 94: 0.392009
+Random 95: 0.445033
+Random 96: 0.778235
+Random 97: 0.291030
+Random 98: 0.051101
+Random 99: 0.804628
+Random 100: 0.029000
+Random 101: 0.653421
+Random 102: 0.404457
+Random 103: 0.367753
+Random 104: 0.113851
+Random 105: 0.793991
+Random 106: 0.418336
+Random 107: 0.261137
+Random 108: 0.142241
+Random 109: 0.622392
+Random 110: 0.115743
+Random 111: 0.281701
+Random 112: 0.021397
+Random 113: 0.409530
+Random 114: 0.375714
+Random 115: 0.549497
+Random 116: 0.376009
+Random 117: 0.089437
+Random 118: 0.011524
+Random 119: 0.989115
+Random 120: 0.198031
+Random 121: 0.023574
+Random 122: 0.505201
+Random 123: 0.139252
+Random 124: 0.969350
+Random 125: 0.151316
+Random 126: 0.008930
+Random 127: 0.629067
+Random 128: 0.072660
+Random 129: 0.259935
+Random 130: 0.710570
+Random 131: 0.897259
+Random 132: 0.206413
+Random 133: 0.110076
+Random 134: 0.602274
+Random 135: 0.928704
+Random 136: 0.750216
+Random 137: 0.168059
+Random 138: 0.772667
+Random 139: 0.311084
+Random 140: 0.647951
+Random 141: 0.126570
+Random 142: 0.220278
+Random 143: 0.973769
+Random 144: 0.506281
+Random 145: 0.312729
+Random 146: 0.500902
+Random 147: 0.816563
+Random 148: 0.649598
+Random 149: 0.816442
+Random 150: 0.275114
+Random 151: 0.359377
+Random 152: 0.516146
+Random 153: 0.530136
+Random 154: 0.147520
+Random 155: 0.156651
+Random 156: 0.982093
+Random 157: 0.325538
+Random 158: 0.335943
+Random 159: 0.296827
+Random 160: 0.725650
+Random 161: 0.998466
+Random 162: 0.486627
+Random 163: 0.976338
+Random 164: 0.644064
+Random 165: 0.528025
+Random 166: 0.318006
+Random 167: 0.251879
+Random 168: 0.843997
+Random 169: 0.667522
+Random 170: 0.894278
+Random 171: 0.342980
+Random 172: 0.149176
+Random 173: 0.426815
+Random 174: 0.610414
+Random 175: 0.957225
+Random 176: 0.671424
+Random 177: 0.568334
+Random 178: 0.303600
+Random 179: 0.764343
+Random 180: 0.058280
+Random 181: 0.506140
+Random 182: 0.257015
+Random 183: 0.074739
+Random 184: 0.425165
+Random 185: 0.268962
+Random 186: 0.078372
+Random 187: 0.522532
+Random 188: 0.591602
+Random 189: 0.816155
+Random 190: 0.269812
+Random 191: 0.845413
+Random 192: 0.264044
+Random 193: 0.070109
+Random 194: 0.950161
+Random 195: 0.107097
+Random 196: 0.042068
+Random 197: 0.390403
+Random 198: 0.730182
+Random 199: 0.406905
+Random 200: 0.854551
+Random 201: 0.663479
+Random 202: 0.579950
+Random 203: 0.632140
+Random 204: 0.404954
+Random 205: 0.632322
+Random 206: 0.550272
+Random 207: 0.194184
+Random 208: 0.458498
+Random 209: 0.320621
+Random 210: 0.143852
+Random 211: 0.567232
+Random 212: 0.815862
+Random 213: 0.396130
+Random 214: 0.562764
+Random 215: 0.369040
+Random 216: 0.169085
+Random 217: 0.273349
+Random 218: 0.743900
+Random 219: 0.888515
+Random 220: 0.919709
+Random 221: 0.494205
+Random 222: 0.176070
+Random 223: 0.007518
+Random 224: 0.683545
+Random 225: 0.570021
+Random 226: 0.568929
+Random 227: 0.884085
+Random 228: 0.679701
+Random 229: 0.062942
+Random 230: 0.075724
+Random 231: 0.764393
+Random 232: 0.394283
+Random 233: 0.177390
+Random 234: 0.804714
+Random 235: 0.332064
+Random 236: 0.473373
+Random 237: 0.518074
+Random 238: 0.174694
+Random 239: 0.851654
+Random 240: 0.738890
+Random 241: 0.767523
+Random 242: 0.094997
+Random 243: 0.410591
+Random 244: 0.646178
+Random 245: 0.219917
+Random 246: 0.049767
+Random 247: 0.222656
+Random 248: 0.799180
+Random 249: 0.798230
+Random 250: 0.627180
+Random 251: 0.458194
+Random 252: 0.501829
+Random 253: 0.112799
+Random 254: 0.426623
+Random 255: 0.151119
+Random 256: 0.279163
+Random 257: 0.711462
+Random 258: 0.884815
+Random 259: 0.333081
+Random 260: 0.670348
+Random 261: 0.704556
+Random 262: 0.729832
+Random 263: 0.540189
+Random 264: 0.937792
+Random 265: 0.918201
+Random 266: 0.467600
+Random 267: 0.563730
+Random 268: 0.211585
+Random 269: 0.818464
+Random 270: 0.438764
+Random 271: 0.933279
+Random 272: 0.316383
+Random 273: 0.357045
+Random 274: 0.044162
+Random 275: 0.839478
+Random 276: 0.586552
+Random 277: 0.605411
+Random 278: 0.164324
+Random 279: 0.287977
+Random 280: 0.872395
+Random 281: 0.153830
+Random 282: 0.709975
+Random 283: 0.477291
+Random 284: 0.359072
+Random 285: 0.771250
+Random 286: 0.510416
+Random 287: 0.136720
+Random 288: 0.189116
+Random 289: 0.273456
+Random 290: 0.659173
+Random 291: 0.908693
+Random 292: 0.802777
+Random 293: 0.208559
+Random 294: 0.571848
+Random 295: 0.681145
+Random 296: 0.469309
+Random 297: 0.951284
+Random 298: 0.819618
+Random 299: 0.912281
+Random 300: 0.953112
+Random 301: 0.784171
+Random 302: 0.408651
+Random 303: 0.870735
+Random 304: 0.771684
+Random 305: 0.217788
+Random 306: 0.259804
+Random 307: 0.695006
+Random 308: 0.228445
+Random 309: 0.089323
+Random 310: 0.619669
+Random 311: 0.474095
+Random 312: 0.053727
+Random 313: 0.348223
+Random 314: 0.618523
+Random 315: 0.253606
+Random 316: 0.803281
+Random 317: 0.385245
+Random 318: 0.676147
+Random 319: 0.089480
+Random 320: 0.910736
+Random 321: 0.189812
+Random 322: 0.318466
+Random 323: 0.869399
+Random 324: 0.526911
+Random 325: 0.180171
+Random 326: 0.033443
+Random 327: 0.983222
+Random 328: 0.879396
+Random 329: 0.973071
+Random 330: 0.293131
+Random 331: 0.802303
+Random 332: 0.097521
+Random 333: 0.266985
+Random 334: 0.552553
+Random 335: 0.305788
+Random 336: 0.526294
+Random 337: 0.695946
+Random 338: 0.387983
+Random 339: 0.940972
+Random 340: 0.367746
+Random 341: 0.473265
+Random 342: 0.291775
+Random 343: 0.065642
+Random 344: 0.904631
+Random 345: 0.438478
+Random 346: 0.580870
+Random 347: 0.447266
+Random 348: 0.320880
+Random 349: 0.001988
+Random 350: 0.189459
+Random 351: 0.157536
+Random 352: 0.667012
+Random 353: 0.665101
+Random 354: 0.783796
+Random 355: 0.937321
+Random 356: 0.628017
+Random 357: 0.373802
+Random 358: 0.064771
+Random 359: 0.803885
+Random 360: 0.544752
+Random 361: 0.232242
+Random 362: 0.990218
+Random 363: 0.076965
+Random 364: 0.285125
+Random 365: 0.741480
+Random 366: 0.620142
+Random 367: 0.577429
+Random 368: 0.155165
+Random 369: 0.609629
+Random 370: 0.206423
+Random 371: 0.962397
+Random 372: 0.245131
+Random 373: 0.278795
+Random 374: 0.546085
+Random 375: 0.140967
+Random 376: 0.153861
+Random 377: 0.804464
+Random 378: 0.588624
+Random 379: 0.662884
+Random 380: 0.815464
+Random 381: 0.612736
+Random 382: 0.066094
+Random 383: 0.434657
+Random 384: 0.243812
+Random 385: 0.307258
+Random 386: 0.614269
+Random 387: 0.166907
+Random 388: 0.131617
+Random 389: 0.987218
+Random 390: 0.535792
+Random 391: 0.447515
+Random 392: 0.861284
+Random 393: 0.308607
+Random 394: 0.103191
+Random 395: 0.924299
+Random 396: 0.740859
+Random 397: 0.616944
+Random 398: 0.242734
+Random 399: 0.648112
+Random 400: 0.709147
+Random 401: 0.359572
+Random 402: 0.676008
+Random 403: 0.492397
+Random 404: 0.953067
+Random 405: 0.133800
+Random 406: 0.022579
+Random 407: 0.964566
+Random 408: 0.837495
+Random 409: 0.184568
+Random 410: 0.597286
+Random 411: 0.211565
+Random 412: 0.955042
+Random 413: 0.771165
+Random 414: 0.244344
+Random 415: 0.204448
+Random 416: 0.378207
+Random 417: 0.302672
+Random 418: 0.896785
+Random 419: 0.631427
+Random 420: 0.303237
+Random 421: 0.506410
+Random 422: 0.136356
+Random 423: 0.156814
+Random 424: 0.961026
+Random 425: 0.413619
+Random 426: 0.184987
+Random 427: 0.112271
+Random 428: 0.040202
+Random 429: 0.949439
+Random 430: 0.811916
+Random 431: 0.323270
+Random 432: 0.179940
+Random 433: 0.914496
+Random 434: 0.344679
+Random 435: 0.900133
+Random 436: 0.805365
+Random 437: 0.041558
+Random 438: 0.084022
+Random 439: 0.832183
+Random 440: 0.414809
+Random 441: 0.171418
+Random 442: 0.342439
+Random 443: 0.986917
+Random 444: 0.042137
+Random 445: 0.458225
+Random 446: 0.071205
+Random 447: 0.263314
+Random 448: 0.874514
+Random 449: 0.752521
+Random 450: 0.378643
+Random 451: 0.402661
+Random 452: 0.901737
+Random 453: 0.041968
+Random 454: 0.564641
+Random 455: 0.184832
+Random 456: 0.551654
+Random 457: 0.314433
+Random 458: 0.823677
+Random 459: 0.806611
+Random 460: 0.205455
+Random 461: 0.409599
+Random 462: 0.132214
+Random 463: 0.154372
+Random 464: 0.162311
+Random 465: 0.821065
+Random 466: 0.913586
+Random 467: 0.739391
+Random 468: 0.434490
+Random 469: 0.534368
+Random 470: 0.972116
+Random 471: 0.682038
+Random 472: 0.809755
+Random 473: 0.401095
+Random 474: 0.623735
+Random 475: 0.887929
+Random 476: 0.214947
+Random 477: 0.454215
+Random 478: 0.106274
+Random 479: 0.820273
+Random 480: 0.703678
+Random 481: 0.040452
+Random 482: 0.568982
+Random 483: 0.836946
+Random 484: 0.262788
+Random 485: 0.190293
+Random 486: 0.480600
+Random 487: 0.110110
+Random 488: 0.680252
+Random 489: 0.008873
+Random 490: 0.399462
+Random 491: 0.455447
+Random 492: 0.995043
+Random 493: 0.444506
+Random 494: 0.799413
+Random 495: 0.904474
+Random 496: 0.541942
+Random 497: 0.118399
+Random 498: 0.604295
+Random 499: 0.639104
+==15774== Profiling application: ./assignment_1 500
+==15774== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   99.33%  484.13us         1  484.13us  484.13us  484.13us  void generate_seed_pseudo<rng_config<curandStateXORWOW, curandOrdering=101>>(__int64, __int64, __int64, curandOrdering, curandStateXORWOW*, unsigned int*)
+                    0.41%  1.9840us         1  1.9840us  1.9840us  1.9840us  void gen_sequenced<curandStateXORWOW, float, int, __operator_&__(float curand_uniform_noargs<curandStateXORWOW>(curandStateXORWOW*, int)), rng_config<curandStateXORWOW, curandOrdering=101>>(curandStateXORWOW*, float*, unsigned long, unsigned long, int)
+                    0.26%  1.2800us         1  1.2800us  1.2800us  1.2800us  [CUDA memcpy DtoH]
+      API calls:   88.57%  108.57ms         1  108.57ms  108.57ms  108.57ms  cudaMallocHost
+                   10.03%  12.292ms        11  1.1175ms  17.313us  4.6880ms  cuLibraryLoadData
+                    0.40%  485.84us         1  485.84us  485.84us  485.84us  cudaDeviceSynchronize
+                    0.31%  384.25us         1  384.25us  384.25us  384.25us  cudaFreeHost
+                    0.26%  318.30us         6  53.049us     291ns  269.66us  cudaFree
+                    0.23%  277.55us       225  1.2330us     110ns  69.521us  cuDeviceGetAttribute
+                    0.06%  77.465us       383     202ns     120ns     962ns  cuGetProcAddress
+                    0.05%  62.237us         2  31.118us  6.9830us  55.254us  cudaMalloc
+                    0.03%  42.460us         2  21.230us  14.858us  27.602us  cuDeviceGetName
+                    0.02%  30.177us         2  15.088us  4.3180us  25.859us  cudaLaunchKernel
+                    0.01%  15.739us         1  15.739us  15.739us  15.739us  cudaMemcpy
+                    0.01%  8.1750us         1  8.1750us  8.1750us  8.1750us  cuDeviceGetPCIBusId
+                    0.01%  6.5020us         1  6.5020us  6.5020us  6.5020us  cudaGetDevice
+                    0.00%  2.7860us         3     928ns     421ns  1.7540us  cudaDeviceGetAttribute
+                    0.00%  2.7660us         4     691ns     271ns  1.5830us  cuDeviceGetCount
+                    0.00%  1.8330us         1  1.8330us  1.8330us  1.8330us  cuInit
+                    0.00%     992ns         3     330ns     141ns     611ns  cuDeviceGet
+                    0.00%     941ns         2     470ns     440ns     501ns  cuDeviceTotalMem
+                    0.00%     701ns         4     175ns     130ns     271ns  cudaGetLastError
+                    0.00%     691ns         2     345ns     130ns     561ns  cuModuleGetLoadingMode
+                    0.00%     482ns         2     241ns     151ns     331ns  cuDeviceGetUuid
+                    0.00%     151ns         1     151ns     151ns     151ns  cuDriverGetVersion
+Press enter to continue:
+Curand example
+Generating 1000 uniform random numbers
+==15788== NVPROF is profiling process 15788, command: ./assignment_1 1000
+Random 0: 0.486635
+Random 1: 0.830738
+Random 2: 0.890345
+Random 3: 0.222924
+Random 4: 0.672920
+Random 5: 0.942197
+Random 6: 0.536695
+Random 7: 0.031775
+Random 8: 0.624052
+Random 9: 0.934230
+Random 10: 0.091884
+Random 11: 0.167247
+Random 12: 0.840290
+Random 13: 0.951302
+Random 14: 0.603085
+Random 15: 0.879227
+Random 16: 0.000107
+Random 17: 0.624457
+Random 18: 0.904782
+Random 19: 0.822417
+Random 20: 0.776847
+Random 21: 0.569936
+Random 22: 0.365355
+Random 23: 0.070983
+Random 24: 0.363330
+Random 25: 0.837167
+Random 26: 0.554114
+Random 27: 0.512219
+Random 28: 0.834194
+Random 29: 0.371908
+Random 30: 0.993777
+Random 31: 0.696654
+Random 32: 0.877226
+Random 33: 0.957407
+Random 34: 0.001316
+Random 35: 0.160026
+Random 36: 0.589462
+Random 37: 0.574581
+Random 38: 0.060674
+Random 39: 0.994131
+Random 40: 0.249465
+Random 41: 0.824090
+Random 42: 0.231117
+Random 43: 0.076356
+Random 44: 0.635105
+Random 45: 0.442653
+Random 46: 0.770488
+Random 47: 0.693443
+Random 48: 0.565911
+Random 49: 0.681391
+Random 50: 0.720729
+Random 51: 0.375739
+Random 52: 0.521106
+Random 53: 0.998081
+Random 54: 0.930980
+Random 55: 0.098935
+Random 56: 0.031692
+Random 57: 0.619764
+Random 58: 0.068472
+Random 59: 0.608239
+Random 60: 0.839223
+Random 61: 0.914187
+Random 62: 0.847062
+Random 63: 0.684808
+Random 64: 0.221480
+Random 65: 0.803118
+Random 66: 0.647751
+Random 67: 0.521887
+Random 68: 0.256275
+Random 69: 0.331396
+Random 70: 0.411813
+Random 71: 0.709622
+Random 72: 0.888964
+Random 73: 0.439592
+Random 74: 0.959497
+Random 75: 0.905065
+Random 76: 0.574384
+Random 77: 0.960217
+Random 78: 0.472998
+Random 79: 0.795313
+Random 80: 0.958406
+Random 81: 0.079725
+Random 82: 0.898679
+Random 83: 0.671811
+Random 84: 0.190716
+Random 85: 0.939518
+Random 86: 0.126696
+Random 87: 0.147414
+Random 88: 0.136859
+Random 89: 0.082640
+Random 90: 0.163082
+Random 91: 0.572111
+Random 92: 0.981461
+Random 93: 0.913872
+Random 94: 0.429989
+Random 95: 0.781101
+Random 96: 0.840488
+Random 97: 0.982409
+Random 98: 0.201251
+Random 99: 0.040768
+Random 100: 0.292299
+Random 101: 0.240074
+Random 102: 0.192789
+Random 103: 0.598400
+Random 104: 0.807082
+Random 105: 0.527557
+Random 106: 0.960573
+Random 107: 0.761103
+Random 108: 0.459102
+Random 109: 0.091814
+Random 110: 0.747694
+Random 111: 0.965623
+Random 112: 0.020743
+Random 113: 0.942920
+Random 114: 0.932716
+Random 115: 0.190096
+Random 116: 0.091642
+Random 117: 0.127150
+Random 118: 0.268518
+Random 119: 0.581319
+Random 120: 0.323839
+Random 121: 0.745490
+Random 122: 0.590023
+Random 123: 0.314987
+Random 124: 0.657768
+Random 125: 0.015153
+Random 126: 0.280738
+Random 127: 0.649206
+Random 128: 0.329234
+Random 129: 0.828541
+Random 130: 0.293644
+Random 131: 0.275279
+Random 132: 0.035047
+Random 133: 0.424477
+Random 134: 0.803172
+Random 135: 0.841117
+Random 136: 0.935179
+Random 137: 0.487491
+Random 138: 0.095261
+Random 139: 0.123803
+Random 140: 0.802186
+Random 141: 0.200791
+Random 142: 0.296044
+Random 143: 0.734340
+Random 144: 0.417396
+Random 145: 0.494228
+Random 146: 0.846427
+Random 147: 0.139753
+Random 148: 0.677824
+Random 149: 0.010004
+Random 150: 0.774548
+Random 151: 0.307609
+Random 152: 0.700174
+Random 153: 0.739279
+Random 154: 0.873510
+Random 155: 0.541841
+Random 156: 0.832553
+Random 157: 0.813033
+Random 158: 0.073575
+Random 159: 0.976769
+Random 160: 0.503510
+Random 161: 0.025802
+Random 162: 0.965466
+Random 163: 0.873008
+Random 164: 0.723818
+Random 165: 0.814773
+Random 166: 0.153351
+Random 167: 0.629110
+Random 168: 0.786948
+Random 169: 0.803991
+Random 170: 0.967256
+Random 171: 0.030887
+Random 172: 0.438538
+Random 173: 0.073688
+Random 174: 0.671987
+Random 175: 0.485005
+Random 176: 0.970083
+Random 177: 0.179167
+Random 178: 0.227597
+Random 179: 0.014592
+Random 180: 0.981297
+Random 181: 0.084557
+Random 182: 0.420977
+Random 183: 0.051752
+Random 184: 0.192610
+Random 185: 0.474605
+Random 186: 0.400894
+Random 187: 0.287765
+Random 188: 0.492885
+Random 189: 0.836624
+Random 190: 0.250616
+Random 191: 0.381982
+Random 192: 0.201191
+Random 193: 0.475830
+Random 194: 0.598722
+Random 195: 0.326589
+Random 196: 0.914618
+Random 197: 0.774894
+Random 198: 0.406554
+Random 199: 0.349263
+Random 200: 0.180893
+Random 201: 0.675547
+Random 202: 0.164066
+Random 203: 0.023048
+Random 204: 0.641869
+Random 205: 0.629479
+Random 206: 0.354844
+Random 207: 0.971529
+Random 208: 0.515206
+Random 209: 0.539493
+Random 210: 0.252515
+Random 211: 0.591618
+Random 212: 0.722382
+Random 213: 0.797505
+Random 214: 0.927203
+Random 215: 0.247672
+Random 216: 0.633178
+Random 217: 0.522959
+Random 218: 0.324507
+Random 219: 0.069475
+Random 220: 0.326891
+Random 221: 0.637681
+Random 222: 0.924716
+Random 223: 0.640018
+Random 224: 0.548690
+Random 225: 0.887135
+Random 226: 0.474132
+Random 227: 0.486340
+Random 228: 0.049428
+Random 229: 0.711578
+Random 230: 0.253228
+Random 231: 0.439868
+Random 232: 0.581271
+Random 233: 0.272457
+Random 234: 0.593830
+Random 235: 0.706218
+Random 236: 0.015824
+Random 237: 0.154786
+Random 238: 0.938250
+Random 239: 0.159642
+Random 240: 0.955862
+Random 241: 0.233499
+Random 242: 0.949522
+Random 243: 0.601972
+Random 244: 0.163723
+Random 245: 0.995527
+Random 246: 0.379366
+Random 247: 0.299745
+Random 248: 0.693116
+Random 249: 0.436091
+Random 250: 0.279917
+Random 251: 0.392810
+Random 252: 0.824960
+Random 253: 0.341673
+Random 254: 0.201722
+Random 255: 0.469146
+Random 256: 0.548946
+Random 257: 0.381970
+Random 258: 0.936236
+Random 259: 0.748541
+Random 260: 0.328353
+Random 261: 0.254577
+Random 262: 0.473326
+Random 263: 0.993749
+Random 264: 0.478587
+Random 265: 0.954067
+Random 266: 0.564106
+Random 267: 0.358021
+Random 268: 0.370618
+Random 269: 0.067612
+Random 270: 0.225004
+Random 271: 0.101856
+Random 272: 0.884144
+Random 273: 0.005099
+Random 274: 0.210288
+Random 275: 0.428507
+Random 276: 0.833586
+Random 277: 0.083936
+Random 278: 0.712138
+Random 279: 0.866399
+Random 280: 0.365417
+Random 281: 0.344056
+Random 282: 0.475264
+Random 283: 0.168910
+Random 284: 0.836198
+Random 285: 0.883889
+Random 286: 0.596583
+Random 287: 0.367455
+Random 288: 0.629681
+Random 289: 0.436057
+Random 290: 0.624610
+Random 291: 0.226458
+Random 292: 0.319557
+Random 293: 0.487809
+Random 294: 0.635403
+Random 295: 0.238058
+Random 296: 0.986140
+Random 297: 0.533537
+Random 298: 0.446674
+Random 299: 0.566358
+Random 300: 0.236418
+Random 301: 0.078477
+Random 302: 0.537109
+Random 303: 0.519144
+Random 304: 0.913367
+Random 305: 0.234389
+Random 306: 0.421644
+Random 307: 0.964822
+Random 308: 0.696326
+Random 309: 0.498679
+Random 310: 0.569531
+Random 311: 0.456173
+Random 312: 0.271614
+Random 313: 0.497567
+Random 314: 0.046721
+Random 315: 0.935071
+Random 316: 0.944776
+Random 317: 0.220197
+Random 318: 0.674601
+Random 319: 0.474562
+Random 320: 0.085728
+Random 321: 0.316910
+Random 322: 0.404472
+Random 323: 0.125348
+Random 324: 0.702106
+Random 325: 0.157505
+Random 326: 0.905513
+Random 327: 0.478162
+Random 328: 0.788993
+Random 329: 0.503678
+Random 330: 0.914341
+Random 331: 0.601783
+Random 332: 0.119819
+Random 333: 0.162965
+Random 334: 0.846705
+Random 335: 0.159330
+Random 336: 0.566013
+Random 337: 0.360617
+Random 338: 0.933847
+Random 339: 0.663361
+Random 340: 0.626444
+Random 341: 0.211688
+Random 342: 0.610352
+Random 343: 0.494020
+Random 344: 0.729140
+Random 345: 0.603857
+Random 346: 0.280407
+Random 347: 0.558131
+Random 348: 0.434073
+Random 349: 0.048885
+Random 350: 0.626502
+Random 351: 0.078876
+Random 352: 0.669833
+Random 353: 0.551807
+Random 354: 0.118175
+Random 355: 0.710404
+Random 356: 0.005163
+Random 357: 0.568392
+Random 358: 0.440123
+Random 359: 0.447886
+Random 360: 0.220842
+Random 361: 0.330633
+Random 362: 0.539010
+Random 363: 0.025046
+Random 364: 0.548105
+Random 365: 0.467859
+Random 366: 0.974095
+Random 367: 0.596884
+Random 368: 0.582113
+Random 369: 0.603376
+Random 370: 0.486751
+Random 371: 0.815074
+Random 372: 0.622487
+Random 373: 0.339345
+Random 374: 0.547401
+Random 375: 0.034515
+Random 376: 0.374267
+Random 377: 0.846442
+Random 378: 0.274018
+Random 379: 0.211968
+Random 380: 0.400814
+Random 381: 0.471738
+Random 382: 0.432202
+Random 383: 0.812549
+Random 384: 0.377988
+Random 385: 0.188860
+Random 386: 0.114729
+Random 387: 0.406718
+Random 388: 0.824572
+Random 389: 0.432458
+Random 390: 0.802038
+Random 391: 0.779058
+Random 392: 0.853841
+Random 393: 0.384454
+Random 394: 0.562426
+Random 395: 0.471290
+Random 396: 0.843422
+Random 397: 0.532956
+Random 398: 0.620750
+Random 399: 0.165395
+Random 400: 0.385726
+Random 401: 0.499387
+Random 402: 0.149480
+Random 403: 0.544397
+Random 404: 0.712717
+Random 405: 0.416871
+Random 406: 0.133442
+Random 407: 0.339832
+Random 408: 0.684926
+Random 409: 0.100755
+Random 410: 0.394176
+Random 411: 0.395906
+Random 412: 0.196795
+Random 413: 0.830656
+Random 414: 0.693467
+Random 415: 0.771669
+Random 416: 0.863398
+Random 417: 0.662239
+Random 418: 0.799365
+Random 419: 0.731719
+Random 420: 0.365886
+Random 421: 0.847554
+Random 422: 0.571675
+Random 423: 0.238072
+Random 424: 0.574781
+Random 425: 0.629187
+Random 426: 0.623861
+Random 427: 0.351030
+Random 428: 0.271499
+Random 429: 0.414794
+Random 430: 0.852382
+Random 431: 0.531350
+Random 432: 0.878419
+Random 433: 0.380632
+Random 434: 0.206217
+Random 435: 0.046344
+Random 436: 0.410386
+Random 437: 0.676520
+Random 438: 0.345722
+Random 439: 0.644215
+Random 440: 0.330235
+Random 441: 0.231179
+Random 442: 0.674722
+Random 443: 0.855994
+Random 444: 0.046493
+Random 445: 0.167881
+Random 446: 0.438824
+Random 447: 0.427537
+Random 448: 0.898570
+Random 449: 0.492830
+Random 450: 0.988650
+Random 451: 0.623490
+Random 452: 0.492142
+Random 453: 0.405703
+Random 454: 0.893945
+Random 455: 0.604912
+Random 456: 0.409565
+Random 457: 0.245406
+Random 458: 0.805578
+Random 459: 0.010902
+Random 460: 0.081051
+Random 461: 0.642406
+Random 462: 0.367215
+Random 463: 0.882712
+Random 464: 0.451908
+Random 465: 0.383450
+Random 466: 0.889785
+Random 467: 0.891368
+Random 468: 0.769002
+Random 469: 0.733730
+Random 470: 0.146339
+Random 471: 0.165348
+Random 472: 0.492521
+Random 473: 0.373629
+Random 474: 0.944764
+Random 475: 0.250661
+Random 476: 0.348349
+Random 477: 0.380309
+Random 478: 0.965642
+Random 479: 0.427696
+Random 480: 0.076300
+Random 481: 0.775288
+Random 482: 0.674270
+Random 483: 0.727825
+Random 484: 0.354810
+Random 485: 0.082580
+Random 486: 0.014773
+Random 487: 0.076582
+Random 488: 0.185603
+Random 489: 0.873743
+Random 490: 0.792240
+Random 491: 0.470895
+Random 492: 0.850833
+Random 493: 0.461358
+Random 494: 0.335753
+Random 495: 0.398746
+Random 496: 0.373210
+Random 497: 0.321012
+Random 498: 0.259839
+Random 499: 0.264675
+Random 500: 0.309067
+Random 501: 0.443423
+Random 502: 0.066360
+Random 503: 0.721117
+Random 504: 0.186488
+Random 505: 0.819035
+Random 506: 0.128743
+Random 507: 0.937667
+Random 508: 0.078919
+Random 509: 0.029580
+Random 510: 0.314803
+Random 511: 0.140163
+Random 512: 0.073891
+Random 513: 0.825020
+Random 514: 0.137437
+Random 515: 0.677109
+Random 516: 0.675170
+Random 517: 0.807341
+Random 518: 0.286641
+Random 519: 0.179755
+Random 520: 0.416632
+Random 521: 0.803128
+Random 522: 0.110930
+Random 523: 0.758056
+Random 524: 0.059554
+Random 525: 0.749138
+Random 526: 0.954741
+Random 527: 0.889294
+Random 528: 0.527233
+Random 529: 0.841196
+Random 530: 0.276689
+Random 531: 0.429190
+Random 532: 0.293666
+Random 533: 0.085679
+Random 534: 0.233003
+Random 535: 0.179644
+Random 536: 0.128231
+Random 537: 0.510475
+Random 538: 0.106462
+Random 539: 0.173187
+Random 540: 0.509898
+Random 541: 0.832043
+Random 542: 0.579254
+Random 543: 0.794204
+Random 544: 0.091338
+Random 545: 0.238156
+Random 546: 0.889004
+Random 547: 0.792228
+Random 548: 0.888274
+Random 549: 0.761785
+Random 550: 0.778080
+Random 551: 0.864088
+Random 552: 0.160597
+Random 553: 0.904056
+Random 554: 0.960747
+Random 555: 0.974961
+Random 556: 0.826395
+Random 557: 0.490693
+Random 558: 0.206028
+Random 559: 0.953381
+Random 560: 0.936763
+Random 561: 0.389690
+Random 562: 0.904186
+Random 563: 0.196438
+Random 564: 0.582093
+Random 565: 0.520666
+Random 566: 0.219696
+Random 567: 0.230742
+Random 568: 0.789389
+Random 569: 0.031534
+Random 570: 0.454813
+Random 571: 0.955331
+Random 572: 0.725855
+Random 573: 0.887764
+Random 574: 0.239185
+Random 575: 0.503030
+Random 576: 0.128521
+Random 577: 0.782135
+Random 578: 0.362572
+Random 579: 0.666523
+Random 580: 0.196490
+Random 581: 0.907518
+Random 582: 0.272123
+Random 583: 0.484706
+Random 584: 0.072259
+Random 585: 0.689462
+Random 586: 0.819290
+Random 587: 0.496491
+Random 588: 0.622566
+Random 589: 0.089847
+Random 590: 0.380434
+Random 591: 0.134951
+Random 592: 0.316303
+Random 593: 0.088973
+Random 594: 0.324941
+Random 595: 0.827108
+Random 596: 0.110981
+Random 597: 0.250380
+Random 598: 0.875711
+Random 599: 0.504639
+Random 600: 0.900270
+Random 601: 0.526934
+Random 602: 0.564794
+Random 603: 0.498531
+Random 604: 0.513173
+Random 605: 0.767764
+Random 606: 0.365348
+Random 607: 0.735051
+Random 608: 0.495763
+Random 609: 0.879788
+Random 610: 0.047133
+Random 611: 0.530630
+Random 612: 0.722531
+Random 613: 0.550931
+Random 614: 0.985089
+Random 615: 0.492059
+Random 616: 0.703320
+Random 617: 0.011514
+Random 618: 0.936003
+Random 619: 0.642233
+Random 620: 0.890461
+Random 621: 0.983339
+Random 622: 0.331408
+Random 623: 0.988107
+Random 624: 0.035508
+Random 625: 0.199365
+Random 626: 0.055771
+Random 627: 0.899152
+Random 628: 0.706309
+Random 629: 0.187848
+Random 630: 0.098378
+Random 631: 0.982985
+Random 632: 0.939652
+Random 633: 0.603750
+Random 634: 0.537558
+Random 635: 0.780740
+Random 636: 0.818507
+Random 637: 0.648673
+Random 638: 0.608955
+Random 639: 0.027515
+Random 640: 0.143134
+Random 641: 0.753415
+Random 642: 0.631291
+Random 643: 0.870680
+Random 644: 0.751368
+Random 645: 0.294103
+Random 646: 0.185305
+Random 647: 0.767534
+Random 648: 0.404326
+Random 649: 0.456318
+Random 650: 0.704146
+Random 651: 0.744244
+Random 652: 0.477081
+Random 653: 0.738886
+Random 654: 0.288130
+Random 655: 0.183925
+Random 656: 0.953781
+Random 657: 0.084390
+Random 658: 0.787095
+Random 659: 0.704659
+Random 660: 0.794500
+Random 661: 0.068268
+Random 662: 0.234505
+Random 663: 0.172205
+Random 664: 0.774637
+Random 665: 0.347143
+Random 666: 0.500252
+Random 667: 0.883575
+Random 668: 0.866851
+Random 669: 0.074365
+Random 670: 0.879211
+Random 671: 0.190888
+Random 672: 0.602894
+Random 673: 0.375910
+Random 674: 0.681100
+Random 675: 0.788906
+Random 676: 0.359540
+Random 677: 0.640171
+Random 678: 0.007769
+Random 679: 0.681399
+Random 680: 0.489346
+Random 681: 0.934579
+Random 682: 0.982661
+Random 683: 0.951871
+Random 684: 0.540141
+Random 685: 0.196194
+Random 686: 0.953030
+Random 687: 0.825756
+Random 688: 0.746394
+Random 689: 0.565246
+Random 690: 0.003739
+Random 691: 0.938116
+Random 692: 0.043198
+Random 693: 0.140799
+Random 694: 0.311107
+Random 695: 0.382934
+Random 696: 0.514014
+Random 697: 0.492909
+Random 698: 0.425352
+Random 699: 0.647231
+Random 700: 0.432175
+Random 701: 0.237350
+Random 702: 0.477901
+Random 703: 0.469509
+Random 704: 0.245230
+Random 705: 0.693385
+Random 706: 0.468804
+Random 707: 0.323008
+Random 708: 0.304560
+Random 709: 0.338722
+Random 710: 0.772246
+Random 711: 0.982421
+Random 712: 0.174593
+Random 713: 0.951749
+Random 714: 0.572330
+Random 715: 0.147730
+Random 716: 0.196754
+Random 717: 0.724711
+Random 718: 0.140080
+Random 719: 0.514433
+Random 720: 0.249384
+Random 721: 0.489083
+Random 722: 0.340299
+Random 723: 0.169146
+Random 724: 0.676793
+Random 725: 0.276929
+Random 726: 0.265224
+Random 727: 0.423645
+Random 728: 0.832591
+Random 729: 0.232755
+Random 730: 0.830406
+Random 731: 0.177960
+Random 732: 0.146527
+Random 733: 0.141657
+Random 734: 0.090259
+Random 735: 0.174525
+Random 736: 0.247866
+Random 737: 0.299050
+Random 738: 0.696093
+Random 739: 0.074152
+Random 740: 0.407387
+Random 741: 0.611192
+Random 742: 0.453188
+Random 743: 0.186108
+Random 744: 0.162401
+Random 745: 0.619794
+Random 746: 0.369621
+Random 747: 0.018416
+Random 748: 0.069059
+Random 749: 0.023576
+Random 750: 0.229985
+Random 751: 0.066395
+Random 752: 0.460233
+Random 753: 0.087389
+Random 754: 0.139569
+Random 755: 0.695920
+Random 756: 0.942066
+Random 757: 0.715300
+Random 758: 0.347629
+Random 759: 0.646255
+Random 760: 0.811950
+Random 761: 0.158480
+Random 762: 0.687987
+Random 763: 0.271933
+Random 764: 0.778501
+Random 765: 0.703137
+Random 766: 0.606028
+Random 767: 0.059159
+Random 768: 0.523918
+Random 769: 0.152001
+Random 770: 0.736933
+Random 771: 0.433802
+Random 772: 0.197194
+Random 773: 0.888111
+Random 774: 0.572828
+Random 775: 0.901520
+Random 776: 0.507506
+Random 777: 0.692441
+Random 778: 0.899295
+Random 779: 0.882893
+Random 780: 0.980640
+Random 781: 0.310326
+Random 782: 0.972394
+Random 783: 0.554629
+Random 784: 0.581795
+Random 785: 0.402905
+Random 786: 0.489532
+Random 787: 0.762405
+Random 788: 0.081651
+Random 789: 0.981317
+Random 790: 0.219450
+Random 791: 0.876210
+Random 792: 0.371134
+Random 793: 0.409498
+Random 794: 0.591950
+Random 795: 0.582423
+Random 796: 0.102622
+Random 797: 0.594116
+Random 798: 0.720590
+Random 799: 0.259403
+Random 800: 0.417199
+Random 801: 0.751993
+Random 802: 0.797954
+Random 803: 0.253125
+Random 804: 0.035027
+Random 805: 0.186102
+Random 806: 0.432888
+Random 807: 0.877220
+Random 808: 0.667037
+Random 809: 0.156767
+Random 810: 0.279714
+Random 811: 0.308069
+Random 812: 0.579504
+Random 813: 0.439192
+Random 814: 0.716436
+Random 815: 0.156622
+Random 816: 0.226975
+Random 817: 0.743966
+Random 818: 0.655206
+Random 819: 0.274466
+Random 820: 0.959703
+Random 821: 0.128804
+Random 822: 0.611883
+Random 823: 0.998771
+Random 824: 0.755434
+Random 825: 0.883999
+Random 826: 0.531109
+Random 827: 0.347657
+Random 828: 0.238658
+Random 829: 0.253088
+Random 830: 0.784139
+Random 831: 0.182311
+Random 832: 0.347294
+Random 833: 0.478814
+Random 834: 0.479374
+Random 835: 0.224395
+Random 836: 0.882779
+Random 837: 0.958566
+Random 838: 0.244500
+Random 839: 0.076070
+Random 840: 0.048180
+Random 841: 0.015585
+Random 842: 0.427387
+Random 843: 0.463860
+Random 844: 0.490184
+Random 845: 0.303590
+Random 846: 0.148666
+Random 847: 0.670975
+Random 848: 0.188031
+Random 849: 0.095711
+Random 850: 0.278809
+Random 851: 0.712809
+Random 852: 0.147695
+Random 853: 0.308900
+Random 854: 0.836278
+Random 855: 0.485888
+Random 856: 0.626581
+Random 857: 0.166305
+Random 858: 0.610369
+Random 859: 0.276575
+Random 860: 0.846737
+Random 861: 0.577336
+Random 862: 0.740623
+Random 863: 0.925286
+Random 864: 0.882611
+Random 865: 0.705388
+Random 866: 0.984413
+Random 867: 0.922400
+Random 868: 0.553200
+Random 869: 0.562638
+Random 870: 0.001077
+Random 871: 0.235096
+Random 872: 0.277609
+Random 873: 0.575160
+Random 874: 0.432280
+Random 875: 0.668894
+Random 876: 0.279657
+Random 877: 0.496507
+Random 878: 0.463167
+Random 879: 0.310770
+Random 880: 0.066313
+Random 881: 0.464859
+Random 882: 0.257475
+Random 883: 0.523479
+Random 884: 0.930887
+Random 885: 0.860364
+Random 886: 0.360210
+Random 887: 0.274707
+Random 888: 0.418463
+Random 889: 0.813916
+Random 890: 0.306876
+Random 891: 0.187811
+Random 892: 0.437681
+Random 893: 0.552551
+Random 894: 0.943318
+Random 895: 0.812477
+Random 896: 0.862284
+Random 897: 0.592809
+Random 898: 0.807910
+Random 899: 0.050952
+Random 900: 0.476091
+Random 901: 0.779421
+Random 902: 0.199593
+Random 903: 0.267532
+Random 904: 0.444003
+Random 905: 0.019569
+Random 906: 0.636061
+Random 907: 0.047516
+Random 908: 0.752165
+Random 909: 0.306118
+Random 910: 0.636550
+Random 911: 0.387626
+Random 912: 0.936964
+Random 913: 0.569685
+Random 914: 0.283917
+Random 915: 0.554553
+Random 916: 0.223912
+Random 917: 0.641889
+Random 918: 0.350241
+Random 919: 0.662731
+Random 920: 0.401815
+Random 921: 0.637079
+Random 922: 0.428404
+Random 923: 0.004557
+Random 924: 0.841094
+Random 925: 0.532217
+Random 926: 0.820706
+Random 927: 0.667625
+Random 928: 0.357976
+Random 929: 0.647150
+Random 930: 0.012860
+Random 931: 0.134154
+Random 932: 0.271299
+Random 933: 0.251850
+Random 934: 0.076654
+Random 935: 0.352699
+Random 936: 0.070560
+Random 937: 0.876291
+Random 938: 0.895811
+Random 939: 0.420780
+Random 940: 0.014849
+Random 941: 0.562524
+Random 942: 0.107960
+Random 943: 0.765240
+Random 944: 0.580629
+Random 945: 0.643703
+Random 946: 0.575714
+Random 947: 0.330599
+Random 948: 0.169535
+Random 949: 0.745218
+Random 950: 0.634562
+Random 951: 0.233403
+Random 952: 0.412047
+Random 953: 0.022543
+Random 954: 0.490858
+Random 955: 0.042634
+Random 956: 0.500160
+Random 957: 0.667409
+Random 958: 0.084962
+Random 959: 0.843298
+Random 960: 0.736892
+Random 961: 0.781143
+Random 962: 0.249657
+Random 963: 0.318967
+Random 964: 0.287177
+Random 965: 0.401267
+Random 966: 0.061033
+Random 967: 0.255947
+Random 968: 0.452477
+Random 969: 0.495363
+Random 970: 0.566891
+Random 971: 0.992318
+Random 972: 0.633984
+Random 973: 0.367453
+Random 974: 0.192796
+Random 975: 0.130436
+Random 976: 0.094764
+Random 977: 0.024087
+Random 978: 0.786708
+Random 979: 0.505641
+Random 980: 0.883804
+Random 981: 0.534468
+Random 982: 0.932061
+Random 983: 0.857556
+Random 984: 0.936751
+Random 985: 0.207089
+Random 986: 0.741008
+Random 987: 0.963973
+Random 988: 0.769241
+Random 989: 0.552703
+Random 990: 0.160432
+Random 991: 0.433516
+Random 992: 0.754103
+Random 993: 0.152983
+Random 994: 0.203756
+Random 995: 0.530129
+Random 996: 0.350379
+Random 997: 0.563406
+Random 998: 0.988607
+Random 999: 0.104350
+==15788== Profiling application: ./assignment_1 1000
+==15788== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   99.27%  480.55us         1  480.55us  480.55us  480.55us  void generate_seed_pseudo<rng_config<curandStateXORWOW, curandOrdering=101>>(__int64, __int64, __int64, curandOrdering, curandStateXORWOW*, unsigned int*)
+                    0.44%  2.1440us         1  2.1440us  2.1440us  2.1440us  void gen_sequenced<curandStateXORWOW, float, int, __operator_&__(float curand_uniform_noargs<curandStateXORWOW>(curandStateXORWOW*, int)), rng_config<curandStateXORWOW, curandOrdering=101>>(curandStateXORWOW*, float*, unsigned long, unsigned long, int)
+                    0.28%  1.3760us         1  1.3760us  1.3760us  1.3760us  [CUDA memcpy DtoH]
+      API calls:   85.88%  90.178ms         1  90.178ms  90.178ms  90.178ms  cudaMallocHost
+                   12.43%  13.051ms        11  1.1865ms  20.269us  5.3249ms  cuLibraryLoadData
+                    0.46%  482.46us         1  482.46us  482.46us  482.46us  cudaDeviceSynchronize
+                    0.40%  421.78us         1  421.78us  421.78us  421.78us  cudaFreeHost
+                    0.32%  340.73us         6  56.788us     300ns  266.82us  cudaFree
+                    0.27%  282.32us       225  1.2540us     110ns  71.965us  cuDeviceGetAttribute
+                    0.07%  75.245us       383     196ns     120ns     912ns  cuGetProcAddress
+                    0.06%  58.230us         2  29.115us  6.0110us  52.219us  cudaMalloc
+                    0.04%  42.800us         2  21.400us  13.856us  28.944us  cuDeviceGetName
+                    0.03%  29.415us         2  14.707us  4.3880us  25.027us  cudaLaunchKernel
+                    0.02%  16.261us         1  16.261us  16.261us  16.261us  cudaMemcpy
+                    0.01%  8.8870us         1  8.8870us  8.8870us  8.8870us  cuDeviceGetPCIBusId
+                    0.01%  6.2620us         1  6.2620us  6.2620us  6.2620us  cudaGetDevice
+                    0.00%  2.9460us         3     982ns     411ns  2.0440us  cudaDeviceGetAttribute
+                    0.00%  2.7360us         4     684ns     271ns  1.3030us  cuDeviceGetCount
+                    0.00%  1.4630us         1  1.4630us  1.4630us  1.4630us  cuInit
+                    0.00%  1.2830us         3     427ns     141ns     821ns  cuDeviceGet
+                    0.00%     852ns         2     426ns     280ns     572ns  cuDeviceTotalMem
+                    0.00%     702ns         4     175ns     141ns     261ns  cudaGetLastError
+                    0.00%     631ns         2     315ns     130ns     501ns  cuModuleGetLoadingMode
+                    0.00%     532ns         2     266ns     141ns     391ns  cuDeviceGetUuid
+                    0.00%     170ns         1     170ns     170ns     170ns  cuDriverGetVersion
+Press enter to continue:
+Audio FFT example
+Running FFT with FFT size of 64
+==15802== NVPROF is profiling process 15802, command: ./assignment_2 64
+Sample rate: 44100
+Bits per sample: 16
+Num channels: 1
+FFT Result: Frequency: 0.000000: C: 603120.000000: I: 0.000000 
+    Magnitude: 603120.000000: Magnitude dB: 115.608070
+FFT Result: Frequency: 689.062500: C: -400917.250000: I: -297988.031250 
+    Magnitude: 499531.281250: Magnitude dB: 113.971252
+FFT Result: Frequency: 1378.125000: C: -59025.621094: I: -98025.531250 
+    Magnitude: 114424.773438: Magnitude dB: 101.170395
+FFT Result: Frequency: 2067.187500: C: -19741.453125: I: -61219.082031 
+    Magnitude: 64323.410156: Magnitude dB: 96.167381
+FFT Result: Frequency: 2756.250000: C: -7079.578125: I: -44728.406250 
+    Magnitude: 45285.214844: Magnitude dB: 93.119125
+FFT Result: Frequency: 3445.312500: C: -1385.718750: I: -35184.500000 
+    Magnitude: 35211.777344: Magnitude dB: 90.933762
+FFT Result: Frequency: 4134.375000: C: 1660.523926: I: -28907.673828 
+    Magnitude: 28955.326172: Magnitude dB: 89.234573
+FFT Result: Frequency: 4823.437500: C: 3480.192139: I: -24433.195312 
+    Magnitude: 24679.804688: Magnitude dB: 87.846832
+FFT Result: Frequency: 5512.500000: C: 4658.419922: I: -21063.992188 
+    Magnitude: 21572.960938: Magnitude dB: 86.678200
+FFT Result: Frequency: 6201.562500: C: 5455.962891: I: -18431.843750 
+    Magnitude: 19222.392578: Magnitude dB: 85.676147
+FFT Result: Frequency: 6890.625000: C: 6029.536621: I: -16283.212891 
+    Magnitude: 17363.707031: Magnitude dB: 84.792854
+FFT Result: Frequency: 7579.687500: C: 6451.500000: I: -14516.611328 
+    Magnitude: 15885.649414: Magnitude dB: 84.020096
+FFT Result: Frequency: 8268.750000: C: 6767.907227: I: -13012.725586 
+    Magnitude: 14667.500977: Magnitude dB: 83.327118
+FFT Result: Frequency: 8957.812500: C: 7021.134277: I: -11716.607422 
+    Magnitude: 13659.253906: Magnitude dB: 82.708542
+FFT Result: Frequency: 9646.875000: C: 7204.860840: I: -10590.597656 
+    Magnitude: 12809.011719: Magnitude dB: 82.150314
+FFT Result: Frequency: 10335.937500: C: 7371.073242: I: -9582.720703 
+    Magnitude: 12089.716797: Magnitude dB: 81.648323
+FFT Result: Frequency: 11025.000000: C: 7499.000488: I: -8679.000000 
+    Magnitude: 11469.962891: Magnitude dB: 81.191246
+FFT Result: Frequency: 11714.062500: C: 7601.282227: I: -7868.755371 
+    Magnitude: 10940.603516: Magnitude dB: 80.780830
+FFT Result: Frequency: 12403.125000: C: 7687.803223: I: -7127.171875 
+    Magnitude: 10483.267578: Magnitude dB: 80.409935
+FFT Result: Frequency: 13092.187500: C: 7760.520996: I: -6440.974121 
+    Magnitude: 10085.228516: Magnitude dB: 80.073715
+FFT Result: Frequency: 13781.250000: C: 7822.704102: I: -5802.190430 
+    Magnitude: 9739.615234: Magnitude dB: 79.770836
+FFT Result: Frequency: 14470.312500: C: 7873.773438: I: -5202.247559 
+    Magnitude: 9437.144531: Magnitude dB: 79.496811
+FFT Result: Frequency: 15159.375000: C: 7915.761230: I: -4636.919434 
+    Magnitude: 9173.892578: Magnitude dB: 79.251076
+FFT Result: Frequency: 15848.437500: C: 7954.371094: I: -4101.919434 
+    Magnitude: 8949.735352: Magnitude dB: 79.036201
+FFT Result: Frequency: 16537.500000: C: 7977.580078: I: -3589.992188 
+    Magnitude: 8748.132812: Magnitude dB: 78.838303
+FFT Result: Frequency: 17226.562500: C: 8007.418945: I: -3102.838867 
+    Magnitude: 8587.570312: Magnitude dB: 78.677406
+FFT Result: Frequency: 17915.625000: C: 8027.735840: I: -2631.345703 
+    Magnitude: 8447.989258: Magnitude dB: 78.535065
+FFT Result: Frequency: 18604.687500: C: 8040.925781: I: -2170.275391 
+    Magnitude: 8328.660156: Magnitude dB: 78.411499
+FFT Result: Frequency: 19293.750000: C: 8056.966797: I: -1725.869141 
+    Magnitude: 8239.741211: Magnitude dB: 78.318268
+FFT Result: Frequency: 19982.812500: C: 8065.303711: I: -1285.281250 
+    Magnitude: 8167.072266: Magnitude dB: 78.241333
+FFT Result: Frequency: 20671.875000: C: 8075.402344: I: -852.066406 
+    Magnitude: 8120.230469: Magnitude dB: 78.191368
+FFT Result: Frequency: 21360.937500: C: 8080.937500: I: -427.343750 
+    Magnitude: 8092.229004: Magnitude dB: 78.161362
+FFT Result: Frequency: 22050.000000: C: 8082.000000: I: 0.000000 
+    Magnitude: 8082.000000: Magnitude dB: 78.150375
+==15802== Profiling application: ./assignment_2 64
+==15802== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   96.81%  258.08us         4  64.520us     224ns  257.19us  [CUDA memcpy HtoD]
+                    1.66%  4.4160us         1  4.4160us  4.4160us  4.4160us  void vector_fft<unsigned int=32, unsigned int=8, unsigned int=32, unsigned int=10, padding_t=1, twiddle_t=0, loadstore_modifier_t=2, layout_t=0, unsigned int, float>(kernel_arguments_t<unsigned int>)
+                    1.03%  2.7520us         1  2.7520us  2.7520us  2.7520us  void postprocess_kernel<float, unsigned int, loadstore_modifier_t=2>(real_complex_args_t<unsigned int>)
+                    0.50%  1.3430us         1  1.3430us  1.3430us  1.3430us  [CUDA memcpy DtoH]
+      API calls:   88.97%  92.090ms         2  46.045ms  4.0870us  92.086ms  cudaMallocHost
+                    8.43%  8.7239ms        14  623.14us  15.439us  6.8677ms  cuLibraryLoadData
+                    0.97%  1.0078ms         4  251.95us  2.9460us  913.63us  cudaFree
+                    0.39%  398.72us         3  132.91us  3.4170us  338.74us  cuMemcpyHtoD
+                    0.36%  370.58us         2  185.29us  6.3830us  364.20us  cudaFreeHost
+                    0.27%  279.18us       231  1.2080us     110ns  67.637us  cuDeviceGetAttribute
+                    0.20%  210.38us         2  105.19us  82.054us  128.32us  cuModuleLoadData
+                    0.07%  73.851us       383     192ns     120ns  1.0320us  cuGetProcAddress
+                    0.06%  65.604us         1  65.604us  65.604us  65.604us  cuMemAlloc
+                    0.06%  61.216us         3  20.405us  14.658us  28.434us  cuDeviceGetName
+                    0.06%  60.224us         3  20.074us  2.3850us  52.198us  cudaMalloc
+                    0.04%  40.837us         1  40.837us  40.837us  40.837us  cuMemFree
+                    0.03%  29.805us         2  14.902us  12.864us  16.941us  cudaMemcpy
+                    0.02%  22.743us         2  11.371us  8.7660us  13.977us  cuModuleUnload
+                    0.02%  20.649us         2  10.324us  4.2080us  16.441us  cuLaunchKernel
+                    0.01%  14.668us         1  14.668us  14.668us  14.668us  cuMemGetInfo
+                    0.01%  8.4060us         1  8.4060us  8.4060us  8.4060us  cuDeviceGetPCIBusId
+                    0.00%  4.5890us         1  4.5890us  4.5890us  4.5890us  cudaStreamIsCapturing
+                    0.00%  3.4950us        20     174ns     120ns     751ns  cuFuncGetAttribute
+                    0.00%  3.4470us         2  1.7230us     561ns  2.8860us  cuModuleGetFunction
+                    0.00%  2.8450us         3     948ns     481ns  1.7930us  cudaGetDevice
+                    0.00%  2.8250us         4     706ns     290ns  1.5730us  cuDeviceGetCount
+                    0.00%  1.4720us         2     736ns     260ns  1.2120us  cuOccupancyMaxActiveBlocksPerMultiprocessor
+                    0.00%  1.3730us         1  1.3730us  1.3730us  1.3730us  cuInit
+                    0.00%  1.3020us         5     260ns     150ns     441ns  cuCtxPushCurrent
+                    0.00%  1.2530us         2     626ns     371ns     882ns  cuPointerGetAttribute
+                    0.00%  1.1620us         1  1.1620us  1.1620us  1.1620us  cudaSetDevice
+                    0.00%  1.1210us         3     373ns     130ns     721ns  cuDeviceGet
+                    0.00%  1.0320us         6     172ns     121ns     320ns  cuCtxGetCurrent
+                    0.00%     901ns         5     180ns     150ns     220ns  cuCtxPopCurrent
+                    0.00%     762ns         2     381ns     311ns     451ns  cuModuleGetGlobal
+                    0.00%     732ns         2     366ns     271ns     461ns  cuDeviceTotalMem
+                    0.00%     611ns         2     305ns     130ns     481ns  cuModuleGetLoadingMode
+                    0.00%     521ns         2     260ns     150ns     371ns  cuDeviceGetUuid
+                    0.00%     491ns         2     245ns     150ns     341ns  cudaGetFuncBySymbol
+                    0.00%     150ns         1     150ns     150ns     150ns  cuDriverGetVersion
+                    0.00%     120ns         1     120ns     120ns     120ns  cuCtxGetDevice
+Press enter to continue:
+Audio FFT example
+Running FFT with FFT size of 1024
+==15816== NVPROF is profiling process 15816, command: ./assignment_2 1024
+Sample rate: 44100
+Bits per sample: 16
+Num channels: 1
+FFT Result: Frequency: 0.000000: C: 275516.000000: I: 0.000000 
+    Magnitude: 275516.000000: Magnitude dB: 108.802940
+FFT Result: Frequency: 43.066406: C: 278271.062500: I: -34992.285156 
+    Magnitude: 280462.562500: Magnitude dB: 108.957504
+FFT Result: Frequency: 86.132812: C: 286911.656250: I: -72014.609375 
+    Magnitude: 295811.437500: Magnitude dB: 109.420303
+FFT Result: Frequency: 129.199219: C: 302568.468750: I: -113720.585938 
+    Magnitude: 323233.750000: Magnitude dB: 110.190338
+FFT Result: Frequency: 172.265625: C: 327397.531250: I: -163616.484375 
+    Magnitude: 366004.781250: Magnitude dB: 111.269730
+FFT Result: Frequency: 215.332031: C: 365784.937500: I: -227700.718750 
+    Magnitude: 430866.843750: Magnitude dB: 112.686859
+FFT Result: Frequency: 258.398438: C: 426405.093750: I: -317189.562500 
+    Magnitude: 531441.937500: Magnitude dB: 114.509117
+FFT Result: Frequency: 301.464844: C: 529157.687500: I: -456910.093750 
+    Magnitude: 699124.250000: Magnitude dB: 116.891090
+FFT Result: Frequency: 344.531250: C: 729833.437500: I: -716111.125000 
+    Magnitude: 1022483.250000: Magnitude dB: 120.193130
+FFT Result: Frequency: 387.597656: C: 1268588.500000: I: -1391258.750000 
+    Magnitude: 1882795.125000: Magnitude dB: 125.496063
+FFT Result: Frequency: 430.664062: C: 6816837.500000: I: -8247104.500000 
+    Magnitude: 10699720.000000: Magnitude dB: 140.587448
+FFT Result: Frequency: 473.730469: C: -1811978.750000: I: 2392375.250000 
+    Magnitude: 3001120.750000: Magnitude dB: 129.545670
+FFT Result: Frequency: 516.796875: C: -766517.187500: I: 1094620.250000 
+    Magnitude: 1336316.625000: Magnitude dB: 122.518188
+FFT Result: Frequency: 559.863281: C: -474290.187500: I: 726979.437500 
+    Magnitude: 868015.125000: Magnitude dB: 118.770538
+FFT Result: Frequency: 602.929688: C: -337793.625000: I: 552135.625000 
+    Magnitude: 647269.875000: Magnitude dB: 116.221703
+FFT Result: Frequency: 645.996094: C: -259285.031250: I: 449286.875000 
+    Magnitude: 518736.375000: Magnitude dB: 114.298935
+FFT Result: Frequency: 689.062500: C: -208562.750000: I: 381243.812500 
+    Magnitude: 434563.312500: Magnitude dB: 112.761063
+FFT Result: Frequency: 732.128906: C: -173254.625000: I: 332637.062500 
+    Magnitude: 375052.781250: Magnitude dB: 111.481850
+FFT Result: Frequency: 775.195312: C: -147450.734375: I: 296021.312500 
+    Magnitude: 330711.875000: Magnitude dB: 110.388992
+FFT Result: Frequency: 818.261719: C: -127806.812500: I: 267398.406250 
+    Magnitude: 296372.218750: Magnitude dB: 109.436752
+FFT Result: Frequency: 861.328125: C: -112403.484375: I: 244304.015625 
+    Magnitude: 268921.906250: Magnitude dB: 108.592522
+FFT Result: Frequency: 904.394531: C: -100084.359375: I: 225237.281250 
+    Magnitude: 246472.531250: Magnitude dB: 107.835373
+FFT Result: Frequency: 947.460938: C: -90008.937500: I: 209203.234375 
+    Magnitude: 227744.593750: Magnitude dB: 107.148964
+FFT Result: Frequency: 990.527344: C: -81648.781250: I: 195514.718750 
+    Magnitude: 211878.578125: Magnitude dB: 106.521744
+FFT Result: Frequency: 1033.593750: C: -74630.750000: I: 183649.843750 
+    Magnitude: 198234.750000: Magnitude dB: 105.943596
+FFT Result: Frequency: 1076.660156: C: -68680.164062: I: 173293.718750 
+    Magnitude: 186407.296875: Magnitude dB: 105.409256
+FFT Result: Frequency: 1119.726562: C: -63526.781250: I: 164089.718750 
+    Magnitude: 175957.625000: Magnitude dB: 104.908157
+FFT Result: Frequency: 1162.792969: C: -59115.710938: I: 155903.468750 
+    Magnitude: 166735.000000: Magnitude dB: 104.440536
+FFT Result: Frequency: 1205.859375: C: -55206.070312: I: 148588.531250 
+    Magnitude: 158512.656250: Magnitude dB: 104.001274
+FFT Result: Frequency: 1248.925781: C: -51802.085938: I: 141972.015625 
+    Magnitude: 151127.453125: Magnitude dB: 103.586868
+FFT Result: Frequency: 1291.992188: C: -48810.828125: I: 135942.078125 
+    Magnitude: 144439.421875: Magnitude dB: 103.193710
+FFT Result: Frequency: 1335.058594: C: -46114.953125: I: 130432.359375 
+    Magnitude: 138344.453125: Magnitude dB: 102.819229
+FFT Result: Frequency: 1378.125000: C: -43723.179688: I: 125405.531250 
+    Magnitude: 132809.125000: Magnitude dB: 102.464561
+FFT Result: Frequency: 1421.191406: C: -41584.359375: I: 120755.335938 
+    Magnitude: 127714.953125: Magnitude dB: 102.124832
+FFT Result: Frequency: 1464.257812: C: -39637.710938: I: 116441.843750 
+    Magnitude: 123003.460938: Magnitude dB: 101.798340
+FFT Result: Frequency: 1507.324219: C: -37884.355469: I: 112483.546875 
+    Magnitude: 118691.921875: Magnitude dB: 101.488419
+FFT Result: Frequency: 1550.390625: C: -36309.324219: I: 108772.890625 
+    Magnitude: 114673.054688: Magnitude dB: 101.189232
+FFT Result: Frequency: 1593.457031: C: -34865.316406: I: 105307.195312 
+    Magnitude: 110928.789062: Magnitude dB: 100.900887
+FFT Result: Frequency: 1636.523438: C: -33519.421875: I: 102083.937500 
+    Magnitude: 107446.179688: Magnitude dB: 100.623817
+FFT Result: Frequency: 1679.589844: C: -32319.636719: I: 99065.140625 
+    Magnitude: 104203.937500: Magnitude dB: 100.357681
+FFT Result: Frequency: 1722.656250: C: -31180.072266: I: 96221.007812 
+    Magnitude: 101146.820312: Magnitude dB: 100.099045
+FFT Result: Frequency: 1765.722656: C: -30164.082031: I: 93537.421875 
+    Magnitude: 98280.828125: Magnitude dB: 99.849380
+FFT Result: Frequency: 1808.789062: C: -29200.333984: I: 90992.890625 
+    Magnitude: 95563.414062: Magnitude dB: 99.605835
+FFT Result: Frequency: 1851.855469: C: -28338.707031: I: 88604.695312 
+    Magnitude: 93026.203125: Magnitude dB: 99.372108
+FFT Result: Frequency: 1894.921875: C: -27509.851562: I: 86321.773438 
+    Magnitude: 90599.343750: Magnitude dB: 99.142502
+FFT Result: Frequency: 1937.988281: C: -26762.015625: I: 84185.476562 
+    Magnitude: 88336.851562: Magnitude dB: 98.922836
+FFT Result: Frequency: 1981.054688: C: -26064.785156: I: 82145.453125 
+    Magnitude: 86181.484375: Magnitude dB: 98.708275
+FFT Result: Frequency: 2024.121094: C: -25406.109375: I: 80169.562500 
+    Magnitude: 84098.921875: Magnitude dB: 98.495804
+FFT Result: Frequency: 2067.187500: C: -24775.185547: I: 78325.062500 
+    Magnitude: 82150.015625: Magnitude dB: 98.292152
+FFT Result: Frequency: 2110.253906: C: -24185.484375: I: 76554.914062 
+    Magnitude: 80284.445312: Magnitude dB: 98.092636
+FFT Result: Frequency: 2153.320312: C: -23663.015625: I: 74864.015625 
+    Magnitude: 78514.703125: Magnitude dB: 97.899017
+FFT Result: Frequency: 2196.386719: C: -23180.041016: I: 73251.812500 
+    Magnitude: 76831.906250: Magnitude dB: 97.710831
+FFT Result: Frequency: 2239.453125: C: -22696.900391: I: 71718.015625 
+    Magnitude: 75223.820312: Magnitude dB: 97.527100
+FFT Result: Frequency: 2282.519531: C: -22246.617188: I: 70215.203125 
+    Magnitude: 73655.187500: Magnitude dB: 97.344063
+FFT Result: Frequency: 2325.585938: C: -21815.732422: I: 68798.281250 
+    Magnitude: 72174.296875: Magnitude dB: 97.167656
+FFT Result: Frequency: 2368.652344: C: -21415.246094: I: 67453.140625 
+    Magnitude: 70771.031250: Magnitude dB: 96.997108
+FFT Result: Frequency: 2411.718750: C: -21053.068359: I: 66114.578125 
+    Magnitude: 69385.656250: Magnitude dB: 96.825394
+FFT Result: Frequency: 2454.785156: C: -20691.910156: I: 64866.515625 
+    Magnitude: 68086.859375: Magnitude dB: 96.661263
+FFT Result: Frequency: 2497.851562: C: -20365.296875: I: 63638.855469 
+    Magnitude: 66818.031250: Magnitude dB: 96.497871
+FFT Result: Frequency: 2540.917969: C: -20027.214844: I: 62493.859375 
+    Magnitude: 65624.476562: Magnitude dB: 96.341316
+FFT Result: Frequency: 2583.984375: C: -19741.318359: I: 61338.007812 
+    Magnitude: 64436.566406: Magnitude dB: 96.182648
+FFT Result: Frequency: 2627.050781: C: -19466.949219: I: 60260.593750 
+    Magnitude: 63326.941406: Magnitude dB: 96.031769
+FFT Result: Frequency: 2670.117188: C: -19192.638672: I: 59229.890625 
+    Magnitude: 62261.843750: Magnitude dB: 95.884438
+FFT Result: Frequency: 2713.183594: C: -18924.867188: I: 58197.378906 
+    Magnitude: 61197.105469: Magnitude dB: 95.734619
+FFT Result: Frequency: 2756.250000: C: -18684.363281: I: 57217.640625 
+    Magnitude: 60191.062500: Magnitude dB: 95.590637
+FFT Result: Frequency: 2799.316406: C: -18448.666016: I: 56272.105469 
+    Magnitude: 59219.109375: Magnitude dB: 95.449234
+FFT Result: Frequency: 2842.382812: C: -18229.042969: I: 55357.562500 
+    Magnitude: 58281.710938: Magnitude dB: 95.310654
+FFT Result: Frequency: 2885.449219: C: -17996.140625: I: 54478.421875 
+    Magnitude: 57373.859375: Magnitude dB: 95.174286
+FFT Result: Frequency: 2928.515625: C: -17805.957031: I: 53602.773438 
+    Magnitude: 56482.824219: Magnitude dB: 95.038330
+FFT Result: Frequency: 2971.582031: C: -17613.238281: I: 52784.910156 
+    Magnitude: 55645.960938: Magnitude dB: 94.908676
+FFT Result: Frequency: 3014.648438: C: -17424.710938: I: 51964.687500 
+    Magnitude: 54808.296875: Magnitude dB: 94.776924
+FFT Result: Frequency: 3057.714844: C: -17239.093750: I: 51176.714844 
+    Magnitude: 54002.246094: Magnitude dB: 94.648239
+FFT Result: Frequency: 3100.781250: C: -17064.316406: I: 50390.906250 
+    Magnitude: 53201.828125: Magnitude dB: 94.518524
+FFT Result: Frequency: 3143.847656: C: -16914.314453: I: 49681.843750 
+    Magnitude: 52482.183594: Magnitude dB: 94.400238
+FFT Result: Frequency: 3186.914062: C: -16770.638672: I: 48941.929688 
+    Magnitude: 51735.546875: Magnitude dB: 94.275780
+FFT Result: Frequency: 3229.980469: C: -16597.486328: I: 48233.578125 
+    Magnitude: 51009.359375: Magnitude dB: 94.152992
+FFT Result: Frequency: 3273.046875: C: -16453.058594: I: 47559.640625 
+    Magnitude: 50325.167969: Magnitude dB: 94.035706
+FFT Result: Frequency: 3316.113281: C: -16346.666992: I: 46940.375000 
+    Magnitude: 49705.253906: Magnitude dB: 93.928055
+FFT Result: Frequency: 3359.179688: C: -16196.740234: I: 46266.570312 
+    Magnitude: 49019.687500: Magnitude dB: 93.807411
+FFT Result: Frequency: 3402.246094: C: -16058.056641: I: 45626.714844 
+    Magnitude: 48370.015625: Magnitude dB: 93.691521
+FFT Result: Frequency: 3445.312500: C: -15923.659180: I: 45025.656250 
+    Magnitude: 47758.480469: Magnitude dB: 93.581009
+FFT Result: Frequency: 3488.378906: C: -15796.652344: I: 44424.761719 
+    Magnitude: 47149.695312: Magnitude dB: 93.469582
+FFT Result: Frequency: 3531.445312: C: -15698.792969: I: 43821.187500 
+    Magnitude: 46548.347656: Magnitude dB: 93.358086
+FFT Result: Frequency: 3574.511719: C: -15579.196289: I: 43258.906250 
+    Magnitude: 45978.738281: Magnitude dB: 93.251144
+FFT Result: Frequency: 3617.578125: C: -15484.188477: I: 42737.816406 
+    Magnitude: 45456.363281: Magnitude dB: 93.151894
+FFT Result: Frequency: 3660.644531: C: -15393.851562: I: 42182.312500 
+    Magnitude: 44903.429688: Magnitude dB: 93.045586
+FFT Result: Frequency: 3703.710938: C: -15287.229492: I: 41639.890625 
+    Magnitude: 44357.410156: Magnitude dB: 92.939316
+FFT Result: Frequency: 3746.777344: C: -15188.168945: I: 41122.132812 
+    Magnitude: 43837.316406: Magnitude dB: 92.836876
+FFT Result: Frequency: 3789.843750: C: -15098.281250: I: 40623.363281 
+    Magnitude: 43338.386719: Magnitude dB: 92.737457
+FFT Result: Frequency: 3832.910156: C: -15024.242188: I: 40142.203125 
+    Magnitude: 42861.687500: Magnitude dB: 92.641380
+FFT Result: Frequency: 3875.976562: C: -14915.958008: I: 39673.171875 
+    Magnitude: 42384.507812: Magnitude dB: 92.544144
+FFT Result: Frequency: 3919.042969: C: -14843.139648: I: 39198.132812 
+    Magnitude: 41914.347656: Magnitude dB: 92.447250
+FFT Result: Frequency: 3962.109375: C: -14773.426758: I: 38734.156250 
+    Magnitude: 41455.867188: Magnitude dB: 92.351723
+FFT Result: Frequency: 4005.175781: C: -14707.578125: I: 38256.441406 
+    Magnitude: 40986.195312: Magnitude dB: 92.252747
+FFT Result: Frequency: 4048.242188: C: -14602.287109: I: 37827.750000 
+    Magnitude: 40548.308594: Magnitude dB: 92.159454
+FFT Result: Frequency: 4091.308594: C: -14529.996094: I: 37423.667969 
+    Magnitude: 40145.382812: Magnitude dB: 92.072716
+FFT Result: Frequency: 4134.375000: C: -14461.426758: I: 36980.417969 
+    Magnitude: 39707.484375: Magnitude dB: 91.977448
+FFT Result: Frequency: 4177.441406: C: -14394.898438: I: 36550.019531 
+    Magnitude: 39282.527344: Magnitude dB: 91.883987
+FFT Result: Frequency: 4220.507812: C: -14312.348633: I: 36171.562500 
+    Magnitude: 38900.195312: Magnitude dB: 91.799042
+FFT Result: Frequency: 4263.574219: C: -14275.513672: I: 35758.207031 
+    Magnitude: 38502.464844: Magnitude dB: 91.709763
+FFT Result: Frequency: 4306.640625: C: -14199.012695: I: 35388.648438 
+    Magnitude: 38130.937500: Magnitude dB: 91.625549
+FFT Result: Frequency: 4349.707031: C: -14129.560547: I: 34990.718750 
+    Magnitude: 37735.855469: Magnitude dB: 91.535080
+FFT Result: Frequency: 4392.773438: C: -14082.142578: I: 34649.085938 
+    Magnitude: 37401.414062: Magnitude dB: 91.457756
+FFT Result: Frequency: 4435.839844: C: -14032.687500: I: 34275.808594 
+    Magnitude: 37037.109375: Magnitude dB: 91.372742
+FFT Result: Frequency: 4478.906250: C: -13970.972656: I: 33910.132812 
+    Magnitude: 36675.402344: Magnitude dB: 91.287498
+FFT Result: Frequency: 4521.972656: C: -13922.812500: I: 33533.464844 
+    Magnitude: 36308.925781: Magnitude dB: 91.200264
+FFT Result: Frequency: 4565.039062: C: -13886.646484: I: 33200.523438 
+    Magnitude: 35987.687500: Magnitude dB: 91.123077
+FFT Result: Frequency: 4608.105469: C: -13810.271484: I: 32860.976562 
+    Magnitude: 35645.019531: Magnitude dB: 91.039978
+FFT Result: Frequency: 4651.171875: C: -13772.958984: I: 32531.539062 
+    Magnitude: 35326.980469: Magnitude dB: 90.962135
+FFT Result: Frequency: 4694.238281: C: -13717.637695: I: 32211.671875 
+    Magnitude: 35010.933594: Magnitude dB: 90.884079
+FFT Result: Frequency: 4737.304688: C: -13707.929688: I: 31892.162109 
+    Magnitude: 34713.359375: Magnitude dB: 90.809937
+FFT Result: Frequency: 4780.371094: C: -13621.013672: I: 31575.671875 
+    Magnitude: 34388.296875: Magnitude dB: 90.728218
+FFT Result: Frequency: 4823.437500: C: -13598.884766: I: 31269.638672 
+    Magnitude: 34098.679688: Magnitude dB: 90.654755
+FFT Result: Frequency: 4866.503906: C: -13537.517578: I: 30970.166016 
+    Magnitude: 33799.636719: Magnitude dB: 90.578239
+FFT Result: Frequency: 4909.570312: C: -13488.589844: I: 30677.347656 
+    Magnitude: 33511.816406: Magnitude dB: 90.503960
+FFT Result: Frequency: 4952.636719: C: -13462.603516: I: 30350.267578 
+    Magnitude: 33202.113281: Magnitude dB: 90.423317
+FFT Result: Frequency: 4995.703125: C: -13413.341797: I: 30071.742188 
+    Magnitude: 32927.609375: Magnitude dB: 90.351196
+FFT Result: Frequency: 5038.769531: C: -13397.568359: I: 29791.187500 
+    Magnitude: 32665.115234: Magnitude dB: 90.281685
+FFT Result: Frequency: 5081.835938: C: -13351.977539: I: 29490.707031 
+    Magnitude: 32372.474609: Magnitude dB: 90.203514
+FFT Result: Frequency: 5124.902344: C: -13311.166992: I: 29230.392578 
+    Magnitude: 32118.578125: Magnitude dB: 90.135124
+FFT Result: Frequency: 5167.968750: C: -13280.747070: I: 28973.750000 
+    Magnitude: 31872.501953: Magnitude dB: 90.068321
+FFT Result: Frequency: 5211.035156: C: -13245.379883: I: 28721.412109 
+    Magnitude: 31628.460938: Magnitude dB: 90.001564
+FFT Result: Frequency: 5254.101562: C: -13228.843750: I: 28427.230469 
+    Magnitude: 31354.580078: Magnitude dB: 89.926025
+FFT Result: Frequency: 5297.167969: C: -13169.487305: I: 28188.843750 
+    Magnitude: 31113.443359: Magnitude dB: 89.858963
+FFT Result: Frequency: 5340.234375: C: -13138.961914: I: 27904.757812 
+    Magnitude: 30843.279297: Magnitude dB: 89.783211
+FFT Result: Frequency: 5383.300781: C: -13118.602539: I: 27668.945312 
+    Magnitude: 30621.369141: Magnitude dB: 89.720490
+FFT Result: Frequency: 5426.367188: C: -13095.992188: I: 27428.386719 
+    Magnitude: 30394.429688: Magnitude dB: 89.655876
+FFT Result: Frequency: 5469.433594: C: -13051.932617: I: 27200.828125 
+    Magnitude: 30170.150391: Magnitude dB: 89.591553
+FFT Result: Frequency: 5512.500000: C: -13018.326172: I: 26941.253906 
+    Magnitude: 29921.697266: Magnitude dB: 89.519730
+FFT Result: Frequency: 5555.566406: C: -12970.401367: I: 26725.648438 
+    Magnitude: 29706.759766: Magnitude dB: 89.457100
+FFT Result: Frequency: 5598.632812: C: -12939.171875: I: 26466.585938 
+    Magnitude: 29460.181641: Magnitude dB: 89.384705
+FFT Result: Frequency: 5641.699219: C: -12912.610352: I: 26259.431641 
+    Magnitude: 29262.488281: Magnitude dB: 89.326233
+FFT Result: Frequency: 5684.765625: C: -12897.227539: I: 26012.607422 
+    Magnitude: 29034.363281: Magnitude dB: 89.258255
+FFT Result: Frequency: 5727.832031: C: -12914.860352: I: 25815.347656 
+    Magnitude: 28865.650391: Magnitude dB: 89.207626
+FFT Result: Frequency: 5770.898438: C: -12851.880859: I: 25600.505859 
+    Magnitude: 28645.361328: Magnitude dB: 89.141083
+FFT Result: Frequency: 5813.964844: C: -12812.431641: I: 25364.160156 
+    Magnitude: 28416.527344: Magnitude dB: 89.071419
+FFT Result: Frequency: 5857.031250: C: -12802.800781: I: 25170.859375 
+    Magnitude: 28239.757812: Magnitude dB: 89.017220
+FFT Result: Frequency: 5900.097656: C: -12786.215820: I: 24949.562500 
+    Magnitude: 28035.121094: Magnitude dB: 88.954048
+FFT Result: Frequency: 5943.164062: C: -12776.079102: I: 24740.308594 
+    Magnitude: 27844.408203: Magnitude dB: 88.894760
+FFT Result: Frequency: 5986.230469: C: -12726.359375: I: 24524.544922 
+    Magnitude: 27629.939453: Magnitude dB: 88.827599
+FFT Result: Frequency: 6029.296875: C: -12706.169922: I: 24336.218750 
+    Magnitude: 27453.566406: Magnitude dB: 88.771973
+FFT Result: Frequency: 6072.363281: C: -12702.910156: I: 24138.373047 
+    Magnitude: 27276.822266: Magnitude dB: 88.715881
+FFT Result: Frequency: 6115.429688: C: -12668.171875: I: 23970.613281 
+    Magnitude: 27112.226562: Magnitude dB: 88.663300
+FFT Result: Frequency: 6158.496094: C: -12642.693359: I: 23742.542969 
+    Magnitude: 26898.810547: Magnitude dB: 88.594666
+FFT Result: Frequency: 6201.562500: C: -12633.299805: I: 23559.722656 
+    Magnitude: 26733.140625: Magnitude dB: 88.541000
+FFT Result: Frequency: 6244.628906: C: -12617.699219: I: 23384.607422 
+    Magnitude: 26571.529297: Magnitude dB: 88.488327
+FFT Result: Frequency: 6287.695312: C: -12610.357422: I: 23199.835938 
+    Magnitude: 26405.558594: Magnitude dB: 88.433907
+FFT Result: Frequency: 6330.761719: C: -12555.446289: I: 23014.761719 
+    Magnitude: 26216.759766: Magnitude dB: 88.371582
+FFT Result: Frequency: 6373.828125: C: -12535.425781: I: 22827.382812 
+    Magnitude: 26042.779297: Magnitude dB: 88.313751
+FFT Result: Frequency: 6416.894531: C: -12544.831055: I: 22662.175781 
+    Magnitude: 25902.644531: Magnitude dB: 88.266876
+FFT Result: Frequency: 6459.960938: C: -12534.889648: I: 22471.220703 
+    Magnitude: 25730.900391: Magnitude dB: 88.209106
+FFT Result: Frequency: 6503.027344: C: -12508.889648: I: 22313.779297 
+    Magnitude: 25580.794922: Magnitude dB: 88.158279
+FFT Result: Frequency: 6546.093750: C: -12501.689453: I: 22132.324219 
+    Magnitude: 25419.126953: Magnitude dB: 88.103210
+FFT Result: Frequency: 6589.160156: C: -12497.293945: I: 21975.017578 
+    Magnitude: 25280.105469: Magnitude dB: 88.055580
+FFT Result: Frequency: 6632.226562: C: -12463.326172: I: 21789.175781 
+    Magnitude: 25101.845703: Magnitude dB: 87.994118
+FFT Result: Frequency: 6675.292969: C: -12443.726562: I: 21643.996094 
+    Magnitude: 24966.154297: Magnitude dB: 87.947037
+FFT Result: Frequency: 6718.359375: C: -12412.548828: I: 21467.365234 
+    Magnitude: 24797.562500: Magnitude dB: 87.888184
+FFT Result: Frequency: 6761.425781: C: -12404.701172: I: 21319.578125 
+    Magnitude: 24665.787109: Magnitude dB: 87.841904
+FFT Result: Frequency: 6804.492188: C: -12388.408203: I: 21169.265625 
+    Magnitude: 24527.748047: Magnitude dB: 87.793152
+FFT Result: Frequency: 6847.558594: C: -12356.243164: I: 21004.074219 
+    Magnitude: 24368.994141: Magnitude dB: 87.736748
+FFT Result: Frequency: 6890.625000: C: -12348.744141: I: 20841.714844 
+    Magnitude: 24225.371094: Magnitude dB: 87.685410
+FFT Result: Frequency: 6933.691406: C: -12346.504883: I: 20703.958984 
+    Magnitude: 24105.810547: Magnitude dB: 87.642433
+FFT Result: Frequency: 6976.757812: C: -12325.626953: I: 20522.080078 
+    Magnitude: 23939.023438: Magnitude dB: 87.582130
+FFT Result: Frequency: 7019.824219: C: -12326.353516: I: 20372.261719 
+    Magnitude: 23811.089844: Magnitude dB: 87.535583
+FFT Result: Frequency: 7062.890625: C: -12306.386719: I: 20224.593750 
+    Magnitude: 23674.486328: Magnitude dB: 87.485611
+FFT Result: Frequency: 7105.957031: C: -12291.459961: I: 20089.443359 
+    Magnitude: 23551.341797: Magnitude dB: 87.440308
+FFT Result: Frequency: 7149.023438: C: -12273.547852: I: 19946.205078 
+    Magnitude: 23419.886719: Magnitude dB: 87.391701
+FFT Result: Frequency: 7192.089844: C: -12258.221680: I: 19811.062500 
+    Magnitude: 23296.828125: Magnitude dB: 87.345932
+FFT Result: Frequency: 7235.156250: C: -12229.647461: I: 19653.771484 
+    Magnitude: 23148.109375: Magnitude dB: 87.290306
+FFT Result: Frequency: 7278.222656: C: -12238.271484: I: 19517.191406 
+    Magnitude: 23036.841797: Magnitude dB: 87.248459
+FFT Result: Frequency: 7321.289062: C: -12208.417969: I: 19373.279297 
+    Magnitude: 22899.113281: Magnitude dB: 87.196365
+FFT Result: Frequency: 7364.355469: C: -12225.688477: I: 19233.400391 
+    Magnitude: 22790.154297: Magnitude dB: 87.154938
+FFT Result: Frequency: 7407.421875: C: -12207.340820: I: 19097.861328 
+    Magnitude: 22665.998047: Magnitude dB: 87.107498
+FFT Result: Frequency: 7450.488281: C: -12187.208008: I: 18970.873047 
+    Magnitude: 22548.216797: Magnitude dB: 87.062241
+FFT Result: Frequency: 7493.554688: C: -12187.212891: I: 18824.886719 
+    Magnitude: 22425.533203: Magnitude dB: 87.014854
+FFT Result: Frequency: 7536.621094: C: -12171.882812: I: 18693.751953 
+    Magnitude: 22307.197266: Magnitude dB: 86.968903
+FFT Result: Frequency: 7579.687500: C: -12155.036133: I: 18587.761719 
+    Magnitude: 22209.228516: Magnitude dB: 86.930664
+FFT Result: Frequency: 7622.753906: C: -12153.729492: I: 18446.884766 
+    Magnitude: 22090.738281: Magnitude dB: 86.884201
+FFT Result: Frequency: 7665.820312: C: -12113.204102: I: 18299.587891 
+    Magnitude: 21945.492188: Magnitude dB: 86.826904
+FFT Result: Frequency: 7708.886719: C: -12125.298828: I: 18213.929688 
+    Magnitude: 21880.816406: Magnitude dB: 86.801270
+FFT Result: Frequency: 7751.953125: C: -12123.088867: I: 18069.156250 
+    Magnitude: 21759.220703: Magnitude dB: 86.752861
+FFT Result: Frequency: 7795.019531: C: -12121.175781: I: 17918.894531 
+    Magnitude: 21633.531250: Magnitude dB: 86.702545
+FFT Result: Frequency: 7838.085938: C: -12109.734375: I: 17791.837891 
+    Magnitude: 21521.968750: Magnitude dB: 86.657639
+FFT Result: Frequency: 7881.152344: C: -12083.942383: I: 17696.599609 
+    Magnitude: 21428.750000: Magnitude dB: 86.619942
+FFT Result: Frequency: 7924.218750: C: -12078.211914: I: 17556.296875 
+    Magnitude: 21309.781250: Magnitude dB: 86.571579
+FFT Result: Frequency: 7967.285156: C: -12083.867188: I: 17434.669922 
+    Magnitude: 21212.910156: Magnitude dB: 86.531998
+FFT Result: Frequency: 8010.351562: C: -12044.092773: I: 17327.498047 
+    Magnitude: 21102.189453: Magnitude dB: 86.486549
+FFT Result: Frequency: 8053.417969: C: -12040.591797: I: 17212.355469 
+    Magnitude: 21005.738281: Magnitude dB: 86.446762
+FFT Result: Frequency: 8096.484375: C: -12054.825195: I: 17107.460938 
+    Magnitude: 20928.068359: Magnitude dB: 86.414581
+FFT Result: Frequency: 8139.550781: C: -12039.240234: I: 16988.353516 
+    Magnitude: 20821.802734: Magnitude dB: 86.370361
+FFT Result: Frequency: 8182.617188: C: -12018.786133: I: 16852.666016 
+    Magnitude: 20699.361328: Magnitude dB: 86.319138
+FFT Result: Frequency: 8225.683594: C: -12002.822266: I: 16764.091797 
+    Magnitude: 20618.013672: Magnitude dB: 86.284935
+FFT Result: Frequency: 8268.750000: C: -11996.006836: I: 16647.921875 
+    Magnitude: 20519.685547: Magnitude dB: 86.243408
+FFT Result: Frequency: 8311.816406: C: -12007.356445: I: 16553.078125 
+    Magnitude: 20449.474609: Magnitude dB: 86.213646
+FFT Result: Frequency: 8354.882812: C: -11985.621094: I: 16452.701172 
+    Magnitude: 20355.501953: Magnitude dB: 86.173637
+FFT Result: Frequency: 8397.949219: C: -11970.190430: I: 16324.914062 
+    Magnitude: 20243.228516: Magnitude dB: 86.125595
+FFT Result: Frequency: 8441.015625: C: -11976.688477: I: 16205.856445 
+    Magnitude: 20151.199219: Magnitude dB: 86.086014
+FFT Result: Frequency: 8484.082031: C: -11963.483398: I: 16101.694336 
+    Magnitude: 20059.648438: Magnitude dB: 86.046463
+FFT Result: Frequency: 8527.148438: C: -11951.873047: I: 15986.751953 
+    Magnitude: 19960.548828: Magnitude dB: 86.003448
+FFT Result: Frequency: 8570.214844: C: -11965.651367: I: 15886.315430 
+    Magnitude: 19888.484375: Magnitude dB: 85.972031
+FFT Result: Frequency: 8613.281250: C: -11934.401367: I: 15804.337891 
+    Magnitude: 19804.216797: Magnitude dB: 85.935150
+FFT Result: Frequency: 8656.347656: C: -11950.292969: I: 15676.690430 
+    Magnitude: 19712.130859: Magnitude dB: 85.894669
+FFT Result: Frequency: 8699.414062: C: -11931.989258: I: 15597.970703 
+    Magnitude: 19638.458984: Magnitude dB: 85.862152
+FFT Result: Frequency: 8742.480469: C: -11920.507812: I: 15479.523438 
+    Magnitude: 19537.505859: Magnitude dB: 85.817383
+FFT Result: Frequency: 8785.546875: C: -11925.835938: I: 15386.205078 
+    Magnitude: 19466.917969: Magnitude dB: 85.785942
+FFT Result: Frequency: 8828.613281: C: -11901.618164: I: 15288.184570 
+    Magnitude: 19374.650391: Magnitude dB: 85.744675
+FFT Result: Frequency: 8871.679688: C: -11895.130859: I: 15187.681641 
+    Magnitude: 19291.443359: Magnitude dB: 85.707291
+FFT Result: Frequency: 8914.746094: C: -11904.257812: I: 15109.578125 
+    Magnitude: 19235.662109: Magnitude dB: 85.682144
+FFT Result: Frequency: 8957.812500: C: -11861.748047: I: 14982.470703 
+    Magnitude: 19109.566406: Magnitude dB: 85.625015
+FFT Result: Frequency: 9000.878906: C: -11849.555664: I: 14894.033203 
+    Magnitude: 19032.712891: Magnitude dB: 85.590012
+FFT Result: Frequency: 9043.945312: C: -11876.025391: I: 14789.943359 
+    Magnitude: 18967.931641: Magnitude dB: 85.560394
+FFT Result: Frequency: 9087.011719: C: -11857.744141: I: 14707.871094 
+    Magnitude: 18892.527344: Magnitude dB: 85.525803
+FFT Result: Frequency: 9130.078125: C: -11840.289062: I: 14585.154297 
+    Magnitude: 18786.142578: Magnitude dB: 85.476753
+FFT Result: Frequency: 9173.144531: C: -11840.205078: I: 14519.150391 
+    Magnitude: 18734.892578: Magnitude dB: 85.453026
+FFT Result: Frequency: 9216.210938: C: -11827.587891: I: 14412.015625 
+    Magnitude: 18643.980469: Magnitude dB: 85.410774
+FFT Result: Frequency: 9259.277344: C: -11841.857422: I: 14345.634766 
+    Magnitude: 18601.796875: Magnitude dB: 85.391098
+FFT Result: Frequency: 9302.343750: C: -11828.326172: I: 14245.642578 
+    Magnitude: 18516.144531: Magnitude dB: 85.351013
+FFT Result: Frequency: 9345.410156: C: -11837.701172: I: 14148.796875 
+    Magnitude: 18447.753906: Magnitude dB: 85.318871
+FFT Result: Frequency: 9388.476562: C: -11836.170898: I: 14063.308594 
+    Magnitude: 18381.283203: Magnitude dB: 85.287514
+FFT Result: Frequency: 9431.542969: C: -11805.260742: I: 13975.286133 
+    Magnitude: 18294.064453: Magnitude dB: 85.246201
+FFT Result: Frequency: 9474.609375: C: -11838.757812: I: 13871.275391 
+    Magnitude: 18236.458984: Magnitude dB: 85.218811
+FFT Result: Frequency: 9517.675781: C: -11803.764648: I: 13796.548828 
+    Magnitude: 18156.916016: Magnitude dB: 85.180847
+FFT Result: Frequency: 9560.742188: C: -11779.947266: I: 13709.304688 
+    Magnitude: 18075.181641: Magnitude dB: 85.141647
+FFT Result: Frequency: 9603.808594: C: -11800.738281: I: 13635.452148 
+    Magnitude: 18032.830078: Magnitude dB: 85.121277
+FFT Result: Frequency: 9646.875000: C: -11789.475586: I: 13541.720703 
+    Magnitude: 17954.664062: Magnitude dB: 85.083542
+FFT Result: Frequency: 9689.941406: C: -11798.857422: I: 13447.308594 
+    Magnitude: 17889.750000: Magnitude dB: 85.052094
+FFT Result: Frequency: 9733.007812: C: -11790.111328: I: 13384.820312 
+    Magnitude: 17837.044922: Magnitude dB: 85.026459
+FFT Result: Frequency: 9776.074219: C: -11775.031250: I: 13282.169922 
+    Magnitude: 17750.138672: Magnitude dB: 84.984039
+FFT Result: Frequency: 9819.140625: C: -11779.446289: I: 13213.702148 
+    Magnitude: 17701.900391: Magnitude dB: 84.960396
+FFT Result: Frequency: 9862.207031: C: -11793.771484: I: 13137.488281 
+    Magnitude: 17654.648438: Magnitude dB: 84.937180
+FFT Result: Frequency: 9905.273438: C: -11757.677734: I: 13049.216797 
+    Magnitude: 17564.880859: Magnitude dB: 84.892899
+FFT Result: Frequency: 9948.339844: C: -11766.758789: I: 12979.750977 
+    Magnitude: 17519.433594: Magnitude dB: 84.870407
+FFT Result: Frequency: 9991.406250: C: -11761.207031: I: 12869.766602 
+    Magnitude: 17434.359375: Magnitude dB: 84.828117
+FFT Result: Frequency: 10034.472656: C: -11747.352539: I: 12790.757812 
+    Magnitude: 17366.744141: Magnitude dB: 84.794373
+FFT Result: Frequency: 10077.539062: C: -11728.751953: I: 12737.576172 
+    Magnitude: 17315.007812: Magnitude dB: 84.768456
+FFT Result: Frequency: 10120.605469: C: -11714.877930: I: 12676.686523 
+    Magnitude: 17260.843750: Magnitude dB: 84.741241
+FFT Result: Frequency: 10163.671875: C: -11737.212891: I: 12553.214844 
+    Magnitude: 17185.615234: Magnitude dB: 84.703300
+FFT Result: Frequency: 10206.738281: C: -11743.991211: I: 12497.057617 
+    Magnitude: 17149.279297: Magnitude dB: 84.684914
+FFT Result: Frequency: 10249.804688: C: -11721.157227: I: 12411.512695 
+    Magnitude: 17071.355469: Magnitude dB: 84.645355
+FFT Result: Frequency: 10292.871094: C: -11702.720703: I: 12331.302734 
+    Magnitude: 17000.431641: Magnitude dB: 84.609207
+FFT Result: Frequency: 10335.937500: C: -11711.709961: I: 12267.656250 
+    Magnitude: 16960.529297: Magnitude dB: 84.588783
+FFT Result: Frequency: 10379.003906: C: -11698.183594: I: 12170.190430 
+    Magnitude: 16880.789062: Magnitude dB: 84.547852
+FFT Result: Frequency: 10422.070312: C: -11691.675781: I: 12143.625977 
+    Magnitude: 16857.132812: Magnitude dB: 84.535675
+FFT Result: Frequency: 10465.136719: C: -11699.122070: I: 12022.427734 
+    Magnitude: 16775.226562: Magnitude dB: 84.493370
+FFT Result: Frequency: 10508.203125: C: -11712.836914: I: 11966.790039 
+    Magnitude: 16744.988281: Magnitude dB: 84.477699
+FFT Result: Frequency: 10551.269531: C: -11698.254883: I: 11889.962891 
+    Magnitude: 16679.939453: Magnitude dB: 84.443893
+FFT Result: Frequency: 10594.335938: C: -11669.752930: I: 11826.447266 
+    Magnitude: 16614.691406: Magnitude dB: 84.409851
+FFT Result: Frequency: 10637.402344: C: -11694.587891: I: 11740.394531 
+    Magnitude: 16571.066406: Magnitude dB: 84.387009
+FFT Result: Frequency: 10680.468750: C: -11685.902344: I: 11683.439453 
+    Magnitude: 16524.621094: Magnitude dB: 84.362633
+FFT Result: Frequency: 10723.535156: C: -11666.494141: I: 11577.978516 
+    Magnitude: 16436.443359: Magnitude dB: 84.316162
+FFT Result: Frequency: 10766.601562: C: -11692.613281: I: 11539.126953 
+    Magnitude: 16427.679688: Magnitude dB: 84.311523
+FFT Result: Frequency: 10809.667969: C: -11673.077148: I: 11463.856445 
+    Magnitude: 16360.951172: Magnitude dB: 84.276169
+FFT Result: Frequency: 10852.734375: C: -11696.283203: I: 11387.016602 
+    Magnitude: 16323.822266: Magnitude dB: 84.256439
+FFT Result: Frequency: 10895.800781: C: -11662.778320: I: 11340.544922 
+    Magnitude: 16267.401367: Magnitude dB: 84.226364
+FFT Result: Frequency: 10938.867188: C: -11636.133789: I: 11268.576172 
+    Magnitude: 16198.161133: Magnitude dB: 84.189308
+FFT Result: Frequency: 10981.933594: C: -11656.732422: I: 11191.184570 
+    Magnitude: 16159.270508: Magnitude dB: 84.168434
+FFT Result: Frequency: 11025.000000: C: -11659.000000: I: 11109.000000 
+    Magnitude: 16104.103516: Magnitude dB: 84.138725
+FFT Result: Frequency: 11068.066406: C: -11641.060547: I: 11049.192383 
+    Magnitude: 16049.889648: Magnitude dB: 84.109436
+FFT Result: Frequency: 11111.132812: C: -11634.944336: I: 10979.470703 
+    Magnitude: 15997.521484: Magnitude dB: 84.081055
+FFT Result: Frequency: 11154.199219: C: -11632.319336: I: 10899.400391 
+    Magnitude: 15940.758789: Magnitude dB: 84.050179
+FFT Result: Frequency: 11197.265625: C: -11652.638672: I: 10854.586914 
+    Magnitude: 15925.013672: Magnitude dB: 84.041595
+FFT Result: Frequency: 11240.332031: C: -11634.086914: I: 10771.836914 
+    Magnitude: 15855.108398: Magnitude dB: 84.003380
+FFT Result: Frequency: 11283.398438: C: -11625.480469: I: 10721.994141 
+    Magnitude: 15814.959961: Magnitude dB: 83.981361
+FFT Result: Frequency: 11326.464844: C: -11664.263672: I: 10639.666016 
+    Magnitude: 15787.892578: Magnitude dB: 83.966484
+FFT Result: Frequency: 11369.531250: C: -11615.699219: I: 10573.496094 
+    Magnitude: 15707.427734: Magnitude dB: 83.922104
+FFT Result: Frequency: 11412.597656: C: -11623.685547: I: 10504.623047 
+    Magnitude: 15667.073242: Magnitude dB: 83.899757
+FFT Result: Frequency: 11455.664062: C: -11619.403320: I: 10448.416016 
+    Magnitude: 15626.257812: Magnitude dB: 83.877098
+FFT Result: Frequency: 11498.730469: C: -11629.706055: I: 10365.275391 
+    Magnitude: 15578.478516: Magnitude dB: 83.850494
+FFT Result: Frequency: 11541.796875: C: -11607.803711: I: 10310.629883 
+    Magnitude: 15525.791016: Magnitude dB: 83.821075
+FFT Result: Frequency: 11584.863281: C: -11623.393555: I: 10251.990234 
+    Magnitude: 15498.599609: Magnitude dB: 83.805847
+FFT Result: Frequency: 11627.929688: C: -11611.210938: I: 10187.266602 
+    Magnitude: 15446.702148: Magnitude dB: 83.776711
+FFT Result: Frequency: 11670.996094: C: -11587.617188: I: 10142.920898 
+    Magnitude: 15399.731445: Magnitude dB: 83.750267
+FFT Result: Frequency: 11714.062500: C: -11596.735352: I: 10064.445312 
+    Magnitude: 15355.042969: Magnitude dB: 83.725021
+FFT Result: Frequency: 11757.128906: C: -11601.294922: I: 10010.054688 
+    Magnitude: 15322.899414: Magnitude dB: 83.706818
+FFT Result: Frequency: 11800.195312: C: -11592.541992: I: 9947.881836 
+    Magnitude: 15275.711914: Magnitude dB: 83.680031
+FFT Result: Frequency: 11843.261719: C: -11601.852539: I: 9876.858398 
+    Magnitude: 15236.643555: Magnitude dB: 83.657791
+FFT Result: Frequency: 11886.328125: C: -11580.986328: I: 9813.621094 
+    Magnitude: 15179.802734: Magnitude dB: 83.625328
+FFT Result: Frequency: 11929.394531: C: -11593.641602: I: 9750.581055 
+    Magnitude: 15148.806641: Magnitude dB: 83.607567
+FFT Result: Frequency: 11972.460938: C: -11588.285156: I: 9696.978516 
+    Magnitude: 15110.252930: Magnitude dB: 83.585434
+FFT Result: Frequency: 12015.527344: C: -11581.631836: I: 9628.123047 
+    Magnitude: 15061.041016: Magnitude dB: 83.557098
+FFT Result: Frequency: 12058.593750: C: -11584.308594: I: 9588.764648 
+    Magnitude: 15037.972656: Magnitude dB: 83.543785
+FFT Result: Frequency: 12101.660156: C: -11568.762695: I: 9534.874023 
+    Magnitude: 14991.666992: Magnitude dB: 83.516998
+FFT Result: Frequency: 12144.726562: C: -11566.654297: I: 9444.480469 
+    Magnitude: 14932.706055: Magnitude dB: 83.482773
+FFT Result: Frequency: 12187.792969: C: -11567.222656: I: 9404.433594 
+    Magnitude: 14907.850586: Magnitude dB: 83.468307
+FFT Result: Frequency: 12230.859375: C: -11549.190430: I: 9334.049805 
+    Magnitude: 14849.521484: Magnitude dB: 83.434250
+FFT Result: Frequency: 12273.925781: C: -11556.580078: I: 9301.578125 
+    Magnitude: 14834.887695: Magnitude dB: 83.425682
+FFT Result: Frequency: 12316.992188: C: -11555.599609: I: 9227.230469 
+    Magnitude: 14787.618164: Magnitude dB: 83.397964
+FFT Result: Frequency: 12360.058594: C: -11579.847656: I: 9162.324219 
+    Magnitude: 14766.212891: Magnitude dB: 83.385384
+FFT Result: Frequency: 12403.125000: C: -11553.907227: I: 9106.828125 
+    Magnitude: 14711.460938: Magnitude dB: 83.353119
+FFT Result: Frequency: 12446.191406: C: -11547.753906: I: 9060.848633 
+    Magnitude: 14678.201172: Magnitude dB: 83.333450
+FFT Result: Frequency: 12489.257812: C: -11567.757812: I: 8991.519531 
+    Magnitude: 14651.294922: Magnitude dB: 83.317520
+FFT Result: Frequency: 12532.324219: C: -11557.545898: I: 8935.914062 
+    Magnitude: 14609.155273: Magnitude dB: 83.292503
+FFT Result: Frequency: 12575.390625: C: -11531.128906: I: 8895.734375 
+    Magnitude: 14563.688477: Magnitude dB: 83.265427
+FFT Result: Frequency: 12618.457031: C: -11544.709961: I: 8847.409180 
+    Magnitude: 14544.998047: Magnitude dB: 83.254272
+FFT Result: Frequency: 12661.523438: C: -11535.829102: I: 8775.318359 
+    Magnitude: 14494.190430: Magnitude dB: 83.223877
+FFT Result: Frequency: 12704.589844: C: -11556.103516: I: 8736.927734 
+    Magnitude: 14487.147461: Magnitude dB: 83.219666
+FFT Result: Frequency: 12747.656250: C: -11544.353516: I: 8664.269531 
+    Magnitude: 14434.044922: Magnitude dB: 83.187759
+FFT Result: Frequency: 12790.722656: C: -11538.861328: I: 8628.574219 
+    Magnitude: 14408.248047: Magnitude dB: 83.172226
+FFT Result: Frequency: 12833.789062: C: -11535.705078: I: 8558.111328 
+    Magnitude: 14363.625977: Magnitude dB: 83.145287
+FFT Result: Frequency: 12876.855469: C: -11554.650391: I: 8497.880859 
+    Magnitude: 14343.079102: Magnitude dB: 83.132851
+FFT Result: Frequency: 12919.921875: C: -11520.894531: I: 8446.044922 
+    Magnitude: 14285.191406: Magnitude dB: 83.097725
+FFT Result: Frequency: 12962.988281: C: -11532.392578: I: 8385.439453 
+    Magnitude: 14258.740234: Magnitude dB: 83.081627
+FFT Result: Frequency: 13006.054688: C: -11515.517578: I: 8354.046875 
+    Magnitude: 14226.638672: Magnitude dB: 83.062050
+FFT Result: Frequency: 13049.121094: C: -11518.581055: I: 8284.001953 
+    Magnitude: 14188.107422: Magnitude dB: 83.038490
+FFT Result: Frequency: 13092.187500: C: -11547.830078: I: 8233.509766 
+    Magnitude: 14182.491211: Magnitude dB: 83.035049
+FFT Result: Frequency: 13135.253906: C: -11516.546875: I: 8172.104004 
+    Magnitude: 14121.407227: Magnitude dB: 82.997559
+FFT Result: Frequency: 13178.320312: C: -11512.419922: I: 8127.695312 
+    Magnitude: 14092.382812: Magnitude dB: 82.979691
+FFT Result: Frequency: 13221.386719: C: -11525.782227: I: 8073.762695 
+    Magnitude: 14072.288086: Magnitude dB: 82.967293
+FFT Result: Frequency: 13264.453125: C: -11534.109375: I: 8026.346191 
+    Magnitude: 14051.971680: Magnitude dB: 82.954750
+FFT Result: Frequency: 13307.519531: C: -11509.542969: I: 7977.716797 
+    Magnitude: 14004.054688: Magnitude dB: 82.925072
+FFT Result: Frequency: 13350.585938: C: -11513.315430: I: 7918.597168 
+    Magnitude: 13973.568359: Magnitude dB: 82.906151
+FFT Result: Frequency: 13393.652344: C: -11503.802734: I: 7863.811523 
+    Magnitude: 13934.741211: Magnitude dB: 82.881973
+FFT Result: Frequency: 13436.718750: C: -11519.176758: I: 7854.706543 
+    Magnitude: 13942.304688: Magnitude dB: 82.886696
+FFT Result: Frequency: 13479.785156: C: -11520.594727: I: 7776.663086 
+    Magnitude: 13899.661133: Magnitude dB: 82.860092
+FFT Result: Frequency: 13522.851562: C: -11501.353516: I: 7717.743652 
+    Magnitude: 13850.801758: Magnitude dB: 82.829498
+FFT Result: Frequency: 13565.917969: C: -11496.668945: I: 7666.057617 
+    Magnitude: 13818.170898: Magnitude dB: 82.809006
+FFT Result: Frequency: 13608.984375: C: -11488.358398: I: 7611.702148 
+    Magnitude: 13781.160156: Magnitude dB: 82.785721
+FFT Result: Frequency: 13652.050781: C: -11503.905273: I: 7574.102051 
+    Magnitude: 13773.411133: Magnitude dB: 82.780830
+FFT Result: Frequency: 13695.117188: C: -11507.339844: I: 7523.333496 
+    Magnitude: 13748.433594: Magnitude dB: 82.765060
+FFT Result: Frequency: 13738.183594: C: -11484.610352: I: 7477.073242 
+    Magnitude: 13704.120117: Magnitude dB: 82.737030
+FFT Result: Frequency: 13781.250000: C: -11489.112305: I: 7418.410156 
+    Magnitude: 13675.983398: Magnitude dB: 82.719177
+FFT Result: Frequency: 13824.316406: C: -11506.119141: I: 7342.417480 
+    Magnitude: 13649.244141: Magnitude dB: 82.702171
+FFT Result: Frequency: 13867.382812: C: -11505.846680: I: 7340.935059 
+    Magnitude: 13648.217773: Magnitude dB: 82.701523
+FFT Result: Frequency: 13910.449219: C: -11518.283203: I: 7268.369141 
+    Magnitude: 13619.839844: Magnitude dB: 82.683441
+FFT Result: Frequency: 13953.515625: C: -11500.791992: I: 7232.069336 
+    Magnitude: 13585.692383: Magnitude dB: 82.661636
+FFT Result: Frequency: 13996.582031: C: -11497.003906: I: 7169.421875 
+    Magnitude: 13549.232422: Magnitude dB: 82.638290
+FFT Result: Frequency: 14039.648438: C: -11487.288086: I: 7106.541504 
+    Magnitude: 13507.801758: Magnitude dB: 82.611694
+FFT Result: Frequency: 14082.714844: C: -11479.941406: I: 7094.819824 
+    Magnitude: 13495.388672: Magnitude dB: 82.603714
+FFT Result: Frequency: 14125.781250: C: -11481.002930: I: 7023.950195 
+    Magnitude: 13459.171875: Magnitude dB: 82.580368
+FFT Result: Frequency: 14168.847656: C: -11472.473633: I: 6963.907715 
+    Magnitude: 13420.643555: Magnitude dB: 82.555466
+FFT Result: Frequency: 14211.914062: C: -11488.375000: I: 6928.794922 
+    Magnitude: 13416.071289: Magnitude dB: 82.552505
+FFT Result: Frequency: 14254.980469: C: -11476.406250: I: 6899.926758 
+    Magnitude: 13390.925781: Magnitude dB: 82.536209
+FFT Result: Frequency: 14298.046875: C: -11474.920898: I: 6835.393555 
+    Magnitude: 13356.511719: Magnitude dB: 82.513855
+FFT Result: Frequency: 14341.113281: C: -11480.369141: I: 6787.212891 
+    Magnitude: 13336.608398: Magnitude dB: 82.500908
+FFT Result: Frequency: 14384.179688: C: -11488.409180: I: 6753.530762 
+    Magnitude: 13326.429688: Magnitude dB: 82.494278
+FFT Result: Frequency: 14427.246094: C: -11480.870117: I: 6700.946777 
+    Magnitude: 13293.346680: Magnitude dB: 82.472687
+FFT Result: Frequency: 14470.312500: C: -11465.305664: I: 6640.497070 
+    Magnitude: 13249.506836: Magnitude dB: 82.443993
+FFT Result: Frequency: 14513.378906: C: -11458.494141: I: 6617.489746 
+    Magnitude: 13232.091797: Magnitude dB: 82.432564
+FFT Result: Frequency: 14556.445312: C: -11463.117188: I: 6562.343750 
+    Magnitude: 13208.611328: Magnitude dB: 82.417145
+FFT Result: Frequency: 14599.511719: C: -11464.807617: I: 6524.579590 
+    Magnitude: 13191.359375: Magnitude dB: 82.405792
+FFT Result: Frequency: 14642.578125: C: -11456.969727: I: 6482.899902 
+    Magnitude: 13163.971680: Magnitude dB: 82.387741
+FFT Result: Frequency: 14685.644531: C: -11457.245117: I: 6401.787598 
+    Magnitude: 13124.456055: Magnitude dB: 82.361618
+FFT Result: Frequency: 14728.710938: C: -11455.664062: I: 6380.814453 
+    Magnitude: 13112.857422: Magnitude dB: 82.353943
+FFT Result: Frequency: 14771.777344: C: -11469.310547: I: 6341.008789 
+    Magnitude: 13105.474609: Magnitude dB: 82.349052
+FFT Result: Frequency: 14814.843750: C: -11470.415039: I: 6284.193359 
+    Magnitude: 13079.048828: Magnitude dB: 82.331528
+FFT Result: Frequency: 14857.910156: C: -11472.913086: I: 6240.083008 
+    Magnitude: 13060.106445: Magnitude dB: 82.318939
+FFT Result: Frequency: 14900.976562: C: -11467.217773: I: 6194.898438 
+    Magnitude: 13033.566406: Magnitude dB: 82.301262
+FFT Result: Frequency: 14944.042969: C: -11457.254883: I: 6169.510254 
+    Magnitude: 13012.745117: Magnitude dB: 82.287376
+FFT Result: Frequency: 14987.109375: C: -11459.031250: I: 6124.096680 
+    Magnitude: 12992.842773: Magnitude dB: 82.274086
+FFT Result: Frequency: 15030.175781: C: -11469.904297: I: 6063.713867 
+    Magnitude: 12974.102539: Magnitude dB: 82.261543
+FFT Result: Frequency: 15073.242188: C: -11446.990234: I: 6024.080078 
+    Magnitude: 12935.343750: Magnitude dB: 82.235558
+FFT Result: Frequency: 15116.308594: C: -11454.815430: I: 5977.961426 
+    Magnitude: 12920.867188: Magnitude dB: 82.225838
+FFT Result: Frequency: 15159.375000: C: -11453.173828: I: 5935.789551 
+    Magnitude: 12899.953125: Magnitude dB: 82.211761
+FFT Result: Frequency: 15202.441406: C: -11447.301758: I: 5891.520020 
+    Magnitude: 12874.420898: Magnitude dB: 82.194557
+FFT Result: Frequency: 15245.507812: C: -11443.222656: I: 5844.975586 
+    Magnitude: 12849.555664: Magnitude dB: 82.177765
+FFT Result: Frequency: 15288.574219: C: -11454.146484: I: 5800.140137 
+    Magnitude: 12838.967773: Magnitude dB: 82.170601
+FFT Result: Frequency: 15331.640625: C: -11455.951172: I: 5772.671387 
+    Magnitude: 12828.193359: Magnitude dB: 82.163315
+FFT Result: Frequency: 15374.707031: C: -11449.447266: I: 5702.379395 
+    Magnitude: 12790.894531: Magnitude dB: 82.138023
+FFT Result: Frequency: 15417.773438: C: -11451.228516: I: 5666.310547 
+    Magnitude: 12776.451172: Magnitude dB: 82.128204
+FFT Result: Frequency: 15460.839844: C: -11444.166992: I: 5615.109863 
+    Magnitude: 12747.486328: Magnitude dB: 82.108490
+FFT Result: Frequency: 15503.906250: C: -11421.722656: I: 5578.252930 
+    Magnitude: 12711.123047: Magnitude dB: 82.083679
+FFT Result: Frequency: 15546.972656: C: -11428.182617: I: 5552.162109 
+    Magnitude: 12705.504883: Magnitude dB: 82.079842
+FFT Result: Frequency: 15590.039062: C: -11458.442383: I: 5506.644531 
+    Magnitude: 12712.947266: Magnitude dB: 82.084923
+FFT Result: Frequency: 15633.105469: C: -11438.887695: I: 5451.027344 
+    Magnitude: 12671.299805: Magnitude dB: 82.056427
+FFT Result: Frequency: 15676.171875: C: -11444.410156: I: 5426.519531 
+    Magnitude: 12665.766602: Magnitude dB: 82.052628
+FFT Result: Frequency: 15719.238281: C: -11435.823242: I: 5371.768555 
+    Magnitude: 12634.632812: Magnitude dB: 82.031250
+FFT Result: Frequency: 15762.304688: C: -11432.982422: I: 5329.003906 
+    Magnitude: 12613.935547: Magnitude dB: 82.017014
+FFT Result: Frequency: 15805.371094: C: -11423.921875: I: 5300.724609 
+    Magnitude: 12593.794922: Magnitude dB: 82.003136
+FFT Result: Frequency: 15848.437500: C: -11404.594727: I: 5246.051758 
+    Magnitude: 12553.320312: Magnitude dB: 81.975174
+FFT Result: Frequency: 15891.503906: C: -11444.501953: I: 5201.473633 
+    Magnitude: 12571.076172: Magnitude dB: 81.987450
+FFT Result: Frequency: 15934.570312: C: -11411.035156: I: 5197.641602 
+    Magnitude: 12539.027344: Magnitude dB: 81.965271
+FFT Result: Frequency: 15977.636719: C: -11415.304688: I: 5128.384766 
+    Magnitude: 12514.372070: Magnitude dB: 81.948181
+FFT Result: Frequency: 16020.703125: C: -11433.607422: I: 5083.809570 
+    Magnitude: 12512.893555: Magnitude dB: 81.947159
+FFT Result: Frequency: 16063.769531: C: -11415.675781: I: 5034.515625 
+    Magnitude: 12476.538086: Magnitude dB: 81.921883
+FFT Result: Frequency: 16106.835938: C: -11423.518555: I: 5008.250977 
+    Magnitude: 12473.145508: Magnitude dB: 81.919518
+FFT Result: Frequency: 16149.902344: C: -11427.831055: I: 4946.845703 
+    Magnitude: 12452.574219: Magnitude dB: 81.905182
+FFT Result: Frequency: 16192.968750: C: -11425.167969: I: 4918.071289 
+    Magnitude: 12438.725586: Magnitude dB: 81.895515
+FFT Result: Frequency: 16236.035156: C: -11435.126953: I: 4868.613281 
+    Magnitude: 12428.416016: Magnitude dB: 81.888313
+FFT Result: Frequency: 16279.101562: C: -11424.550781: I: 4832.701172 
+    Magnitude: 12404.650391: Magnitude dB: 81.871689
+FFT Result: Frequency: 16322.167969: C: -11425.530273: I: 4815.416992 
+    Magnitude: 12398.830078: Magnitude dB: 81.867615
+FFT Result: Frequency: 16365.234375: C: -11426.374023: I: 4751.783203 
+    Magnitude: 12375.034180: Magnitude dB: 81.850929
+FFT Result: Frequency: 16408.300781: C: -11429.540039: I: 4736.947266 
+    Magnitude: 12372.269531: Magnitude dB: 81.848984
+FFT Result: Frequency: 16451.367188: C: -11439.003906: I: 4692.483398 
+    Magnitude: 12364.069336: Magnitude dB: 81.843231
+FFT Result: Frequency: 16494.433594: C: -11418.243164: I: 4639.004883 
+    Magnitude: 12324.635742: Magnitude dB: 81.815483
+FFT Result: Frequency: 16537.500000: C: -11421.673828: I: 4611.257812 
+    Magnitude: 12317.399414: Magnitude dB: 81.810379
+FFT Result: Frequency: 16580.566406: C: -11424.618164: I: 4561.023438 
+    Magnitude: 12301.416016: Magnitude dB: 81.799103
+FFT Result: Frequency: 16623.632812: C: -11406.242188: I: 4512.147461 
+    Magnitude: 12266.289062: Magnitude dB: 81.774261
+FFT Result: Frequency: 16666.699219: C: -11429.559570: I: 4477.747070 
+    Magnitude: 12275.383789: Magnitude dB: 81.780701
+FFT Result: Frequency: 16709.765625: C: -11427.483398: I: 4449.870117 
+    Magnitude: 12263.307617: Magnitude dB: 81.772156
+FFT Result: Frequency: 16752.832031: C: -11395.715820: I: 4401.311523 
+    Magnitude: 12216.131836: Magnitude dB: 81.738670
+FFT Result: Frequency: 16795.898438: C: -11416.443359: I: 4376.523438 
+    Magnitude: 12226.575195: Magnitude dB: 81.746101
+FFT Result: Frequency: 16838.964844: C: -11410.803711: I: 4321.392578 
+    Magnitude: 12201.674805: Magnitude dB: 81.728394
+FFT Result: Frequency: 16882.031250: C: -11419.125977: I: 4278.629883 
+    Magnitude: 12194.388672: Magnitude dB: 81.723206
+FFT Result: Frequency: 16925.097656: C: -11407.659180: I: 4245.990234 
+    Magnitude: 12172.227539: Magnitude dB: 81.707397
+FFT Result: Frequency: 16968.164062: C: -11407.752930: I: 4217.273438 
+    Magnitude: 12162.328125: Magnitude dB: 81.700333
+FFT Result: Frequency: 17011.230469: C: -11408.404297: I: 4166.456055 
+    Magnitude: 12145.412109: Magnitude dB: 81.688240
+FFT Result: Frequency: 17054.296875: C: -11405.074219: I: 4116.089844 
+    Magnitude: 12125.094727: Magnitude dB: 81.673698
+FFT Result: Frequency: 17097.363281: C: -11414.564453: I: 4085.845703 
+    Magnitude: 12123.795898: Magnitude dB: 81.672775
+FFT Result: Frequency: 17140.429688: C: -11414.041016: I: 4053.527344 
+    Magnitude: 12112.449219: Magnitude dB: 81.664642
+FFT Result: Frequency: 17183.496094: C: -11418.945312: I: 4015.357422 
+    Magnitude: 12104.354492: Magnitude dB: 81.658829
+FFT Result: Frequency: 17226.562500: C: -11395.226562: I: 3964.654297 
+    Magnitude: 12065.225586: Magnitude dB: 81.630707
+FFT Result: Frequency: 17269.628906: C: -11404.017578: I: 3945.222656 
+    Magnitude: 12067.162109: Magnitude dB: 81.632095
+FFT Result: Frequency: 17312.695312: C: -11398.128906: I: 3893.076172 
+    Magnitude: 12044.641602: Magnitude dB: 81.615875
+FFT Result: Frequency: 17355.761719: C: -11398.288086: I: 3876.867188 
+    Magnitude: 12039.562500: Magnitude dB: 81.612213
+FFT Result: Frequency: 17398.828125: C: -11406.357422: I: 3828.320312 
+    Magnitude: 12031.667969: Magnitude dB: 81.606522
+FFT Result: Frequency: 17441.894531: C: -11401.833984: I: 3776.132812 
+    Magnitude: 12010.870117: Magnitude dB: 81.591492
+FFT Result: Frequency: 17484.960938: C: -11392.681641: I: 3741.597656 
+    Magnitude: 11991.361328: Magnitude dB: 81.577370
+FFT Result: Frequency: 17528.027344: C: -11409.484375: I: 3698.881836 
+    Magnitude: 11994.083984: Magnitude dB: 81.579346
+FFT Result: Frequency: 17571.093750: C: -11401.240234: I: 3666.888672 
+    Magnitude: 11976.408203: Magnitude dB: 81.566536
+FFT Result: Frequency: 17614.160156: C: -11400.382812: I: 3640.351562 
+    Magnitude: 11967.493164: Magnitude dB: 81.560066
+FFT Result: Frequency: 17657.226562: C: -11395.509766: I: 3584.349609 
+    Magnitude: 11945.928711: Magnitude dB: 81.544403
+FFT Result: Frequency: 17700.292969: C: -11418.968750: I: 3555.329102 
+    Magnitude: 11959.649414: Magnitude dB: 81.554367
+FFT Result: Frequency: 17743.359375: C: -11395.436523: I: 3513.072266 
+    Magnitude: 11924.666016: Magnitude dB: 81.528923
+FFT Result: Frequency: 17786.425781: C: -11410.314453: I: 3490.366211 
+    Magnitude: 11932.222656: Magnitude dB: 81.534424
+FFT Result: Frequency: 17829.492188: C: -11392.034180: I: 3444.589844 
+    Magnitude: 11901.413086: Magnitude dB: 81.511978
+FFT Result: Frequency: 17872.558594: C: -11392.029297: I: 3398.636719 
+    Magnitude: 11888.190430: Magnitude dB: 81.502312
+FFT Result: Frequency: 17915.625000: C: -11419.276367: I: 3363.683594 
+    Magnitude: 11904.378906: Magnitude dB: 81.514137
+FFT Result: Frequency: 17958.691406: C: -11394.921875: I: 3351.062500 
+    Magnitude: 11877.452148: Magnitude dB: 81.494461
+FFT Result: Frequency: 18001.757812: C: -11378.998047: I: 3287.820312 
+    Magnitude: 11844.464844: Magnitude dB: 81.470306
+FFT Result: Frequency: 18044.824219: C: -11399.179688: I: 3247.050781 
+    Magnitude: 11852.621094: Magnitude dB: 81.476288
+FFT Result: Frequency: 18087.890625: C: -11386.895508: I: 3219.404297 
+    Magnitude: 11833.255859: Magnitude dB: 81.462090
+FFT Result: Frequency: 18130.957031: C: -11407.629883: I: 3186.220703 
+    Magnitude: 11844.240234: Magnitude dB: 81.470146
+FFT Result: Frequency: 18174.023438: C: -11394.256836: I: 3151.591797 
+    Magnitude: 11822.082031: Magnitude dB: 81.453873
+FFT Result: Frequency: 18217.089844: C: -11390.078125: I: 3085.361328 
+    Magnitude: 11800.565430: Magnitude dB: 81.438057
+FFT Result: Frequency: 18260.156250: C: -11405.773438: I: 3080.355469 
+    Magnitude: 11814.409180: Magnitude dB: 81.448242
+FFT Result: Frequency: 18303.222656: C: -11391.428711: I: 3023.685547 
+    Magnitude: 11785.895508: Magnitude dB: 81.427246
+FFT Result: Frequency: 18346.289062: C: -11395.211914: I: 2989.906250 
+    Magnitude: 11780.933594: Magnitude dB: 81.423599
+FFT Result: Frequency: 18389.355469: C: -11399.642578: I: 2958.251953 
+    Magnitude: 11777.228516: Magnitude dB: 81.420860
+FFT Result: Frequency: 18432.421875: C: -11395.506836: I: 2933.015625 
+    Magnitude: 11766.909180: Magnitude dB: 81.413254
+FFT Result: Frequency: 18475.488281: C: -11383.721680: I: 2892.000000 
+    Magnitude: 11745.330078: Magnitude dB: 81.397308
+FFT Result: Frequency: 18518.554688: C: -11374.714844: I: 2849.585938 
+    Magnitude: 11726.221680: Magnitude dB: 81.383163
+FFT Result: Frequency: 18561.621094: C: -11400.287109: I: 2821.199219 
+    Magnitude: 11744.177734: Magnitude dB: 81.396454
+FFT Result: Frequency: 18604.687500: C: -11398.208008: I: 2783.419922 
+    Magnitude: 11733.139648: Magnitude dB: 81.388283
+FFT Result: Frequency: 18647.753906: C: -11412.103516: I: 2742.175781 
+    Magnitude: 11736.934570: Magnitude dB: 81.391098
+FFT Result: Frequency: 18690.820312: C: -11396.902344: I: 2711.013672 
+    Magnitude: 11714.904297: Magnitude dB: 81.374779
+FFT Result: Frequency: 18733.886719: C: -11369.477539: I: 2687.431641 
+    Magnitude: 11682.778320: Magnitude dB: 81.350929
+FFT Result: Frequency: 18776.953125: C: -11390.709961: I: 2642.615234 
+    Magnitude: 11693.232422: Magnitude dB: 81.358688
+FFT Result: Frequency: 18820.019531: C: -11381.225586: I: 2591.400391 
+    Magnitude: 11672.516602: Magnitude dB: 81.343292
+FFT Result: Frequency: 18863.085938: C: -11376.713867: I: 2560.916016 
+    Magnitude: 11661.385742: Magnitude dB: 81.334999
+FFT Result: Frequency: 18906.152344: C: -11390.540039: I: 2528.164062 
+    Magnitude: 11667.734375: Magnitude dB: 81.339729
+FFT Result: Frequency: 18949.218750: C: -11382.945312: I: 2497.865234 
+    Magnitude: 11653.788086: Magnitude dB: 81.329346
+FFT Result: Frequency: 18992.285156: C: -11378.556641: I: 2444.453125 
+    Magnitude: 11638.166016: Magnitude dB: 81.317688
+FFT Result: Frequency: 19035.351562: C: -11364.407227: I: 2460.712891 
+    Magnitude: 11627.762695: Magnitude dB: 81.309921
+FFT Result: Frequency: 19078.417969: C: -11381.959961: I: 2386.324219 
+    Magnitude: 11629.426758: Magnitude dB: 81.311172
+FFT Result: Frequency: 19121.484375: C: -11376.914062: I: 2339.101562 
+    Magnitude: 11614.885742: Magnitude dB: 81.300293
+FFT Result: Frequency: 19164.550781: C: -11390.192383: I: 2317.261719 
+    Magnitude: 11623.518555: Magnitude dB: 81.306755
+FFT Result: Frequency: 19207.617188: C: -11404.178711: I: 2287.476562 
+    Magnitude: 11631.330078: Magnitude dB: 81.312592
+FFT Result: Frequency: 19250.683594: C: -11380.557617: I: 2238.558594 
+    Magnitude: 11598.630859: Magnitude dB: 81.288139
+FFT Result: Frequency: 19293.750000: C: -11382.518555: I: 2188.126953 
+    Magnitude: 11590.928711: Magnitude dB: 81.282364
+FFT Result: Frequency: 19336.816406: C: -11406.536133: I: 2181.304688 
+    Magnitude: 11613.232422: Magnitude dB: 81.299065
+FFT Result: Frequency: 19379.882812: C: -11372.392578: I: 2143.208984 
+    Magnitude: 11572.582031: Magnitude dB: 81.268608
+FFT Result: Frequency: 19422.949219: C: -11383.828125: I: 2101.685547 
+    Magnitude: 11576.208984: Magnitude dB: 81.271324
+FFT Result: Frequency: 19466.015625: C: -11369.529297: I: 2085.498047 
+    Magnitude: 11559.216797: Magnitude dB: 81.258560
+FFT Result: Frequency: 19509.082031: C: -11379.277344: I: 2025.451172 
+    Magnitude: 11558.131836: Magnitude dB: 81.257751
+FFT Result: Frequency: 19552.148438: C: -11366.454102: I: 1998.371094 
+    Magnitude: 11540.787109: Magnitude dB: 81.244705
+FFT Result: Frequency: 19595.214844: C: -11384.875977: I: 1972.046875 
+    Magnitude: 11554.409180: Magnitude dB: 81.254959
+FFT Result: Frequency: 19638.281250: C: -11380.798828: I: 1922.275391 
+    Magnitude: 11541.998047: Magnitude dB: 81.245621
+FFT Result: Frequency: 19681.347656: C: -11393.616211: I: 1893.476562 
+    Magnitude: 11549.880859: Magnitude dB: 81.251556
+FFT Result: Frequency: 19724.414062: C: -11381.298828: I: 1850.457031 
+    Magnitude: 11530.748047: Magnitude dB: 81.237152
+FFT Result: Frequency: 19767.480469: C: -11379.589844: I: 1823.625000 
+    Magnitude: 11524.785156: Magnitude dB: 81.232651
+FFT Result: Frequency: 19810.546875: C: -11377.822266: I: 1778.785156 
+    Magnitude: 11516.028320: Magnitude dB: 81.226051
+FFT Result: Frequency: 19853.613281: C: -11388.201172: I: 1757.492188 
+    Magnitude: 11523.016602: Magnitude dB: 81.231323
+FFT Result: Frequency: 19896.679688: C: -11394.972656: I: 1718.105469 
+    Magnitude: 11523.770508: Magnitude dB: 81.231888
+FFT Result: Frequency: 19939.746094: C: -11358.125000: I: 1673.273438 
+    Magnitude: 11480.716797: Magnitude dB: 81.199379
+FFT Result: Frequency: 19982.812500: C: -11392.357422: I: 1659.621094 
+    Magnitude: 11512.608398: Magnitude dB: 81.223480
+FFT Result: Frequency: 20025.878906: C: -11378.645508: I: 1611.582031 
+    Magnitude: 11492.205078: Magnitude dB: 81.208069
+FFT Result: Frequency: 20068.945312: C: -11385.441406: I: 1588.464844 
+    Magnitude: 11495.716797: Magnitude dB: 81.210716
+FFT Result: Frequency: 20112.011719: C: -11374.124023: I: 1556.343750 
+    Magnitude: 11480.109375: Magnitude dB: 81.198921
+FFT Result: Frequency: 20155.078125: C: -11387.967773: I: 1512.117188 
+    Magnitude: 11487.919922: Magnitude dB: 81.204826
+FFT Result: Frequency: 20198.144531: C: -11362.023438: I: 1471.601562 
+    Magnitude: 11456.927734: Magnitude dB: 81.181366
+FFT Result: Frequency: 20241.210938: C: -11380.408203: I: 1440.449219 
+    Magnitude: 11471.207031: Magnitude dB: 81.192177
+FFT Result: Frequency: 20284.277344: C: -11391.108398: I: 1428.253906 
+    Magnitude: 11480.298828: Magnitude dB: 81.199066
+FFT Result: Frequency: 20327.343750: C: -11370.185547: I: 1361.218750 
+    Magnitude: 11451.376953: Magnitude dB: 81.177155
+FFT Result: Frequency: 20370.410156: C: -11370.024414: I: 1325.015625 
+    Magnitude: 11446.969727: Magnitude dB: 81.173813
+FFT Result: Frequency: 20413.476562: C: -11368.200195: I: 1304.828125 
+    Magnitude: 11442.838867: Magnitude dB: 81.170670
+FFT Result: Frequency: 20456.542969: C: -11386.941406: I: 1281.664062 
+    Magnitude: 11458.843750: Magnitude dB: 81.182816
+FFT Result: Frequency: 20499.609375: C: -11383.965820: I: 1224.656250 
+    Magnitude: 11449.649414: Magnitude dB: 81.175842
+FFT Result: Frequency: 20542.675781: C: -11380.402344: I: 1202.035156 
+    Magnitude: 11443.708008: Magnitude dB: 81.171333
+FFT Result: Frequency: 20585.742188: C: -11375.322266: I: 1161.984375 
+    Magnitude: 11434.516602: Magnitude dB: 81.164360
+FFT Result: Frequency: 20628.808594: C: -11383.458984: I: 1128.031250 
+    Magnitude: 11439.212891: Magnitude dB: 81.167923
+FFT Result: Frequency: 20671.875000: C: -11386.822266: I: 1099.839844 
+    Magnitude: 11439.815430: Magnitude dB: 81.168381
+FFT Result: Frequency: 20714.941406: C: -11361.416016: I: 1074.953125 
+    Magnitude: 11412.155273: Magnitude dB: 81.147354
+FFT Result: Frequency: 20758.007812: C: -11383.322266: I: 1014.265625 
+    Magnitude: 11428.418945: Magnitude dB: 81.159729
+FFT Result: Frequency: 20801.074219: C: -11362.984375: I: 983.140625 
+    Magnitude: 11405.436523: Magnitude dB: 81.142235
+FFT Result: Frequency: 20844.140625: C: -11356.757812: I: 946.898438 
+    Magnitude: 11396.164062: Magnitude dB: 81.135178
+FFT Result: Frequency: 20887.207031: C: -11381.767578: I: 940.664062 
+    Magnitude: 11420.573242: Magnitude dB: 81.153755
+FFT Result: Frequency: 20930.273438: C: -11374.375000: I: 894.867188 
+    Magnitude: 11409.522461: Magnitude dB: 81.145355
+FFT Result: Frequency: 20973.339844: C: -11369.349609: I: 862.101562 
+    Magnitude: 11401.988281: Magnitude dB: 81.139610
+FFT Result: Frequency: 21016.406250: C: -11367.126953: I: 821.648438 
+    Magnitude: 11396.784180: Magnitude dB: 81.135643
+FFT Result: Frequency: 21059.472656: C: -11363.792969: I: 793.078125 
+    Magnitude: 11391.433594: Magnitude dB: 81.131577
+FFT Result: Frequency: 21102.539062: C: -11372.613281: I: 751.968750 
+    Magnitude: 11397.446289: Magnitude dB: 81.136154
+FFT Result: Frequency: 21145.605469: C: -11361.656250: I: 697.039062 
+    Magnitude: 11383.017578: Magnitude dB: 81.125145
+FFT Result: Frequency: 21188.671875: C: -11386.937500: I: 688.609375 
+    Magnitude: 11407.740234: Magnitude dB: 81.143990
+FFT Result: Frequency: 21231.738281: C: -11373.656250: I: 646.343750 
+    Magnitude: 11392.006836: Magnitude dB: 81.132004
+FFT Result: Frequency: 21274.804688: C: -11394.218750: I: 623.546875 
+    Magnitude: 11411.267578: Magnitude dB: 81.146683
+FFT Result: Frequency: 21317.871094: C: -11376.726562: I: 589.890625 
+    Magnitude: 11392.009766: Magnitude dB: 81.132011
+FFT Result: Frequency: 21360.937500: C: -11393.507812: I: 555.796875 
+    Magnitude: 11407.056641: Magnitude dB: 81.143478
+FFT Result: Frequency: 21404.003906: C: -11347.648438: I: 498.468750 
+    Magnitude: 11358.590820: Magnitude dB: 81.106491
+FFT Result: Frequency: 21447.070312: C: -11357.453125: I: 474.812500 
+    Magnitude: 11367.374023: Magnitude dB: 81.113205
+FFT Result: Frequency: 21490.136719: C: -11371.078125: I: 425.812500 
+    Magnitude: 11379.047852: Magnitude dB: 81.122124
+FFT Result: Frequency: 21533.203125: C: -11368.125000: I: 397.437500 
+    Magnitude: 11375.070312: Magnitude dB: 81.119080
+FFT Result: Frequency: 21576.269531: C: -11372.812500: I: 373.250000 
+    Magnitude: 11378.935547: Magnitude dB: 81.122040
+FFT Result: Frequency: 21619.335938: C: -11411.500000: I: 328.000000 
+    Magnitude: 11416.212891: Magnitude dB: 81.150444
+FFT Result: Frequency: 21662.402344: C: -11352.437500: I: 322.062500 
+    Magnitude: 11357.004883: Magnitude dB: 81.105278
+FFT Result: Frequency: 21705.468750: C: -11360.000000: I: 269.437500 
+    Magnitude: 11363.194336: Magnitude dB: 81.110008
+FFT Result: Frequency: 21748.535156: C: -11375.625000: I: 260.312500 
+    Magnitude: 11378.602539: Magnitude dB: 81.121780
+FFT Result: Frequency: 21791.601562: C: -11364.218750: I: 191.296875 
+    Magnitude: 11365.829102: Magnitude dB: 81.112022
+FFT Result: Frequency: 21834.667969: C: -11393.484375: I: 170.023438 
+    Magnitude: 11394.752930: Magnitude dB: 81.134102
+FFT Result: Frequency: 21877.734375: C: -11353.500000: I: 145.734375 
+    Magnitude: 11354.435547: Magnitude dB: 81.103317
+FFT Result: Frequency: 21920.800781: C: -11368.968750: I: 91.539062 
+    Magnitude: 11369.336914: Magnitude dB: 81.114700
+FFT Result: Frequency: 21963.867188: C: -11366.062500: I: 76.339844 
+    Magnitude: 11366.319336: Magnitude dB: 81.112396
+FFT Result: Frequency: 22006.933594: C: -11372.421875: I: 28.582031 
+    Magnitude: 11372.458008: Magnitude dB: 81.117088
+FFT Result: Frequency: 22050.000000: C: -11398.000000: I: 0.000000 
+    Magnitude: 11398.000000: Magnitude dB: 81.136566
+==15816== Profiling application: ./assignment_2 1024
+==15816== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   95.52%  260.35us         4  65.088us     224ns  259.33us  [CUDA memcpy HtoD]
+                    2.56%  6.9760us         1  6.9760us  6.9760us  6.9760us  void vector_fft<unsigned int=512, unsigned int=16, unsigned int=1, unsigned int=22, padding_t=6, twiddle_t=0, loadstore_modifier_t=2, layout_t=0, unsigned int, float>(kernel_arguments_t<unsigned int>)
+                    1.42%  3.8720us         1  3.8720us  3.8720us  3.8720us  void postprocess_kernel<float, unsigned int, loadstore_modifier_t=2>(real_complex_args_t<unsigned int>)
+                    0.50%  1.3760us         1  1.3760us  1.3760us  1.3760us  [CUDA memcpy DtoH]
+      API calls:   89.21%  95.995ms         2  47.997ms  2.9260us  95.992ms  cudaMallocHost
+                    8.09%  8.7005ms        14  621.47us  14.777us  6.6427ms  cuLibraryLoadData
+                    0.96%  1.0343ms         4  258.58us  2.4950us  948.41us  cudaFree
+                    0.38%  413.17us         2  206.58us  6.6520us  406.52us  cudaFreeHost
+                    0.38%  405.94us         3  135.31us  3.4970us  349.56us  cuMemcpyHtoD
+                    0.29%  311.37us         2  155.68us  129.67us  181.69us  cuModuleLoadData
+                    0.27%  291.02us       231  1.2590us     110ns  73.668us  cuDeviceGetAttribute
+                    0.07%  74.060us         1  74.060us  74.060us  74.060us  cuMemAlloc
+                    0.07%  72.804us       383     190ns     120ns     832ns  cuGetProcAddress
+                    0.06%  62.969us         3  20.989us  15.099us  29.776us  cuDeviceGetName
+                    0.06%  60.142us         3  20.047us  2.1540us  52.338us  cudaMalloc
+                    0.04%  47.820us         1  47.820us  47.820us  47.820us  cuMemFree
+                    0.03%  31.209us         2  15.604us  13.786us  17.423us  cudaMemcpy
+                    0.02%  26.429us         2  13.214us  10.359us  16.070us  cuModuleUnload
+                    0.02%  20.458us         2  10.229us  4.2080us  16.250us  cuLaunchKernel
+                    0.01%  13.004us         1  13.004us  13.004us  13.004us  cuMemGetInfo
+                    0.01%  7.5040us         1  7.5040us  7.5040us  7.5040us  cuDeviceGetPCIBusId
+                    0.00%  4.5590us         1  4.5590us  4.5590us  4.5590us  cudaStreamIsCapturing
+                    0.00%  3.5460us         2  1.7730us     440ns  3.1060us  cuModuleGetFunction
+                    0.00%  3.4860us        20     174ns     120ns     761ns  cuFuncGetAttribute
+                    0.00%  3.3260us         3  1.1080us     441ns  1.8030us  cudaGetDevice
+                    0.00%  2.8750us         4     718ns     260ns  1.5530us  cuDeviceGetCount
+                    0.00%  1.8040us         1  1.8040us  1.8040us  1.8040us  cuInit
+                    0.00%  1.5840us         2     792ns     772ns     812ns  cuPointerGetAttribute
+                    0.00%  1.4630us         5     292ns     170ns     531ns  cuCtxPushCurrent
+                    0.00%  1.3230us         1  1.3230us  1.3230us  1.3230us  cudaSetDevice
+                    0.00%  1.2730us         2     636ns     261ns  1.0120us  cuOccupancyMaxActiveBlocksPerMultiprocessor
+                    0.00%  1.2620us         3     420ns     130ns     852ns  cuDeviceGet
+                    0.00%  1.0410us         6     173ns     130ns     301ns  cuCtxGetCurrent
+                    0.00%     911ns         5     182ns     151ns     220ns  cuCtxPopCurrent
+                    0.00%     852ns         2     426ns     281ns     571ns  cuDeviceTotalMem
+                    0.00%     842ns         2     421ns     321ns     521ns  cuModuleGetGlobal
+                    0.00%     671ns         2     335ns     130ns     541ns  cuModuleGetLoadingMode
+                    0.00%     561ns         2     280ns     141ns     420ns  cuDeviceGetUuid
+                    0.00%     551ns         2     275ns     170ns     381ns  cudaGetFuncBySymbol
+                    0.00%     180ns         1     180ns     180ns     180ns  cuDriverGetVersion
+                    0.00%     140ns         1     140ns     140ns     140ns  cuCtxGetDevice
