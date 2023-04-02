@@ -18,7 +18,7 @@ int main (int argc, char** argv) {
 
 	// Prints out a help menu if not enough params are passed
 	if (argc != 3) {
-		printf("Call ./npp_assignment {input_file} {output_file}}\n");
+		printf("Call ./npp_assignment {input_file} {output_file}\n");
 		exit(0);
 	}
 
