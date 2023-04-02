@@ -1,4 +1,4 @@
-#nvprof ./gcbin/bash
+#!/bin/bash
 
 echo "Frederich Stine - EN 605.617 - JHU EP"
 echo "----------------------------------------------------------------"
