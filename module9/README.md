@@ -116,3 +116,116 @@ slightly slower in specific scenarios due to overhead from having a more general
 
 Overall I think that this is a really cool library due to the abstraction and may use it in the future if a quick set-up 
 cuda program is needed!
+
+# NPP
+
+This lab utilized the cudaNPP libraries. These libraries include a lot of functionality for image and video processing.
+
+For this assignment I created a small program that applies a gaussian blur using these libraries. This program takes in an 8-bit pgm image and outputs 
+the image with a gaussian blur applied.
+
+The arguments passed to this program are:
+```
+Call ./npp_assignment {input_file} {output_file}
+```
+
+I additionally created a *run.sh* script that runs this npp program two times with two different images.
+The output of this file is available in [documentation/npp_run.log](documentation/npp_run.log).
+
+This output shows the time that the gpu spent applying the filter to the image. This can be seen below:
+```
+Frederich Stine - EN 605.617 - JHU EP
+----------------------------------------------------------------
+Example runner to show execution of Module 9 npp assignment
+----------------------------------------------------------------
+This runner runs my example npp code that applies a gaussian
+blur to a grayscale image.
+This runner runs through two separate grayscale images differing in
+size by 512x512 to 5184x3456
+Press enter to continue:
+NPP gaussian blur: file of 512x512
+==16291== NVPROF is profiling process 16291, command: ./npp_assignment images/Lena.pgm images/Lena-gauss.pgm
+Perf: Loading image
+Perf: Running gaussian filter
+Perf: Saving image
+==16291== Profiling application: ./npp_assignment images/Lena.pgm images/Lena-gauss.pgm
+==16291== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   37.26%  21.793us         1  21.793us  21.793us  21.793us  [CUDA memcpy HtoD]
+                   34.90%  20.415us         1  20.415us  20.415us  20.415us  [CUDA memcpy DtoH]
+                   27.84%  16.288us         1  16.288us  16.288us  16.288us  void TwoPassFilter32f<unsigned char, int=1, FilterGauss5x532fTwoPassReplicateBorderFunctor<unsigned char, int=1>, int=5>(Image<unsigned char, int=1>, NppiSize, unsigned char)
+      API calls:   49.10%  89.682ms         2  44.841ms  4.1980us  89.678ms  cudaMallocPitch
+                   48.85%  89.222ms        64  1.3941ms  19.076us  23.267ms  cuLibraryLoadData
+                    1.41%  2.5736ms         1  2.5736ms  2.5736ms  2.5736ms  cudaLaunchKernel
+                    0.22%  398.35us       447     891ns     110ns  49.133us  cuDeviceGetAttribute
+                    0.15%  273.15us         2  136.57us  52.409us  220.74us  cudaMemcpy2D
+                    0.11%  199.27us      1149     173ns     110ns  3.6670us  cuGetProcAddress
+                    0.08%  142.43us         2  71.213us  9.2770us  133.15us  cudaFree
+                    0.04%  75.352us         1  75.352us  75.352us  75.352us  cudaGetDeviceProperties
+                    0.03%  55.316us         4  13.829us  8.2360us  18.926us  cuDeviceGetName
+                    0.01%  10.350us         1  10.350us  10.350us  10.350us  cudaStreamGetFlags
+                    0.00%  7.0230us         1  7.0230us  7.0230us  7.0230us  cuDeviceGetPCIBusId
+                    0.00%  4.5690us         1  4.5690us  4.5690us  4.5690us  cudaGetDevice
+                    0.00%  2.1330us         3     711ns     410ns  1.2120us  cuInit
+                    0.00%  1.6830us         6     280ns     140ns     631ns  cuDeviceGetCount
+                    0.00%     960ns         4     240ns     160ns     340ns  cuDeviceTotalMem
+                    0.00%     792ns         5     158ns     120ns     280ns  cuDeviceGet
+                    0.00%     661ns         2     330ns     290ns     371ns  cudaDeviceGetAttribute
+                    0.00%     591ns         4     147ns     111ns     220ns  cuModuleGetLoadingMode
+                    0.00%     561ns         4     140ns     120ns     171ns  cuDeviceGetUuid
+                    0.00%     441ns         1     441ns     441ns     441ns  cudaGetLastError
+                    0.00%     390ns         3     130ns     130ns     130ns  cuDriverGetVersion
+Press enter to continue:
+NPP gaussian blur: file of 5184x3456
+==16305== NVPROF is profiling process 16305, command: ./npp_assignment images/sample.pgm images/sample-gauss.pgm
+Perf: Loading image
+Perf: Running gaussian filter
+Perf: Saving image
+==16305== Profiling application: ./npp_assignment images/sample.pgm images/sample-gauss.pgm
+==16305== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   62.53%  5.1314ms         1  5.1314ms  5.1314ms  5.1314ms  [CUDA memcpy DtoH]
+                   27.01%  2.2168ms         1  2.2168ms  2.2168ms  2.2168ms  [CUDA memcpy HtoD]
+                   10.46%  858.02us         1  858.02us  858.02us  858.02us  void TwoPassFilter32f<unsigned char, int=1, FilterGauss5x532fTwoPassReplicateBorderFunctor<unsigned char, int=1>, int=5>(Image<unsigned char, int=1>, NppiSize, unsigned char)
+      API calls:   48.45%  82.871ms        64  1.2949ms  18.916us  20.738ms  cuLibraryLoadData
+                   44.12%  75.457ms         2  37.729ms  152.45us  75.305ms  cudaMallocPitch
+                    5.03%  8.6062ms         2  4.3031ms  2.2829ms  6.3233ms  cudaMemcpy2D
+                    1.50%  2.5645ms         1  2.5645ms  2.5645ms  2.5645ms  cudaLaunchKernel
+                    0.44%  760.47us         2  380.24us  184.80us  575.67us  cudaFree
+                    0.23%  387.69us       447     867ns     110ns  46.167us  cuDeviceGetAttribute
+                    0.13%  228.80us      1149     199ns     120ns  3.0760us  cuGetProcAddress
+                    0.04%  73.098us         1  73.098us  73.098us  73.098us  cudaGetDeviceProperties
+                    0.03%  57.899us         4  14.474us  8.5160us  18.034us  cuDeviceGetName
+                    0.01%  15.279us         1  15.279us  15.279us  15.279us  cudaStreamGetFlags
+                    0.00%  5.7410us         1  5.7410us  5.7410us  5.7410us  cuDeviceGetPCIBusId
+                    0.00%  5.4800us         1  5.4800us  5.4800us  5.4800us  cudaGetDevice
+                    0.00%  3.6670us         3  1.2220us     531ns  1.5730us  cuInit
+                    0.00%  1.7630us         6     293ns     151ns     611ns  cuDeviceGetCount
+                    0.00%  1.0540us         4     263ns     171ns     311ns  cuDeviceTotalMem
+                    0.00%     840ns         5     168ns     120ns     320ns  cuDeviceGet
+                    0.00%     680ns         2     340ns     280ns     400ns  cudaDeviceGetAttribute
+                    0.00%     611ns         4     152ns     120ns     231ns  cuModuleGetLoadingMode
+                    0.00%     592ns         4     148ns     121ns     201ns  cuDeviceGetUuid
+                    0.00%     451ns         1     451ns     451ns     451ns  cudaGetLastError
+                    0.00%     391ns         3     130ns     110ns     150ns  cuDriverGetVersion
+```
+
+The first run processes an image that is 512x512 or .26 MP. This operation happens very quickly on the GPU and the the processing time is comparable 
+to the time spent executing the kernel. The second run processes an image that is 5184x3456 or 17.9 MP. This takes 52.9 times longer than the .26 MP image while being 68.34 time larger. This shows that the amount of time processing on the GPU scales very evenly with the size of images to NPP. The memcpy operations for the larger image are much longer than those for the smaller image. This is something to take into consideration if using NPP for processing large images.
+I think that to get around this issue, it would probably be best to use NPP processing with streams such that the data transfers could continuously be utilized. 
+This operation that I ran is very simple, but performing more computationally heavy chains of operations would make more sense when using NPP. 
+This would help to even out the amount of time spend copying data with the amount of time processig data.
+
+Overall NPP is really great library that is an alterative to OpenCV which I have used in the past to perform the exact same operations. I do not have 
+that code currently, but would imagine that the times would be comparable (if not longer for npp) in this case due to that large amount of time 
+spent copying the image from host to GPU and back.
+
+One of the images that I applied the filter to is available below before and after filtering:
+
+It doesn't seem that these images are viewable on Github markdown - they are pgm images.
+If you have the chance you can pull them down and view them in the /images directory of this repo.
+
+## CuGraph
+
+I was unable to utilize the CuGraph library due to the version of Cuda that I am on. I am utilizing Cuda 12.0 and this library was depricated in Cuda 10.
+
