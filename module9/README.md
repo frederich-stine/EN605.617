@@ -220,8 +220,6 @@ Overall NPP is really great library that is an alterative to OpenCV which I have
 that code currently, but would imagine that the times would be comparable (if not longer for npp) in this case due to that large amount of time 
 spent copying the image from host to GPU and back.
 
-One of the images that I applied the filter to is available below before and after filtering:
-
 It doesn't seem that these images are viewable on Github markdown - they are pgm images.
 If you have the chance you can pull them down and view them in the /images directory of this repo.
 
