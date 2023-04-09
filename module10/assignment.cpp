@@ -19,6 +19,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <stdlib.h>
 
 #ifdef __APPLE__
 #include <OpenCL/cl.h>
@@ -113,6 +114,7 @@ cl_command_queue CreateCommandQueue(cl_context context, cl_device_id *device)
     // In this example, we just choose the first available device.  In a
     // real program, you would likely use all available devices or choose
     // the highest performance device based on OpenCL device queries
+	// FLS - Enable profiling
     commandQueue = clCreateCommandQueue(context, devices[0], CL_QUEUE_PROFILING_ENABLE, NULL);
     if (commandQueue == NULL)
     {
@@ -306,10 +308,13 @@ int main(int argc, char** argv)
     float result[arrSize];
     float a[arrSize];
     float b[arrSize];
+
+	// FLS - Change to random values
+	srand(time(0));
     for (int i = 0; i < arrSize; i++)
     {
-        a[i] = (float)i;
-        b[i] = (float)(i * 2);
+        a[i] = (float)(rand()%20);
+        b[i] = (float)(rand()%20);
     }
 
     if (!CreateMemObjects(context, memObjects, a, b))
@@ -332,6 +337,7 @@ int main(int argc, char** argv)
     size_t globalWorkSize[1] = { arrSize };
     size_t localWorkSize[1] = { 1 };
 
+	// FLS - profiling event
 	cl_event event;
     // Queue the kernel up for execution across the array
     errNum = clEnqueueNDRangeKernel(commandQueue, kernel, 1, NULL,
@@ -357,12 +363,14 @@ int main(int argc, char** argv)
 
 	clWaitForEvents(1, &event);
 
-    // Output the result buffer
-    for (int i = 0; i < arrSize; i++)
-    {
-        std::cout << result[i] << " ";
-    }
-    std::cout << std::endl;
+    // Output the result buffer if size is not too large
+	if (arrSize < 1000) {
+		for (int i = 0; i < arrSize; i++)
+		{
+			std::cout << result[i] << " ";
+		}
+		std::cout << std::endl;
+	}
     std::cout << "Executed program succesfully." << std::endl;
     Cleanup(context, commandQueue, program, kernel, memObjects);
 	
