@@ -1,4 +1,4 @@
-Module 11
+# Module 11
 
 This lab modified an OpenCL program that performed a convolution. I expanded the original program to work with floating 
 point values instead of integers. I also changed the program to work with 49x49 signals and a set 7x7 convolution. This 
