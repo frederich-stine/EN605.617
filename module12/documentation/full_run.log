@@ -1,0 +1,89 @@
+Frederich Stine - EN 605.617 - JHU EP
+----------------------------------------------------------------
+Example runner to show execution of Module 12 assignment
+----------------------------------------------------------------
+ This runner demonstrates a an averaging filter using 4x1 sub-buffers.
+ The input signal is known.
+
+
+Press enter to continue:
+OpenCL sub-buffer
+Run 1
+Simple buffer and sub-buffer Example - FLS
+Number of platforms: 	1
+	CL_PLATFORM_VENDOR:	NVIDIA Corporation
+		CL_DEVICE_TYPE:	CL_DEVICE_TYPE_GPU
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 10 7 3
+Program completed successfully
+
+OpenCl Execution time of kernel 0: 0.010 milliseconds 
+OpenCl Execution time of kernel 1: 0.003 milliseconds 
+OpenCl Execution time of kernel 2: 0.003 milliseconds 
+OpenCl Execution time of kernel 3: 0.003 milliseconds 
+OpenCl Execution time of kernel 4: 0.003 milliseconds 
+OpenCl Execution time of kernel 5: 0.003 milliseconds 
+OpenCl Execution time of kernel 6: 0.002 milliseconds 
+OpenCl Execution time of kernel 7: 0.002 milliseconds 
+OpenCl Execution time of kernel 8: 0.003 milliseconds 
+OpenCl Execution time of kernel 9: 0.003 milliseconds 
+OpenCl Execution time of kernel 10: 0.003 milliseconds 
+OpenCl Execution time of kernel 11: 0.003 milliseconds 
+OpenCl Execution time of kernel 12: 0.003 milliseconds 
+OpenCl Execution time of kernel 13: 0.003 milliseconds 
+OpenCl Execution time of kernel 14: 0.003 milliseconds 
+OpenCl Execution time of kernel 15: 0.003 milliseconds 
+Total kernel execution time is: 0.054 milliseconds 
+Press enter to continue:
+OpenCL sub-buffer
+Run 2
+Simple buffer and sub-buffer Example - FLS
+Number of platforms: 	1
+	CL_PLATFORM_VENDOR:	NVIDIA Corporation
+		CL_DEVICE_TYPE:	CL_DEVICE_TYPE_GPU
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 10 7 3
+Program completed successfully
+
+OpenCl Execution time of kernel 0: 0.013 milliseconds 
+OpenCl Execution time of kernel 1: 0.003 milliseconds 
+OpenCl Execution time of kernel 2: 0.003 milliseconds 
+OpenCl Execution time of kernel 3: 0.003 milliseconds 
+OpenCl Execution time of kernel 4: 0.003 milliseconds 
+OpenCl Execution time of kernel 5: 0.002 milliseconds 
+OpenCl Execution time of kernel 6: 0.003 milliseconds 
+OpenCl Execution time of kernel 7: 0.003 milliseconds 
+OpenCl Execution time of kernel 8: 0.003 milliseconds 
+OpenCl Execution time of kernel 9: 0.003 milliseconds 
+OpenCl Execution time of kernel 10: 0.003 milliseconds 
+OpenCl Execution time of kernel 11: 0.003 milliseconds 
+OpenCl Execution time of kernel 12: 0.003 milliseconds 
+OpenCl Execution time of kernel 13: 0.003 milliseconds 
+OpenCl Execution time of kernel 14: 0.003 milliseconds 
+OpenCl Execution time of kernel 15: 0.002 milliseconds 
+Total kernel execution time is: 0.057 milliseconds 
+Press enter to continue:
+OpenCL sub-buffer
+Run 3
+Simple buffer and sub-buffer Example - FLS
+Number of platforms: 	1
+	CL_PLATFORM_VENDOR:	NVIDIA Corporation
+		CL_DEVICE_TYPE:	CL_DEVICE_TYPE_GPU
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 10 7 3
+Program completed successfully
+
+OpenCl Execution time of kernel 0: 0.009 milliseconds 
+OpenCl Execution time of kernel 1: 0.003 milliseconds 
+OpenCl Execution time of kernel 2: 0.003 milliseconds 
+OpenCl Execution time of kernel 3: 0.003 milliseconds 
+OpenCl Execution time of kernel 4: 0.002 milliseconds 
+OpenCl Execution time of kernel 5: 0.003 milliseconds 
+OpenCl Execution time of kernel 6: 0.003 milliseconds 
+OpenCl Execution time of kernel 7: 0.003 milliseconds 
+OpenCl Execution time of kernel 8: 0.003 milliseconds 
+OpenCl Execution time of kernel 9: 0.002 milliseconds 
+OpenCl Execution time of kernel 10: 0.003 milliseconds 
+OpenCl Execution time of kernel 11: 0.003 milliseconds 
+OpenCl Execution time of kernel 12: 0.002 milliseconds 
+OpenCl Execution time of kernel 13: 0.003 milliseconds 
+OpenCl Execution time of kernel 14: 0.003 milliseconds 
+OpenCl Execution time of kernel 15: 0.002 milliseconds 
+Total kernel execution time is: 0.051 milliseconds 
