@@ -1,3 +1,6 @@
+// Frederich Stine EN.605.617
+// Module 13 Assignment
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -7,11 +10,14 @@
 
 #include "info.hpp"
 
+/******************* Macro Definitions ********************/
 #define DEFAULT_PLATFORM 0
 
+/******************* Global Variables ********************/
 float width;
 float count;
 
+/******************* Helper Function Definitions ********************/
 // Function to check and handle OpenCL errors
 inline void 
 checkErr(cl_int err, const char * name)
@@ -22,25 +28,32 @@ checkErr(cl_int err, const char * name)
     }
 }
 
+// This function processes an input file
+// and dynamically creates a 2D array that holds the input values
+// from the file
 void readFile(char* fileName, float*** input) {
     
+    // Open file
     FILE* fh = fopen(fileName, "r");
     if (fh == NULL) {
         printf("Error: Invalid file");
         exit(0);
     }
+
+    // Read width and count
     fscanf(fh, "%f\n", &width);
     fscanf(fh, "%f\n", &count);
 
+    printf("Count: %f\n", count);
+    printf("Width: %f\n", width);
 
+    // Allocate 2D array
     *input = (float**)malloc(sizeof(float*)*count);
     for (int i=0; i<int(count); i++) {
         (*input)[i] = (float*) malloc(sizeof(float)*width);
     }
 
-    printf("Count: %f\n", count);
-    printf("Width: %f\n", width);
-
+    // Fill 2D array
     for (int i=0; i<(int)count; i++) {
         for (int x=0; x<(int)width; x++) {
             fscanf(fh, "%f,", &(*input)[i][x]);
@@ -48,29 +61,31 @@ void readFile(char* fileName, float*** input) {
         fseek(fh, 1, SEEK_CUR);
     }
 
-    /*for (int i=0; i<(int)count; i++) {
-        printf("%f\n", (*input)[i][0]);
-    }*/
-
+    // Close file
     fclose(fh);
 }
 
+// This function frees the dynamically allocated 2D array
 void freeInput(float*** input) {
 
+    // Free all 1D bufs
     for (int i=0; i<(int)count; i++) {
         free((*input)[i]);
     }
 
+    // Free 2D pointer
     free(*input);
-
 }
 
-///
-//	main() for simple buffer and sub-buffer example
-//
+/******************* Main Function Definition ********************/
+// This main function takes the input from a file
+// and processes it.
+// Dependent on the input file this program creates cuda kernels and
+// events to square the values and then average them
+// This program outputs timing information and the resuting averages
 int main(int argc, char** argv)
 {
-
+    // Process command line arguments
     if (argc != 2) {
         printf("Error: Not enough arguments\n");
         printf("Correct usage is:\n");
@@ -78,9 +93,11 @@ int main(int argc, char** argv)
         exit(0);
     }
 
+    // Read in file
     float** input;
     readFile(argv[1], &input);
 
+    // OpenCL objects
     cl_int errNum;
     cl_uint numPlatforms;
     cl_uint numDevices;
@@ -107,6 +124,7 @@ int main(int argc, char** argv)
        (errNum != CL_SUCCESS) ? errNum : (numPlatforms <= 0 ? -1 : CL_SUCCESS), 
        "clGetPlatformIDs");
 
+    // Read in my assignment.cl file
     std::ifstream srcFile("assignment.cl");
     checkErr(srcFile.is_open() ? CL_SUCCESS : -1, "reading assignment.cl");
 
@@ -195,6 +213,7 @@ int main(int argc, char** argv)
             checkErr(errNum, "clBuildProgram");
     }
 
+    // Create buffers for each buffer in the 2D array
     std::vector<cl_mem> buffers;
     // create a buffer for each row to cover all the input data
     for (int i=0; i<count; i++) {
@@ -209,6 +228,7 @@ int main(int argc, char** argv)
         buffers.push_back(buffer);
     }
  
+    // Create one buffer for the output
     cl_mem bufOut = clCreateBuffer(
             context,
             CL_MEM_READ_WRITE,
@@ -231,6 +251,7 @@ int main(int argc, char** argv)
      	&errNum);
     checkErr(errNum, "clCreateCommandQueue");
 
+    // Create all kernels for the square operation
     std::vector<cl_kernel> squareKernels;
     for (int i=0; i<count; i++) {
         cl_kernel kernel = clCreateKernel(
@@ -244,7 +265,8 @@ int main(int argc, char** argv)
 
         squareKernels.push_back(kernel);
     }
-     
+
+    // Create all kernels for the average operation
     std::vector<cl_kernel> averageKernels;
        for (int i=0; i<count; i++) {
         cl_kernel kernel = clCreateKernel(
@@ -280,8 +302,10 @@ int main(int argc, char** argv)
     // call kernel for each device
     size_t gWI = (int)width;
 	
+    // Start timer
     std::chrono::time_point startTime = std::chrono::high_resolution_clock::now();
 
+    // Enqueue all of the square kernels properly
     for (int i=0; i<count; i++) {
         cl_event event;
 
@@ -299,8 +323,10 @@ int main(int argc, char** argv)
         events.push_back(event);
     }
 
+    // WAIT for the events to finish - needed for correct execution
     clWaitForEvents(events.size(), &events[0]);
     
+    // Stop timer
 	std::chrono::time_point stopTime = std::chrono::high_resolution_clock::now();
 	auto ns1 = std::chrono::duration<double>(stopTime - startTime);
 
@@ -310,6 +336,7 @@ int main(int argc, char** argv)
 
 	startTime = std::chrono::high_resolution_clock::now();
 
+    // Enqueue all of the average kernels properly
     for (int i=0; i<count; i++) {
         cl_event event;
 
@@ -327,11 +354,14 @@ int main(int argc, char** argv)
         avgEvents.push_back(event);
     } 
 
+    // WAIT for the events to finis
     clWaitForEvents(avgEvents.size(), &avgEvents[0]);
 
+    // Stop timer
 	stopTime = std::chrono::high_resolution_clock::now();
 	auto ns2 = std::chrono::duration<double>(stopTime - startTime);
 
+    // Create buf for result
     float* output = (float*) malloc(sizeof(float)*count);
 
  	// Read back computed data
@@ -346,15 +376,17 @@ int main(int argc, char** argv)
             NULL,
             NULL);
 
-
+    // Print results
     printf("\nResult after double and average: \n");
     for (int i=0; i<(int)count; i++) {
         printf("Row: %d: %f\n", i, output[i]);
     }
 
+    // Print timing information
 	printf("\nSquare kernel runtime: %lfs\n", ns1.count());
 	printf("Average kernel runtime: %lfs\n", ns2.count());
 
+    // Free data
     free(output);
     freeInput(&input);
 

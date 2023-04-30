@@ -1,7 +1,11 @@
+# Frederich Stine EN.605.617
+# Module 7 Assignment Helper Program
+
 import argparse
 import random
 import time
 
+# Generate all random numbers
 def main():
 
     fh = open(args.file, 'w')
@@ -18,6 +22,7 @@ def main():
     fh.close()
 
 
+# Parse all command line inputs
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
