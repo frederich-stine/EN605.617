@@ -55,7 +55,6 @@ void readFile(char* fileName, float*** input) {
     fclose(fh);
 }
 
-
 void freeInput(float*** input) {
 
     for (int i=0; i<(int)count; i++) {
@@ -66,7 +65,6 @@ void freeInput(float*** input) {
 
 }
 
-
 ///
 //	main() for simple buffer and sub-buffer example
 //
@@ -76,7 +74,7 @@ int main(int argc, char** argv)
     if (argc != 2) {
         printf("Error: Not enough arguments\n");
         printf("Correct usage is:\n");
-        printf("    : ./assignment {filename}");
+        printf("    : ./assignment {filename}\n");
         exit(0);
     }
 

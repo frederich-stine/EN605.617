@@ -17,11 +17,6 @@ echo "Input 16x16 Square and Average"
 
 read -p "Press enter to continue:"
 clear
-echo "Input 64x64 Square and Average"
-./assignment inputs/input_128x128.txt
-
-read -p "Press enter to continue:"
-clear
 echo "Input 128x128 Square and Average"
 ./assignment inputs/input_128x128.txt
 

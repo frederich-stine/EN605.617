@@ -7,7 +7,8 @@ Example runner to show execution of Module 13 assignment
  The input file should be created by generate_rand.py for this program.
 
 
-Press enter to continue:[H[2J[3JInput 16x16 Square and Average
+Press enter to continue:
+Input 16x16 Square and Average
 Count: 16.000000
 Width: 16.000000
 Number of platforms: 	1
@@ -34,146 +35,8 @@ Row: 15: 39.734779
 
 Square kernel runtime: 0.000137s
 Average kernel runtime: 0.000137s
-Press enter to continue:[H[2J[3JInput 64x64 Square and Average
-Count: 128.000000
-Width: 128.000000
-Number of platforms: 	1
-	CL_PLATFORM_VENDOR:	NVIDIA Corporation
-		CL_DEVICE_TYPE:	CL_DEVICE_TYPE_GPU
-
-Result after double and average: 
-Row: 0: 29.408546
-Row: 1: 33.172447
-Row: 2: 35.236485
-Row: 3: 37.315025
-Row: 4: 32.174477
-Row: 5: 38.437988
-Row: 6: 30.673170
-Row: 7: 34.543510
-Row: 8: 39.664879
-Row: 9: 31.075912
-Row: 10: 32.211189
-Row: 11: 31.827694
-Row: 12: 36.571934
-Row: 13: 33.529472
-Row: 14: 33.388695
-Row: 15: 28.302010
-Row: 16: 33.969982
-Row: 17: 35.051449
-Row: 18: 30.359646
-Row: 19: 31.460821
-Row: 20: 35.647289
-Row: 21: 35.415768
-Row: 22: 30.968107
-Row: 23: 34.217667
-Row: 24: 34.329926
-Row: 25: 32.634514
-Row: 26: 28.290451
-Row: 27: 31.895504
-Row: 28: 31.032839
-Row: 29: 32.399307
-Row: 30: 32.597164
-Row: 31: 31.174755
-Row: 32: 37.128979
-Row: 33: 29.891891
-Row: 34: 36.863827
-Row: 35: 35.993309
-Row: 36: 36.819450
-Row: 37: 30.431807
-Row: 38: 30.464344
-Row: 39: 34.914478
-Row: 40: 35.998917
-Row: 41: 30.115862
-Row: 42: 32.726490
-Row: 43: 35.357086
-Row: 44: 35.448883
-Row: 45: 28.624624
-Row: 46: 27.848949
-Row: 47: 28.104376
-Row: 48: 36.607174
-Row: 49: 31.020826
-Row: 50: 36.098251
-Row: 51: 32.520458
-Row: 52: 32.947338
-Row: 53: 31.161333
-Row: 54: 34.485256
-Row: 55: 32.091217
-Row: 56: 32.390862
-Row: 57: 36.390900
-Row: 58: 37.031403
-Row: 59: 27.872065
-Row: 60: 35.826118
-Row: 61: 35.791996
-Row: 62: 34.602058
-Row: 63: 29.733410
-Row: 64: 30.823191
-Row: 65: 35.342850
-Row: 66: 32.852489
-Row: 67: 31.490183
-Row: 68: 36.348946
-Row: 69: 31.712122
-Row: 70: 31.293444
-Row: 71: 33.837952
-Row: 72: 36.188206
-Row: 73: 33.851940
-Row: 74: 35.081070
-Row: 75: 31.315525
-Row: 76: 30.874687
-Row: 77: 28.529360
-Row: 78: 33.546864
-Row: 79: 35.264191
-Row: 80: 31.904858
-Row: 81: 33.105591
-Row: 82: 30.913095
-Row: 83: 36.488865
-Row: 84: 31.844028
-Row: 85: 36.045044
-Row: 86: 35.456837
-Row: 87: 34.227093
-Row: 88: 31.482365
-Row: 89: 37.179790
-Row: 90: 26.335163
-Row: 91: 33.458611
-Row: 92: 28.729292
-Row: 93: 33.235531
-Row: 94: 33.250065
-Row: 95: 37.461334
-Row: 96: 32.916851
-Row: 97: 32.387016
-Row: 98: 32.236900
-Row: 99: 28.902018
-Row: 100: 35.482994
-Row: 101: 32.741192
-Row: 102: 29.081345
-Row: 103: 36.360462
-Row: 104: 40.355236
-Row: 105: 34.385803
-Row: 106: 33.642860
-Row: 107: 37.158234
-Row: 108: 26.749775
-Row: 109: 38.358364
-Row: 110: 35.068684
-Row: 111: 32.414764
-Row: 112: 30.230114
-Row: 113: 30.202467
-Row: 114: 32.225586
-Row: 115: 35.274902
-Row: 116: 41.067097
-Row: 117: 32.762363
-Row: 118: 33.738411
-Row: 119: 33.422661
-Row: 120: 32.819885
-Row: 121: 30.429680
-Row: 122: 28.891020
-Row: 123: 32.602894
-Row: 124: 39.866695
-Row: 125: 37.177307
-Row: 126: 33.820225
-Row: 127: 32.127644
-
-Square kernel runtime: 0.000566s
-Average kernel runtime: 0.002548s
-Press enter to continue:[H[2J[3JInput 128x128 Square and Average
+Press enter to continue:
+Input 128x128 Square and Average
 Count: 128.000000
 Width: 128.000000
 Number of platforms: 	1
@@ -312,7 +175,8 @@ Row: 127: 32.127644
 
 Square kernel runtime: 0.000546s
 Average kernel runtime: 0.002558s
-Press enter to continue:[H[2J[3JInput 256x256 Square and Average
+Press enter to continue:
+Input 256x256 Square and Average
 Count: 256.000000
 Width: 256.000000
 Number of platforms: 	1
@@ -579,7 +443,8 @@ Row: 255: 31.006857
 
 Square kernel runtime: 0.000988s
 Average kernel runtime: 0.010015s
-Press enter to continue:[H[2J[3JInput 256x256 Square and Average
+Press enter to continue:
+Input 256x256 Square and Average
 Count: 256.000000
 Width: 256.000000
 Number of platforms: 	1
@@ -846,7 +711,8 @@ Row: 255: 31.006857
 
 Square kernel runtime: 0.000976s
 Average kernel runtime: 0.008898s
-Press enter to continue:[H[2J[3JInput 1024x1024 Square and Average
+Press enter to continue:
+Input 1024x1024 Square and Average
 Count: 1024.000000
 Width: 1024.000000
 Number of platforms: 	1
@@ -1881,7 +1747,8 @@ Row: 1023: 33.387768
 
 Square kernel runtime: 0.004174s
 Average kernel runtime: 0.147698s
-Press enter to continue:[H[2J[3JInput 64x4096 Square and Average
+Press enter to continue:
+Input 64x4096 Square and Average
 Count: 64.000000
 Width: 4096.000000
 Number of platforms: 	1
@@ -1956,7 +1823,8 @@ Row: 63: 33.813606
 
 Square kernel runtime: 0.000244s
 Average kernel runtime: 0.037611s
-Press enter to continue:[H[2J[3JInput 4096x64 Square and Average
+Press enter to continue:
+Input 4096x64 Square and Average
 Count: 4096.000000
 Width: 64.000000
 Number of platforms: 	1
